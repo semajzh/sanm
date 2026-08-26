@@ -1,0 +1,21 @@
+#include "buff4011422.h"
+#include "ground.h"
+#include "log/logger.h"
+
+void Buff4011422::enter(Ground* ground)
+{
+    Logger::H().printbuffenter(ground, src, des, this);
+    float point1 = Ground::pointbystar(ground, 25, src, method);
+    j9 = Ground::addj9(ground, des, 9, point1 + meta);
+    j11 = point1 + meta;
+    ground->m_group[des/10].m_item[des%10].j[9] += j9;
+    ground->m_group[des/10].m_item[des%10].j[11] += j11;
+}
+
+void Buff4011422::exit(Ground* ground)
+{
+    Logger::H().printbuffexit(ground, src, des, this);
+
+    ground->m_group[des/10].m_item[des%10].j[9] -= j9;
+    ground->m_group[des/10].m_item[des%10].j[11] -= j11;
+}
