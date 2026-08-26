@@ -11,6 +11,9 @@ public:
     Strategy315021();
     virtual ~Strategy315021();
     virtual bool run(Ground* ground, Item* item1);
+
+private:
+    QVector<int> selectObj(Ground* ground, int obj);
 };
 
 #endif // STRATEGY315021_H

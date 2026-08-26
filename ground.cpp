@@ -51,6 +51,7 @@
 #include "buff/buff0110321.h"
 #include "buff/buff0120321.h"
 #include "buff/buff0130121.h"
+#include "buff/buff0150221.h"
 #include "buff/buff1010121.h"
 #include "buff/buff1010620.h"
 #include "buff/buff1010721.h"
@@ -77,6 +78,8 @@
 #include "buff/buff3091220.h"
 #include "buff/buff3120121.h"
 #include "buff/buff3120221.h"
+#include "buff/buff3150121.h"
+#include "buff/buff3150221.h"
 #include "buff/buff4010520.h"
 #include "buff/buff4010722.h"
 #include "buff/buff4010920.h"
@@ -199,6 +202,7 @@ static bool check0110321(Ground* ground, int obj1, int obj2, int type);
 static bool check0120321(Ground* ground, int obj1, int obj2);
 static bool check0130121(Ground* ground, int obj1, int obj2, int method);
 static bool check0140221(Ground* ground, int obj);
+static bool check0150221(Ground* ground, int obj, int method);
 
 static bool check1010121(Ground* ground, int obj);
 static bool check1010320(Ground* ground, int obj);
@@ -235,6 +239,9 @@ static bool check3091120(Ground* ground, int obj, int method, float& point);
 static bool check3091220(Ground* ground, int obj);
 static bool check3120121(Ground* ground, int obj);
 static bool check3120221(Ground* ground, int obj, int method);
+static bool check31501211(Ground* ground, Item** item2, float& point);
+static bool check31501212(Ground* ground, int obj, int method);
+static bool check3150221(Ground* ground, int obj1, int obj2, int method, float& point);
 static bool check4010520(Ground* ground, int obj1, int obj2);
 static bool check4010722(Ground* ground, int obj1, int obj2);
 static bool check4010920(Ground* ground, int obj);
@@ -306,6 +313,23 @@ float Ground::getMaxi(Ground* ground, int pos)
         }
     }
     return max;
+}
+
+int Ground::getMaxiIndex(Ground* ground, int pos)
+{
+    int index = -1;
+    float max = 0;
+    int g = pos/10;
+    int i = pos%10;
+    for (int j = 0; j < 4; ++j)
+    {
+        if (ground->m_group[g].m_item[i].i[j] > max)
+        {
+            max = ground->m_group[g].m_item[i].i[j];
+            index = j;
+        }
+    }
+    return index;
 }
 
 //int Ground::selectObjMaxh0(Ground* ground, int pos, int fof, bool b017)
@@ -816,6 +840,8 @@ int act(Ground* ground, Item* item1, Item* item2, int method, float& point, int 
     check3010921(ground, item2->g[0]);
     check1020221(ground, item1->g[0], item2->g[0], point);
     check3030120(ground, &item2, point);
+    check31501211(ground, &item2, point);
+    check3150221(ground, item2->g[0], item1->g[0], method, point);
     check4040121(ground, item2->g[0], point);
     check0088324(ground, item1->g[0], &item2);
     if (method % 100 == 24)
@@ -901,6 +927,7 @@ int act(Ground* ground, Item* item1, Item* item2, int method, float& point, int 
     check3120221(ground, item1->g[0], method);
     check0120321(ground, item1->g[0], item2->g[0]);
     check0140221(ground, item2->g[0]);
+    check0150221(ground, item1->g[0], method);
     check4010920(ground, item2->g[0]);
 
 #ifdef CCZ
@@ -934,7 +961,7 @@ void actclear(Ground* ground, Item* item)
     ground->exceptions.remove(item->g[0]);
 }
 
-int Ground::actbr(Ground* ground, Item* item1, Item* item2, int method, float point, bool bi2, float j0, float k12)
+int Ground::actbr(Ground* ground, Item* item1, Item* item2, int method, float point, bool bi2, float j0, float k12, float )
 {
     // before
     check201022(ground, item1->g[0], item2->g[0]);
@@ -948,13 +975,12 @@ int Ground::actbr(Ground* ground, Item* item1, Item* item2, int method, float po
     // cal
     float f = 0.0f;
     float i2 = item2->i[2] * (1 - item1->j[13]/100);
-#if 0
-    i2 = bi2 ? -360 : i2;
-    f = 360 + item1->i[0] - i2;
-#else
     i2 = bi2 ? 0 : i2;
+#if 0
 //    f = /*0.7 * */(4.3607 * item1->i[0] + 53.57) / (1 + i2 / 70);
     f = 0.03 * std::pow(item1->i[0], 1.53) / (1 + 0.0019 * std::pow(i2, 1.1));
+#else
+    f = item1->i[0] / std::sqrt(i2 + 55);
 #endif
 //    f = (f < 0) ? 1.0f : f;
     j0 += item1->j[0];
@@ -1005,8 +1031,9 @@ int Ground::actbr(Ground* ground, Item* item1, Item* item2, int method, float po
     f *= 1 + ((item2->g[4] - item1->g[4] + 4) % 4 - 2) % 2 * 0.15;
 #if 0
     f *= 0.5 + (float)item1->h[0] / item1->h[3] / 2;
-#else
     f *= std::pow(item1->h[0], 0.1566);
+#else
+    f *= 0.283 * std::sqrt(item1->h[0]);
 #endif
 
     // act
@@ -1040,25 +1067,27 @@ int Ground::actbr(Ground* ground, Item* item1, Item* item2, int method, float po
     check2011020(ground, item1->g[0], item2->g[0]);
     check3011221(ground, item2->g[0], 0);
     check4010722(ground, item1->g[0], item2->g[0]);
+    check4010920(ground, item2->g[0]);
 
     return p;
 }
 
-int Ground::actml(Ground* ground, Item* item1, Item* item2, int method, float point, float j2, float k12)
+int Ground::actml(Ground* ground, Item* item1, Item* item2, int method, float point, float j2, float k12, float l12)
 {
     // before
     check1091321(ground, item2->g[0], item1->g[0]);
     check0110321(ground, item2->g[0], item1->g[0], 2);
+    check31501212(ground, item1->g[0], method);
 
     // cal
     float f = 0.0f;
     float i1 = item2->i[1] * (1 - item1->j[14]/100);
     float i2 = item2->i[2] * (1 - item1->j[13]/100);
 #if 0
-    f = 360 + item1->i[1] - i1/2  - i2/2;
-#else
 //    f = /*0.7 * */(4.3607 * item1->i[1] + 53.57) / (1 + (i1 + i2) / 2 / 70);
     f = 0.03 * std::pow(item1->i[1], 1.53) / (1 + 0.0019 * std::pow((i1+i2)/2, 1.1));
+#else
+    f = item1->i[1] / std::sqrt((i1+i2)/2 + 55);
 #endif
     f = (f < 0) ? 1.0f : f;
     j2 += item1->j[2];
@@ -1095,14 +1124,16 @@ int Ground::actml(Ground* ground, Item* item1, Item* item2, int method, float po
     f *= 1 + (method%100 == 21 ? item2->l[6]/100 : 0);
     f *= 1 + (method%100 == 20 ? item2->l[7]/100 : 0);
     f *= 1 + (item1->f[1] != item2->f[1] ? item2->l[10]/100 : 0);
+    f *= 1 + l12/100;
     f *= 1 + check301091(ground, item2->g[0], item1->g[0])/100;
     f *= 1 + check409011(ground, item2->g[0], item1->g[0])/100;
     f *= 1 + check1011021(ground, item2->g[0], item1->g[0])/100;
     f *= 1 + ((item2->g[4] - item1->g[4] + 4) % 4 - 2) % 2 * 0.15;
 #if 0
     f *= 0.5 + (float)item1->h[0] / item1->h[3] / 2;
-#else
     f *= std::pow(item1->h[0], 0.1566);
+#else
+    f *= 0.283 * std::sqrt(item1->h[0]);
 #endif
 
     // act
@@ -2608,6 +2639,20 @@ bool check0140221(Ground* ground, int obj)
     return false;
 }
 
+bool check0150221(Ground* ground, int obj, int method)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[3][obj])
+    {
+        if (pbuff->id == 1502211)
+        {
+            QSharedPointer<Buff01502211> buff = qSharedPointerCast<Buff01502211>(pbuff);
+            buff->run(ground, method);
+            return true;
+        }
+    }
+    return false;
+}
+
 bool check1010121(Ground* ground, int obj)
 {
     for (QSharedPointer<Buff> pbuff : ground->buff[3][obj])
@@ -3115,6 +3160,49 @@ bool check3120221(Ground* ground, int obj, int method)
         {
             QSharedPointer<Buff3120221> buff = qSharedPointerCast<Buff3120221>(pbuff);
             buff->run(ground, method);
+            return true;
+        }
+    }
+    return false;
+}
+
+bool check31501211(Ground* ground, Item** item2, float& point)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[3][(*item2)->g[0]])
+    {
+        if (pbuff->id == 31501211)
+        {
+            QSharedPointer<Buff31501211> buff = qSharedPointerCast<Buff31501211>(pbuff);
+            int obj = buff->run(ground, point);
+            *item2 = &ground->m_group[obj/10].m_item[obj%10];
+            return true;
+        }
+    }
+    return false;
+}
+
+bool check31501212(Ground* ground, int obj, int method)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[3][obj])
+    {
+        if (pbuff->id == 31501212)
+        {
+            QSharedPointer<Buff31501212> buff = qSharedPointerCast<Buff31501212>(pbuff);
+            buff->run(ground, method);
+            return true;
+        }
+    }
+    return false;
+}
+
+bool check3150221(Ground* ground, int obj1, int obj2, int method, float& point)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[6][obj1])
+    {
+        if (pbuff->id == 31502211)
+        {
+            QSharedPointer<Buff31502211> buff = qSharedPointerCast<Buff31502211>(pbuff);
+            buff->run(ground, obj2, method, point);
             return true;
         }
     }

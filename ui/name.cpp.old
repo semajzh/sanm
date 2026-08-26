@@ -716,11 +716,6 @@ void Name::itemName(int id, Item* item)
         memcpy(item->name, ch, sizeof(ch));
     } break;
 
-    case 31502: {
-        unsigned char ch[] = {0xe5, 0x90, 0xb4, 0xe5, 0x9b, 0xbd, 0xe5, 0xa4, 0xaa};
-        memcpy(item->name, ch, sizeof(ch));
-    } break;
-
     case 40101: {
         unsigned char ch[] = {0xe8, 0x91, 0xa3, 0xe5, 0x8d, 0x93};
         memcpy(item->name, ch, sizeof(ch));
@@ -1355,10 +1350,6 @@ void Name::methodName(int id, QSharedPointer<Method> method)
     } break;
     case  150120: {
         unsigned char ch[] = {0xe6, 0x8b, 0x94, 0xe5, 0x88, 0x80, 0xe7, 0x9b, 0xb8, 0xe5, 0x90, 0x91};
-        memcpy(method->name, ch, sizeof(ch));
-    } break;
-    case  150221: {
-        unsigned char ch[] = {0xe6, 0xbd, 0x9c, 0xe5, 0xb8, 0x88, 0xe8, 0xa2, 0xad, 0xe8, 0xbf, 0x9c};
         memcpy(method->name, ch, sizeof(ch));
     } break;
 // insert method
@@ -2634,10 +2625,6 @@ void Name::strategyName(int id, QSharedPointer<Strategy> strategy)
     } break;
     case 402021: {
         unsigned char ch[] = {0xe8, 0xae, 0xba, 0xe6, 0xad, 0xa6};
-        memcpy(strategy->name, ch, sizeof(ch));
-    } break;
-    case 402022: {
-        unsigned char ch[] = {0xe6, 0x99, 0xba, 0xe8, 0xbf, 0x9f};
         memcpy(strategy->name, ch, sizeof(ch));
     } break;
     case 403011: {

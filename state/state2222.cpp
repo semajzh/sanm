@@ -93,6 +93,7 @@ int State2222::methodrun(Ground* ground, Item* item, QSharedPointer<Method> meth
     check4091221(ground, item->g[0]);
     check0104021(ground, item->g[0]);
     check4130220(ground, item->g[0]);
+    check0150120(ground, item->g[0]);
 
     int r = 0;
     luck += method->getLuck(ground, item);
@@ -423,6 +424,19 @@ bool State2222::check4130220(Ground* ground, int obj)
     for (QSharedPointer<Buff> pbuff : ground->buff[3][obj])
     {
         if (pbuff->id == 4130220)
+        {
+            pbuff->run(ground);
+            break;
+        }
+    }
+    return true;
+}
+
+bool State2222::check0150120(Ground* ground, int obj)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[3][obj])
+    {
+        if (pbuff->id == 150120)
         {
             pbuff->run(ground);
             break;

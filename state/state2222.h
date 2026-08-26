@@ -39,6 +39,7 @@ private:
     bool check3120121(Ground* ground, int obj);
     bool check4130122(Ground* ground, int obj, int method);
     bool check4130220(Ground* ground, int obj);
+    bool check0150120(Ground* ground, int obj);
 };
 
 #endif // STATE2222_H

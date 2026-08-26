@@ -50,7 +50,7 @@ int Method3332::run(Ground* ground, int obj1, int obj2, bool b113)
         return 1;
     }
 #endif
-    Ground::actbr(ground, &ground->m_group[obj1/10].m_item[obj1%10], &ground->m_group[obj/10].m_item[obj%10], id, 100);
+    Ground::actbr(ground, &ground->m_group[obj1/10].m_item[obj1%10], &ground->m_group[obj/10].m_item[obj%10], id, 100); //100->100
     return 1;
 }
 

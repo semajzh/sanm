@@ -1148,7 +1148,7 @@ bool Item::getItem(int id, Item& item)
     } break;
 
     case 31502: {
-        unsigned char ch[] = {0x73, 0x70, 0xe5, 0x91, 0xa8, 0xe7, 0x91, 0x9c};
+        unsigned char ch[] = {0xe5, 0x90, 0xb4, 0xe5, 0x9b, 0xbd, 0xe5, 0xa4, 0xaa};
         Logger::H().printname(ch, sizeof(ch), id);
         item.id = id;
         item.f[0] = 3;

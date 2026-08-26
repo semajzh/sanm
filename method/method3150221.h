@@ -10,6 +10,9 @@ public:
     Method3150221();
     virtual ~Method3150221();
     virtual int run(Ground* ground, Item* item1);
+
+private:
+    QVector<int> selectObj(Ground* ground, int obj);
 };
 
 #endif // METHOD3150221_H

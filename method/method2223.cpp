@@ -65,7 +65,7 @@ int Method2223::run(Ground* ground, int obj1, int obj2, bool b113)
         return 0;
     }
     ground->target2223 = objs.front();
-    Logger::H().printmethod(ground, &ground->m_group[obj1/10].m_item[obj1%10], this, 1);
+    Logger::H().printmethod(ground, &ground->m_group[obj1/10].m_item[obj1%10], this, ground->target2223);
 
     for (int obj : objs)
     {
@@ -76,7 +76,7 @@ int Method2223::run(Ground* ground, int obj1, int obj2, bool b113)
             continue;
         }
 #endif
-        Ground::actbr(ground, &ground->m_group[obj1/10].m_item[obj1%10], &ground->m_group[obj/10].m_item[obj%10], id, 100);
+        Ground::actbr(ground, &ground->m_group[obj1/10].m_item[obj1%10], &ground->m_group[obj/10].m_item[obj%10], id, 76); //100->76
     }
     return 1;
 }

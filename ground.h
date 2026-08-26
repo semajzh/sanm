@@ -58,6 +58,7 @@ public:
 
 public:
     static float getMaxi(Ground* ground, int pos);
+    static int getMaxiIndex(Ground* ground, int pos);
 //    static int selectObjMaxh0(Ground* ground, int pos, int fof, bool b017 = false);
 //    static int selectObjMaxi0(Ground* ground, int pos, int fof, bool b017 = false);
 //    static int selectObjMaxi1(Ground* ground, int pos, int fof, bool b017 = false);
@@ -75,8 +76,8 @@ public:
 //    static QVector<int> selectObjg1(Ground* ground, int obj, int g1, int n, int fof, int except = -1);
 //    static QVector<int> selectObjAll(Ground* ground, int pos, int n, int except = -1);
 //    static QVector<int> selectObjImpl(QVector<Item>& objs1, int n);
-    static int actbr(Ground* ground, Item* item1, Item* item2, int method, float point, bool bi2 = false, float j0 = 0, float k12 = 0);
-    static int actml(Ground* ground, Item* item1, Item* item2, int method, float point, float j2 = 0, float k12 = 0);
+    static int actbr(Ground* ground, Item* item1, Item* item2, int method, float point, bool bi2 = false, float j0 = 0, float k12 = 0, float l12 = 0);
+    static int actml(Ground* ground, Item* item1, Item* item2, int method, float point, float j2 = 0, float k12 = 0, float l12 = 0);
     static int acttb(Ground* ground, Item* item1, Item* item2, int method, float ix, float point = 0.0f);
     static int actcd(Ground* ground, Item* item1, Item* item2, int method, float point);
     static int hloi1(Ground* ground, Item* item1, Item* item2, int method, float point);
