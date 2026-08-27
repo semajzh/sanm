@@ -50,35 +50,46 @@ int Method1050122::run(Ground* ground, Item* item1)
 
 void Method1050122::addbuff(Ground* ground, int obj1, int obj2)
 {
-    float f105011 = check105011(ground, obj1) ? 1.3 : 1;
-#if 0
+    int ex[] = {1, 2, 3, 4, 5, 11, 12, 13, 14, 15, 16, 17};
     int ex0[] = {1, 2, 3, 4, 5};
     int ex1[] = {11, 12, 13, 14, 15, 16, 17};
+#if 0
     int size0 = sizeof(ex0) / sizeof(int);
     int size1 = sizeof(ex1) / sizeof(int);
 #else
-    QVector<int> ex0;
-    for (int i = 1; i <= 5; ++i)
+    QVector<int> exv0;
+    for (int e : ex0)
     {
-        if (!ground->exceptions[obj2].contains(i))
+        if (!ground->exceptions[obj2].contains(e))
         {
-            ex0.push_back(i);
+            exv0.push_back(e);
         }
     }
-    QVector<int> ex1;
-    for (int i = 11; i <= 17; ++i)
+    QVector<int> exv1;
+    for (int e : ex1)
     {
-        if (!ground->exceptions[obj2].contains(i))
+        if (!ground->exceptions[obj2].contains(e))
         {
-            ex1.push_back(i);
+            exv1.push_back(e);
         }
     }
-    int size0 = ex0.size();
-    int size1 = ex1.size();
+    int size0 = exv0.size();
+    int size1 = exv1.size();
 #endif
+
+    float f105011 = check105011(ground, obj1) ? 1.3 : 1;
     int base = size0 * 10 + size1 * 10 * f105011; //60+70/91
-    int q = qrand() % base;;
-    int e = (q < size0 * 10) ? ex0[q % size0] : ex1[q % size1];
+    int q, e;
+    if (base != 0)
+    {
+        q = qrand() % base;
+        e = (q < size0 * 10) ? ex0[q % size0] : ex1[q % size1];
+    }
+    else
+    {
+        q = qrand() % (sizeof(ex) / sizeof(int));
+        e = ex[q];
+    }
     int r = 2;
     switch (e)
     {
