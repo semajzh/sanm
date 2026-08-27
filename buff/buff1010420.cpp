@@ -13,6 +13,7 @@ void Buff1010420::enter(Ground* ground)
     ground->m_group[des/10].m_item[des%10].i[0] += i0;
     ground->m_group[des/10].m_item[des%10].i[3] += i3;
     ground->m_group[des/10].m_item[des%10].j[7] += 100;
+    ground->m_group[des/10].m_item[des%10].k[0] += 2;
 
     i2 = Ground::addin(ground, des, 2, -point2);
     ground->m_group[des/10].m_item[des%10].i[2] += i2;
@@ -27,6 +28,7 @@ void Buff1010420::exit(Ground* ground)
     ground->m_group[des/10].m_item[des%10].i[0] -= i0;
     ground->m_group[des/10].m_item[des%10].i[3] -= i3;
     ground->m_group[des/10].m_item[des%10].j[7] -= 100;
+    ground->m_group[des/10].m_item[des%10].k[0] -= 2;
 
     ground->m_group[des/10].m_item[des%10].i[2] -= i2;
     Buff020::check020(ground, src, des, false);
