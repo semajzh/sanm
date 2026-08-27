@@ -75,19 +75,19 @@ void Buff1030122::addlayout(Ground* ground)
         break;
 
     case 5:
-        ground->m_group[des/10].m_item[des%10].j[12] += 15;
+        ground->m_group[des/10].m_item[des%10].j[12] += 10;
         break;
 
     case 6:
-        ground->m_group[des/10].m_item[des%10].i[1] += 20;
-        break;
-
-    case 7:
         Ground::addi2(ground, des, 20);
         break;
 
+    case 7:
+        ground->m_group[des/10].m_item[des%10].i[1] += 20;
+        break;
+
     case 8:
-        ground->m_group[des/10].m_item[des%10].i[3] += 20;
+        ground->m_group[des/10].m_item[des%10].j[14] += 20;
         break;
     }
 
@@ -113,19 +113,19 @@ void Buff1030122::dellayout(Ground* ground, int r)
         break;
 
     case 5:
-        ground->m_group[des/10].m_item[des%10].j[12] -= 15;
+        ground->m_group[des/10].m_item[des%10].j[12] -= 10;
         break;
 
     case 6:
-        ground->m_group[des/10].m_item[des%10].i[1] -= 20;
-        break;
-
-    case 7:
         Ground::addi2(ground, des, -20);
         break;
 
+    case 7:
+        ground->m_group[des/10].m_item[des%10].i[1] -= 20;
+        break;
+
     case 8:
-        ground->m_group[des/10].m_item[des%10].i[3] -= 20;
+        ground->m_group[des/10].m_item[des%10].j[14] -= 20;
         break;
     }
     layouts[r] = 0;
