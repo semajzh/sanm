@@ -247,13 +247,13 @@ void State21::kind(Ground* ground)
             }
             else if (n[2] > 1) //q
             {
-                ground->m_group[g].m_item[i].k[0] += 0.2f*(n[0]*3+1);
-                ground->m_group[g].m_item[i].l[0] += Ground::addln(ground, g*10+i, 0, -0.3f*(n[0]*3+1));
+                ground->m_group[g].m_item[i].k[0] += 0.2f*(n[2]*3+1);
+                ground->m_group[g].m_item[i].l[0] += Ground::addln(ground, g*10+i, 0, -0.3f*(n[2]*3+1));
             }
             else if (n[3] > 1) //j
             {
-                ground->m_group[g].m_item[i].k[0] += 0.3f*(n[0]*3+1);
-                ground->m_group[g].m_item[i].l[0] += Ground::addln(ground, g*10+i, 0, -0.2f*(n[0]*3+1));
+                ground->m_group[g].m_item[i].k[0] += 0.3f*(n[3]*3+1);
+                ground->m_group[g].m_item[i].l[0] += Ground::addln(ground, g*10+i, 0, -0.2f*(n[3]*3+1));
             }
         }
 

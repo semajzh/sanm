@@ -37,7 +37,8 @@ int Method1050122::run(Ground* ground, Item* item1)
 {
     Logger::H().printmethod(ground, item1, this, true);
     float point1 = Ground::pointbystar(ground, 220, item1->g[0], id);
-    QVector<int> objs = Ground::selectObjN(ground, item1->g[0], 0x0042, item1->g[0]);
+    int n = 2 + qrand() % 2;
+    QVector<int> objs = Ground::selectObjN(ground, item1->g[0], 0x0040 + n, item1->g[0]);
     for (int obj : objs)
     {
         Ground::actml(ground, item1, &ground->m_group[obj/10].m_item[obj%10], id, point1);
@@ -50,10 +51,31 @@ int Method1050122::run(Ground* ground, Item* item1)
 void Method1050122::addbuff(Ground* ground, int obj1, int obj2)
 {
     float f105011 = check105011(ground, obj1) ? 1.3 : 1;
+#if 0
     int ex0[] = {1, 2, 3, 4, 5};
     int ex1[] = {11, 12, 13, 14, 15, 16, 17};
     int size0 = sizeof(ex0) / sizeof(int);
     int size1 = sizeof(ex1) / sizeof(int);
+#else
+    QVector<int> ex0;
+    for (int i = 1; i <= 5; ++i)
+    {
+        if (!ground->exceptions[obj2].contains(i))
+        {
+            ex0.push_back(i);
+        }
+    }
+    QVector<int> ex1;
+    for (int i = 11; i <= 17; ++i)
+    {
+        if (!ground->exceptions[obj2].contains(i))
+        {
+            ex1.push_back(i);
+        }
+    }
+    int size0 = ex0.size();
+    int size1 = ex1.size();
+#endif
     int base = size0 * 10 + size1 * 10 * f105011; //60+70/91
     int q = qrand() % base;;
     int e = (q < size0 * 10) ? ex0[q % size0] : ex1[q % size1];
