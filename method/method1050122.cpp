@@ -53,10 +53,7 @@ void Method1050122::addbuff(Ground* ground, int obj1, int obj2)
     int ex[] = {1, 2, 3, 4, 5, 11, 12, 13, 14, 15, 16, 17};
     int ex0[] = {1, 2, 3, 4, 5};
     int ex1[] = {11, 12, 13, 14, 15, 16, 17};
-#if 0
-    int size0 = sizeof(ex0) / sizeof(int);
-    int size1 = sizeof(ex1) / sizeof(int);
-#else
+
     QVector<int> exv0;
     for (int e : ex0)
     {
@@ -75,7 +72,6 @@ void Method1050122::addbuff(Ground* ground, int obj1, int obj2)
     }
     int size0 = exv0.size();
     int size1 = exv1.size();
-#endif
 
     float f105011 = check105011(ground, obj1) ? 1.3 : 1;
     int base = size0 * 10 + size1 * 10 * f105011; //60+70/91
@@ -83,7 +79,7 @@ void Method1050122::addbuff(Ground* ground, int obj1, int obj2)
     if (base != 0)
     {
         q = qrand() % base;
-        e = (q < size0 * 10) ? ex0[q % size0] : ex1[q % size1];
+        e = (q < size0 * 10) ? exv0[q % size0] : exv1[q % size1];
     }
     else
     {
