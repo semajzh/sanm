@@ -98,7 +98,7 @@ public:
     static float addjn(Ground* ground, int obj, int n, float point);
     static float addkn(Ground* ground, int obj, int n, float point);
     static float addln(Ground* ground, int obj, int n, float point);
-    static float addbyix(Ground* ground, float base, float ix, float d = 637);
+    static float addbyix(Ground* ground, float base, float ix, float d = 643.75);
     static float pointbystar(Ground* ground, float base, int obj, int method, int op = 1);
     static float pointbyh0(Ground* ground, float base, int obj1, int obj2);
     static bool run2223(Ground* ground, int obj1, int obj2, bool b2224, bool b113);

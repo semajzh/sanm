@@ -808,6 +808,20 @@ bool Item::getItem(int id, Item& item)
         item.methods[0] = 2160121;
     } break;
 
+    case 21602: {
+        unsigned char ch[] = {0xe7, 0xb3, 0x9c, 0xe5, 0xa4, 0xab, 0xe4, 0xba, 0xba};
+        Logger::H().printname(ch, sizeof(ch), id);
+        item.id = id;
+        item.f[0] = 2;
+        item.f[1] = 1;
+        item.g[4] = 0;
+        item.i[0] = 21 + 0.41 * 45;
+        item.i[1] = 93 + 2.08 * 45;
+        item.i[2] = 80 + 1.78 * 45;
+        item.i[3] = 92 + 1.83 * 45;
+        item.methods[0] = 2160222;
+    } break;
+
     case 30101: {
         unsigned char ch[] = {0xe5, 0xad, 0x99, 0xe6, 0x9d, 0x83};
         Logger::H().printname(ch, sizeof(ch), id);
