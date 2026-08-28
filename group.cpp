@@ -146,32 +146,32 @@ bool Group::getGroup(int id, Group& group)
     } break;
 
     case 9: {
-        group.formation = 4;
+        group.formation = 5;
         group.star = 0;
 
         n = 0;
-        Item::getItem(31502, group.m_item[n]);
+        Item::getItem(21601, group.m_item[n]);
         group.m_item[n].star = group.star;
-        group.m_item[n].methods[1] = 100120;
-        group.m_item[n].methods[2] = 100220;
-        group.m_item[n].i[5] += 20 + 10 * (5 + group.star);
-        group.m_item[n].i[6] += 20;
+        group.m_item[n].methods[1] = 120321;
+        group.m_item[n].methods[2] = 14321;
+        group.m_item[n].i[6] += 20 + 10 * (5 + group.star);
+        group.m_item[n].i[5] += 20;
 
         n = 1;
-        Item::getItem(30106, group.m_item[n]);
+        Item::getItem(21001, group.m_item[n]);
         group.m_item[n].star = group.star;
-        group.m_item[n].methods[1] = 40121; //l0-25*2,r4:+360(i1)*3
-        group.m_item[n].methods[2] = 14120;
-        group.m_item[n].i[5] += 14 + 10 * (5 + group.star);
-        group.m_item[n].i[6] += 26;
+        group.m_item[n].methods[1] = 20820;
+        group.m_item[n].methods[2] = 100120;
+        group.m_item[n].i[4] += 20 + 10 * (5 + group.star);
+        group.m_item[n].i[6] += 20;
 
         n = 2;
-        Item::getItem(20201, group.m_item[n]);
+        Item::getItem(20106, group.m_item[n]);
         group.m_item[n].star = group.star;
-        group.m_item[n].methods[1] = 14720;
-        group.m_item[n].methods[2] = 90324;
-        group.m_item[n].i[4] += 20 + 10 * (5 + group.star);
-        group.m_item[n].i[7] += 20;
+        group.m_item[n].methods[1] = 13022;
+        group.m_item[n].methods[2] = 13221;
+        group.m_item[n].i[7] += 20 + 10 * (5 + group.star);
+        group.m_item[n].i[4] += 20;
     } break;
 
 #if 0

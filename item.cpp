@@ -795,6 +795,19 @@ bool Item::getItem(int id, Item& item)
         item.strategys[0] = 210011; //
     } break;
 
+    case 21601: {
+        unsigned char ch[] = {0xe5, 0x88, 0x98, 0xe7, 0xa6, 0x85};
+        Logger::H().printname(ch, sizeof(ch), id);
+        item.id = id;
+        item.f[0] = 2;
+        item.g[4] = 0;
+        item.i[0] =  47 + 0.52 * 45;
+        item.i[1] =  69 + 1.96 * 45;
+        item.i[2] = 101 + 2.35 * 45;
+        item.i[3] =  56 + 1.62 * 45;
+        item.methods[0] = 2160121;
+    } break;
+
     case 30101: {
         unsigned char ch[] = {0xe5, 0xad, 0x99, 0xe6, 0x9d, 0x83};
         Logger::H().printname(ch, sizeof(ch), id);
