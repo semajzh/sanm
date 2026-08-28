@@ -229,6 +229,7 @@ static bool check2030221(Ground* ground, int obj, float point);
 static bool check2091121(Ground* ground, int obj, Item** item2, float& point);
 static bool check2011020(Ground* ground, int obj1, int obj2);
 static bool check2160121(Ground* ground, Item** item2);
+static bool check21601213(Ground* ground, int obj);
 static bool check3010221(Ground* ground, int obj2, int);
 static bool check3010520(Ground* ground, int obj);
 static bool check30105202(Ground* ground, int obj);
@@ -932,6 +933,7 @@ int act(Ground* ground, Item* item1, Item* item2, int method, float& point, int 
     check0140221(ground, item2->g[0]);
     check0150221(ground, item1->g[0], method);
     check4010920(ground, item2->g[0]);
+    check21601213(ground, item2->g[0]);
 
 #ifdef CCZ
     check500005(ground, item1->g[0], item2->g[0]);
@@ -3000,6 +3002,20 @@ bool check2160121(Ground* ground, Item** item2)
             {
                 *item2 = &ground->m_group[obj/10].m_item[obj%10];
             }
+            return true;
+        }
+    }
+    return false;
+}
+
+bool check21601213(Ground* ground, int obj)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[4][obj])
+    {
+        if (pbuff->id == 21601213)
+        {
+            QSharedPointer<Buff21601213> buff = qSharedPointerCast<Buff21601213>(pbuff);
+            buff->run(ground, 0);
             return true;
         }
     }

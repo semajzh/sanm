@@ -39,7 +39,7 @@ int Method2160121::run(Ground* ground, Item* item1)
     Ground::addBuff(ground, ground->buff[3][item1->g[0]], buff1);
 
     QSharedPointer<Buff> buff2 = QSharedPointer<Buff>(new Buff21601212(item1->g[0], obj, id, give));
-    Ground::addBuff(ground, ground->buff[7][obj], buff2);
+    Ground::addBuff(ground, ground->buff[5][obj], buff2);
 
     return 1;
 }

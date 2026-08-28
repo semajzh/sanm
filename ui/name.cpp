@@ -3356,6 +3356,10 @@ void Name::buffName(int id, Buff* buff)
         memcpy(buff->name, ch, sizeof(ch));
     } break;
     case 21601212: {
+        unsigned char ch[] = {0xe9, 0x87, 0x8a, 0xe6, 0x9d, 0x83, 0xe5, 0xbe, 0xa1, 0xe4, 0xb8, 0x8b};
+        memcpy(buff->name, ch, sizeof(ch));
+    } break;
+    case 21601213: {
         unsigned char ch[] = {0xe6, 0x97, 0xa8, 0xe6, 0x84, 0x8f};
         memcpy(buff->name, ch, sizeof(ch));
     } break;
