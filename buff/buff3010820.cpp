@@ -38,9 +38,10 @@ void Buff30108202::exit(Ground* ground)
     ground->m_group[des/10].m_item[des%10].i[0] -= i0;
 }
 
-void Buff30108202::update(Ground* ground, QSharedPointer<Buff> )
+void Buff30108202::update(Ground* ground, QSharedPointer<Buff> buff)
 {
     Logger::H().printbuffupdate(ground, src, des, this);
+    BuffC::update(ground, buff);
     if (++count <= 4)
     {
         float point1 = Ground::pointbystar(ground, 12, src, method);
