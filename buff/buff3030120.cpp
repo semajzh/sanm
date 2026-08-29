@@ -5,12 +5,12 @@
 
 bool Buff3030120::run(Ground* ground, float )
 {
-    if (qrand() % 100 + 1 <= over)
+    if (qrand() % 100 + 1 <= 100 - over)
     {
         return false;
     }
     float point1 = Ground::pointbystar(ground, 10, src, method, -1);
-    over += point1;
+    over -= point1;
     ground->m_group[des/10].m_item[des%10].h[0] = 1;
     Logger::H().printcustom(ground, 30301201, des);
     return true;

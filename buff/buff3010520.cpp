@@ -5,7 +5,7 @@
 void Buff3010520::enter(Ground* ground)
 {
     Logger::H().printbuffenter(ground, src, des, this);
-    j6 = 0.8 * ground->m_group[src/10].m_item[src%10].star/2;
+    j6 = 0.8 * ground->m_group[src/10].m_item[src%10].star;
     ground->m_group[des/10].m_item[des%10].j[6] += j6;
 }
 
