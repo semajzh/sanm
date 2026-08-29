@@ -13,7 +13,7 @@ public:
     virtual void exit(Ground*);
 
 private:
-    float l0 = 0.0f;
+    float k0 = 0.0f;
 };
 
 #endif // BUFF3080122_H

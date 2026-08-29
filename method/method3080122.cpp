@@ -33,6 +33,11 @@ int Method3080122::run(Ground* ground, Item* item1)
     {
         Ground::exremove(ground, obj, 2);
         Ground::hloi1(ground, item1, &ground->m_group[obj/10].m_item[obj%10], id, point1);
+    }
+
+    objs = Ground::selectObjN(ground, item1->g[0], 0x0043);
+    for (int obj : objs)
+    {
         QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff3080122(item1->g[0], obj, id, 2));
         Ground::addBuff(ground, ground->buff[1][obj], buff);
     }
