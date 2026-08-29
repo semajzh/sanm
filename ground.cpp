@@ -1070,7 +1070,7 @@ int Ground::actbr(Ground* ground, Item* item1, Item* item2, int method, float po
         check2010520(ground, item1->g[0], item2->g[0]);
     }
     check2011020(ground, item1->g[0], item2->g[0]);
-    check3011221(ground, item2->g[0], 0);
+    check3011221(ground, item1->g[0], 0);
     check4010722(ground, item1->g[0], item2->g[0]);
     check4010920(ground, item2->g[0]);
 
@@ -1161,7 +1161,7 @@ int Ground::actml(Ground* ground, Item* item1, Item* item2, int method, float po
     check301026(ground, item1->g[0]);
 
     check0014420(ground, item1->g[0]);
-    check3011221(ground, item2->g[0], 1);
+    check3011221(ground, item1->g[0], 1);
     check4010722(ground, item1->g[0], item2->g[0]);
     check0020820(ground, item1->g[0], 1);
     check0050220(ground, item1->g[0], item2->g[0]);
