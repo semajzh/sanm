@@ -77,13 +77,14 @@ void Buff31501212::run(Ground* ground, int m)
     }
 
     float point3 = Ground::pointbystar(ground, 52, src, method);
+    float point4 = Ground::pointbystar(ground, 7, src, method);
     objs = Ground::selectObjN(ground, obj, 0x0023);
     for (int obj2 : objs)
     {
         int c = check31501213(ground, obj2);
         if (c > 0)
         {
-            Ground::actml(ground, &ground->m_group[obj/10].m_item[obj%10], &ground->m_group[obj2/10].m_item[obj2%10], method, point3+c*7, 0, 0, 40);
+            Ground::actml(ground, &ground->m_group[obj/10].m_item[obj%10], &ground->m_group[obj2/10].m_item[obj2%10], method, point3+c*point4, 0, 0, 40);
         }
     }
 }

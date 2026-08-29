@@ -20,7 +20,7 @@ QVector<int> Buff31201211::selectObj(Ground* ground)
     for (int i = 0; i < 3; ++i)
     {
         int obj = g*10+i;
-        if (check31201212(ground) >= 15)
+        if (check31201212(ground, obj) >= 15)
         {
             continue;
         }
@@ -33,9 +33,9 @@ QVector<int> Buff31201211::selectObj(Ground* ground)
     return objs;
 }
 
-int Buff31201211::check31201212(Ground* ground)
+int Buff31201211::check31201212(Ground* ground, int obj)
 {
-    for (QSharedPointer<Buff> pbuff : ground->buff[0][des])
+    for (QSharedPointer<Buff> pbuff : ground->buff[0][obj])
     {
         if (pbuff->id == 31201212)
         {
