@@ -32,7 +32,7 @@ void Buff40703222::enter(Ground* ground)
 void Buff40703222::exit(Ground* ground)
 {
     Logger::H().printbuffexit(ground, src, des, this);
-    ground->m_group[src/10].m_item[src%10].i[2] -= i2;
+    ground->m_group[des/10].m_item[des%10].i[2] -= i2;
     Buff020::check020(ground, src, des, false);
     Ground::exexit(ground, src, des, id);
 }

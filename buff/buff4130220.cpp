@@ -11,7 +11,7 @@ void Buff4130220::run(Ground* ground)
         round = ground->m_round;
         count = 0;
     }
-    if (++count >= 2)
+    if (++count > 2)
     {
         return;
     }
