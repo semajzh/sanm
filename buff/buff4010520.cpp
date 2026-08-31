@@ -40,7 +40,7 @@ void Buff4010520::run(Ground* ground)
     }
 
     QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff40105202(des, obj, method));
-    Ground::addBuff(ground, ground->buff[1][obj], buff);
+    Ground::addBuff(ground, ground->buff[0][obj], buff);
 
     bool b401058 = check401058(ground, des);
     bool b2223 = false;

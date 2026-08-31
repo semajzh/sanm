@@ -2,6 +2,7 @@
 #include "ground.h"
 #include "item.h"
 #include "buff/buff4020122.h"
+#include "buff/buff102.h"
 #include "log/logger.h"
 
 Method4020122::Method4020122()
@@ -23,8 +24,11 @@ int Method4020122::run(Ground* ground, Item* item1)
     QVector<int> objs = Ground::selectObjN(ground, item1->g[0], 0x5030);
     for (int obj : objs)
     {
-        QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff40201221(item1->g[0], obj, id, 2));
-        Ground::addBuff(ground, ground->buff[1][obj], buff);
+        QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff102(item1->g[0], obj, id, 1));
+        Ground::addBuff(ground, ground->buff[3][obj], buff);
+		
+		QSharedPointer<Buff> buff2 = QSharedPointer<Buff>(new Buff40201221(item1->g[0], obj, id, 2));
+        Ground::addBuff(ground, ground->buff[1][obj], buff2);
     }
     objs = Ground::selectObjN(ground, item1->g[0], 0x6040);
     for (int obj : objs)
