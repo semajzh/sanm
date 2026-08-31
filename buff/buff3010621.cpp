@@ -14,8 +14,8 @@ void Buff3010621::run(Ground* ground)
     QVector<int> objs = Ground::selectObjN(ground, des, 0x22 + (b301061 ? 1 : 0));
     for (int obj : objs)
     {
-        QSharedPointer<Buff> buff = QSharedPointer<Buff30106212>(new Buff30106212(des, obj, method));
-        Ground::addBuff(ground, ground->buff[0][obj], buff);
+        QSharedPointer<Buff> buff = QSharedPointer<Buff30106212>(new Buff30106212(des, obj, method, 1));
+        Ground::addBuff(ground, ground->buff[1][obj], buff);
     }
 
     float point1 = Ground::pointbystar(ground, 180, src, method);
@@ -42,8 +42,9 @@ void Buff30106212::exit(Ground* ground)
     Ground::exexit(ground, src, des, id);
 }
 
-void Buff30106212::update(Ground* ground, QSharedPointer<Buff> )
+void Buff30106212::update(Ground* ground, QSharedPointer<Buff> buff)
 {
     Logger::H().printbuffupdate(ground, src, des, this);
+    BuffC::update(ground, buff);
     Ground::exupdate(ground, src, des, id);
 }

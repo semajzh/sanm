@@ -16,7 +16,7 @@ private:
     bool check303012(Ground* ground, int obj);
     int round = 0;
     int count[3] = {0};
-    int over = 0;
+    int over = 100;
 };
 
 #endif // BUFF3030120_H

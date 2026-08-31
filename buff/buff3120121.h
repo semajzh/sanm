@@ -13,7 +13,7 @@ public:
 
 private:
     QVector<int> selectObj(Ground* ground);
-    int check31201212(Ground* ground);
+    int check31201212(Ground* ground, int obj);
 };
 
 class Buff31201212 : public BuffR

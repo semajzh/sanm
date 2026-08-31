@@ -38,8 +38,9 @@ void Buff31202212::enter(Ground* ground)
     float point2 = Ground::pointbystar(ground, 15, src, method);
     float l = Ground::addbyix(ground, point1, ground->m_group[src/10].m_item[src%10].i[1]);
     l = Ground::addln(ground, des, 0, -l);
-    if (++count <= 5)
+    if (count < 5)
     {
+        ++count;
         l0 += l;
         j1 += point2;
         j3 += point2;
@@ -64,8 +65,9 @@ void Buff31202212::update(Ground* ground, QSharedPointer<Buff> )
     float point2 = Ground::pointbystar(ground, 15, src, method);
     float l = Ground::addbyix(ground, point1, ground->m_group[src/10].m_item[src%10].i[1]);
     l = Ground::addln(ground, des, 0, -l);
-    if (++count <= 5)
+    if (count < 5)
     {
+        ++count;
         l0 += l;
         j1 += point2;
         j3 += point2;

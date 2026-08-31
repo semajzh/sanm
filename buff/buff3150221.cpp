@@ -6,7 +6,7 @@
 void Buff31502211::enter(Ground* ground)
 {
     Logger::H().printbuffenter(ground, src, des, this);
-    float point1 = Ground::pointbystar(ground, 10, src, method);
+    float point1 = Ground::pointbystar(ground, 20, src, method);
     float point2 = Ground::addbyix(ground, point1, ground->m_group[src/10].m_item[src%10].i[1]);
     l0 = -point2;
     ground->m_group[des/10].m_item[des%10].l[0] += l0;
@@ -108,7 +108,7 @@ void Buff31502213::exit(Ground* ground)
 
 void Buff31502213::run(Ground* ground)
 {
-    float point1 = Ground::pointbystar(ground, 125, src, method);
+    float point1 = Ground::pointbystar(ground, 120, src, method);
     QVector<int> objs = Ground::selectObjN(ground, des, 0x0021);
     for (int obj : objs)
     {
