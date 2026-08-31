@@ -24,6 +24,7 @@ int Method4010222::getLuck(Ground* , Item* item1)
 int Method4010222::run(Ground* ground, Item* item1)
 {
     Logger::H().printmethod(ground, item1, this, true);
+    float point1 = Ground::pointbystar(ground, 100, item1->g[0], id);
 
     int g = 1 - item1->g[0] / 10;
     for (int i = 0; i < 3; ++i)
@@ -33,7 +34,7 @@ int Method4010222::run(Ground* ground, Item* item1)
         Ground::run2223(ground, item2.g[0], item1->g[0], true, true);
         if (item1->h[0] > 0 && item2.h[0] > 0 && item1->i[0] > item2.i[0])
         {
-            Ground::actbr(ground, item1, &item2, id, 100);
+            Ground::actbr(ground, item1, &item2, id, point1);
         }
     }
 

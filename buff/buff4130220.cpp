@@ -6,6 +6,16 @@
 
 void Buff4130220::run(Ground* ground)
 {
+    if (round != ground->m_round)
+    {
+        round = ground->m_round;
+        count = 0;
+    }
+    if (++count >= 2)
+    {
+        return;
+    }
+
     float point1 = Ground::pointbystar(ground, 50, src, method);
     float point2 = Ground::addbyix(ground, point1, Ground::getMaxi(ground, des));
     if (qrand() % 100 + 1 <= 100 - point2)

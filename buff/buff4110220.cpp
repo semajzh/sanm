@@ -5,7 +5,11 @@
 
 bool Buff41102201::run(Ground* ground, int obj)
 {
-    if (check020(ground, obj) && qrand() % 100 + 1 <= 100 - 40)
+    if (!check020(ground, obj))
+    {
+        return false;
+    }
+    if (qrand() % 100 + 1 <= 100 - 40)
     {
         return false;
     }

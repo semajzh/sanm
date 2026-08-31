@@ -38,7 +38,7 @@ void Buff21601212::run(Ground* ground)
     int count = (qrand() % 100 + 1 <= 100 - jl) ? 1 : 2;
     for (int i = 0; i < count; ++i)
     {
-        QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff21601213(src, des, id));
+        QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff21601213(src, des, method));
         Ground::addBuff(ground, ground->buff[4][des], buff);
     }
 }

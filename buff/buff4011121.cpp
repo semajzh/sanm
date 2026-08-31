@@ -26,8 +26,8 @@ void Buff4011121::run(Ground* ground)
         Ground::actml(ground, &ground->m_group[obj1/10].m_item[obj1%10], &ground->m_group[obj2/10].m_item[obj2%10], method, point1);
     }
 
-    objs1 = Ground::selectObjN(ground, des, 0x5010);
-    objs2 = Ground::selectObjN(ground, des, 0x6020);
+    objs1 = Ground::selectObjN(ground, des, 0x7010);
+    objs2 = Ground::selectObjN(ground, des, 0x8020);
     if (objs1.size() > 0 && objs2.size() > 0)
     {
         int obj1 = objs1.front();

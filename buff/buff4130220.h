@@ -13,6 +13,8 @@ public:
 
 private:
     bool check413021(Ground* ground);
+    int round = 0;
+    int count = 0;
 };
 
 class Buff41302202 : public BuffC

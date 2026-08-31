@@ -20,7 +20,7 @@ void Buff4010121::run(Ground* ground)
         Ground::addBuff(ground, ground->buff[6][obj], buff);
     }
 
-    QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff40101213(des, des, 40101213, 1, objs.size()));
+    QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff40101213(des, des, 40101213, 1, objs.size()+objs2.size()));
     Ground::addBuff(ground, ground->buff[6][des], buff);
 
     for (int obj : objs)

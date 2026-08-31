@@ -40,7 +40,7 @@ void Buff40108202::enter(Ground* ground)
     float point1 = Ground::pointbystar(ground, 30, src, method);
     float point = Ground::addbyix(ground, point1, ground->m_group[src/10].m_item[src%10].i[0]);
     i1 = Ground::addin(ground, des, 1, -point);
-    i2 = Ground::addin(ground, des, 1, -point);
+    i2 = Ground::addin(ground, des, 2, -point);
     ground->m_group[des/10].m_item[des%10].i[1] += i1;
     Buff020::check020(ground, src, des, true);
     check4110121(ground);
