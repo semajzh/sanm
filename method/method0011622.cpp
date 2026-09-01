@@ -36,7 +36,7 @@ int Method0011622::run(Ground* ground, Item* item1)
 
     Logger::H().printmethod(ground, item1, this, true);
     float point1 = Ground::pointbystar(ground, 160, item1->g[0], id);
-    float point2 = Ground::pointbystar(ground, 40, item1->g[0], id);
+    float point2 = 40;
     for (int n = 0; n < 5; ++n)
     {
         QVector<int> objs = Ground::selectObjN(ground, item1->g[0], 0x0041, item1->g[0]);
