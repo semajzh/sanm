@@ -23,7 +23,7 @@ int Method0110222::run(Ground* ground, Item* item1)
 
     int obj = item1->g[0];
     QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff0110222(item1->g[0], obj, id, 2));
-    Ground::addBuff(ground, ground->buff[0][obj], buff);
+    Ground::addBuff(ground, ground->buff[1][obj], buff);
 
     QVector<int> objs = Ground::selectObjN(ground, item1->g[0], 0x0042, item1->g[0]);
     for (int obj : objs)

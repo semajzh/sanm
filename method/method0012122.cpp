@@ -19,7 +19,7 @@ Method0012122::~Method0012122()
 int Method0012122::run(Ground* ground, Item* item1)
 {
     Logger::H().printmethod(ground, item1, this, true);
-    float point1 = Ground::pointbystar(ground, 150, item1->g[0], id);
+    float point1 = Ground::pointbystar(ground, 140, item1->g[0], id);
     int obj = item1->g[0];
     QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff0012122(item1->g[0], obj, id, 2));
     Ground::addBuff(ground, ground->buff[1][obj], buff);
