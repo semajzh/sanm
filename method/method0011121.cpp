@@ -1,7 +1,7 @@
 #include "method0011121.h"
 #include "ground.h"
 #include "item.h"
-#include "buff/buff011.h"
+#include "buff/buff013.h"
 #include "buff/buff111.h"
 #include "buff/buff0011121.h"
 #include "log/logger.h"
@@ -37,7 +37,7 @@ int Method0011121::run(Ground* ground, Item* item1)
     }
 
     int obj = item1->g[0];
-    QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff011(item1->g[0], obj, id, 2));
+    QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff013(item1->g[0], obj, id, 2));
     Ground::addBuff(ground, ground->buff[1][obj], buff);
 
     return 1;
