@@ -20,9 +20,6 @@ public:
     virtual ~Buff00801212() {}
 
     virtual void run(Ground* ground);
-
-private:
-    QVector<int> selectObj(Ground* ground);
 };
 
 #endif // BUFF0080121_H

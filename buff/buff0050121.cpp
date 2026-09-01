@@ -19,7 +19,7 @@ void Buff00501211::exit(Ground* ground)
 void Buff00501212::enter(Ground* ground)
 {
     Logger::H().printbuffenter(ground, src, des, this);
-    float point1 = Ground::pointbystar(ground, 16, src, method);
+    float point1 = Ground::pointbystar(ground, 25, src, method);
     k2 = -point1 - ground->m_group[src/10].m_item[src%10].i[2] / 30;
     ground->m_group[des/10].m_item[des%10].k[2] += k2;
 }

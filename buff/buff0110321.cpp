@@ -19,7 +19,7 @@ void Buff0110321::run(Ground* ground, int obj, int type)
     }
 
     QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff01103212(src, obj, method, 2, type));
-    Ground::addBuff(ground, ground->buff[0][obj], buff);
+    Ground::addBuff(ground, ground->buff[1][obj], buff);
 
     float point1 = Ground::pointbystar(ground, 25, src, method);
     float point2 = Ground::pointbystar(ground, 10, src, method);
