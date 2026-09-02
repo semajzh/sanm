@@ -20,7 +20,7 @@ int Method0010622::run(Ground* ground, Item* item1)
 {
     Logger::H().printmethod(ground, item1, this, true);
     float point1 = Ground::pointbystar(ground, 260, item1->g[0], id);
-    QVector<int> objs = Ground::selectObjN(ground, item1->g[0], 0x0031);
+    QVector<int> objs = Ground::selectObjN(ground, item1->g[0], 0x0131);
     if (objs.size() > 0)
     {
         int obj = objs.front();

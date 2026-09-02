@@ -23,25 +23,26 @@ int Method0012822::run(Ground* ground, Item* item1)
 {
     Logger::H().printmethod(ground, item1, this, true);
     float point1 = Ground::pointbystar(ground, 140, item1->g[0], id);
-    QVector<int> objs = Ground::selectObjN(ground, item1->g[0], 6, item1->g[0]);
+    QVector<int> objs = Ground::selectObjN(ground, item1->g[0], 0x0006, item1->g[0]);
     for (int obj : objs)
     {
         Ground::actml(ground, item1, &ground->m_group[obj/10].m_item[obj%10], id, point1);
-        if (qrand() % 100 + 1 <= 100 - 40)
+
+        if (!check017(ground, item1->g[0]) && (obj/10 == item1->g[0]/10))
         {
             continue;
         }
-        if (check001(ground, obj))
+        if (check001(ground, obj) && qrand() % 100 + 1 > 100 - 40)
         {
             QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff017(item1->g[0], obj, id, 1));
             Ground::addBuff(ground, ground->buff[1][obj], buff);
         }
-        if (check004(ground, obj))
+        if (check004(ground, obj) && qrand() % 100 + 1 > 100 - 40)
         {
             QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff013(item1->g[0], obj, id, 1));
             Ground::addBuff(ground, ground->buff[1][obj], buff);
         }
-        if (check003(ground, obj))
+        if (check003(ground, obj) && qrand() % 100 + 1 > 100 - 40)
         {
             QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff012(item1->g[0], obj, id, 1));
             Ground::addBuff(ground, ground->buff[1][obj], buff);
@@ -80,6 +81,18 @@ bool Method0012822::check004(Ground* ground, int obj)
     for (QSharedPointer<Buff> pbuff : ground->buff[1][obj])
     {
         if (pbuff->id == 4)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool Method0012822::check017(Ground* ground, int obj)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[1][obj])
+    {
+        if (pbuff->id == 17)
         {
             return true;
         }
