@@ -71,6 +71,10 @@ SOURCES += \
         method/method0015721.cpp \
         method/method0015821.cpp \
         method/method0015921.cpp \
+        method/method0016020.cpp \
+        method/method0016120.cpp \
+        method/method0016220.cpp \
+        method/method0016320.cpp \
         method/method0016420.cpp \
         method/method0017022.cpp \
         method/method0017122.cpp \
@@ -680,6 +684,10 @@ SOURCES += \
         buff/buff0015721.cpp \
         buff/buff0015821.cpp \
         buff/buff0015921.cpp \
+        buff/buff0016020.cpp \
+        buff/buff0016120.cpp \
+        buff/buff0016220.cpp \
+        buff/buff0016320.cpp \
         buff/buff0016420.cpp \
         buff/buff0017022.cpp \
         buff/buff0017322.cpp \
@@ -1048,6 +1056,10 @@ HEADERS += \
     method/method0015721.h \
     method/method0015821.h \
     method/method0015921.h \
+    method/method0016020.h \
+    method/method0016120.h \
+    method/method0016220.h \
+    method/method0016320.h \
     method/method0016420.h \
     method/method0017022.h \
     method/method0017122.h \
@@ -1658,6 +1670,10 @@ HEADERS += \
     buff/buff0015721.h \
     buff/buff0015821.h \
     buff/buff0015921.h \
+    buff/buff0016020.h \
+    buff/buff0016120.h \
+    buff/buff0016220.h \
+    buff/buff0016320.h \
     buff/buff0016420.h \
     buff/buff0017022.h \
     buff/buff0017322.h \

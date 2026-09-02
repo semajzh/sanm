@@ -8,9 +8,9 @@ void Buff0100320::run(Ground* ground, int m)
     {
         return;
     }
-    float point1 = Ground::pointbystar(ground, 30, src, method);
+    float point1 = Ground::pointbystar(ground, 60, src, method);
     float jl = Ground::addbyix(ground, point1, ground->m_group[src/10].m_item[src%10].i[1], 955);
-    if (qrand() % 100 + 1 < 100 - jl)
+    if (qrand() % 100 + 1 <= 100 - jl)
     {
         return;
     }
@@ -27,7 +27,7 @@ void Buff0100320::run(Ground* ground, int m)
     QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff01003202(src, des, method, 1));
     Ground::addBuff(ground, ground->buff[6][des], buff);
 
-    float point2 = Ground::pointbystar(ground, 30, src, method);
+    float point2 = Ground::pointbystar(ground, 60, src, method);
     QVector<int> objs = Ground::selectObjN(ground, des, 0x21);
     for (int obj : objs)
     {
@@ -38,7 +38,7 @@ void Buff0100320::run(Ground* ground, int m)
 void Buff01003202::enter(Ground* ground)
 {
     Logger::H().printbuffenter(ground, src, des, this);
-    float point1 = Ground::pointbystar(ground, 5, src, method);
+    float point1 = Ground::pointbystar(ground, 10, src, method);
     float k = Ground::addkn(ground, des, 2, point1);
     k2 += k;
     ground->m_group[des/10].m_item[des%10].k[2] += k;
@@ -53,7 +53,7 @@ void Buff01003202::exit(Ground* ground)
 void Buff01003202::update(Ground* ground, QSharedPointer<Buff> )
 {
     Logger::H().printbuffupdate(ground, src, des, this);
-    float point1 = Ground::pointbystar(ground, 5, src, method);
+    float point1 = Ground::pointbystar(ground, 10, src, method);
     float k = Ground::addkn(ground, des, 2, point1);
     k2 += k;
     ground->m_group[des/10].m_item[des%10].k[2] += k;

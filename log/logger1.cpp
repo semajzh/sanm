@@ -399,6 +399,10 @@ void Logger1::printcustom(Ground* , int id, QVariant p1, QVariant p2, QVariant p
         printf("%02d METHOD-3332\n", p1.toInt());
     } break;
 
+    case 16120: {
+        printf("[16120] 2223\n");
+    } break;
+
     case 17822: {
         printf("%02d %02d BUFF-17822 (%d)\n", p1.toInt(), p2.toInt(), p3.toInt());
     } break;

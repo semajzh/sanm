@@ -183,6 +183,8 @@ static bool check0014120(Ground* ground, int obj);
 static bool check0014220(Ground* ground, int);
 static bool check0014321(Ground* ground, int);
 static bool check0014420(Ground* ground, int);
+static bool check0016120(Ground* ground, int);
+static bool check0016220(Ground* ground, int);
 static bool check0016420(Ground* ground, int);
 static bool check0020820(Ground* ground, int obj, int type);
 static bool check0030120(Ground* ground, int);
@@ -1161,6 +1163,7 @@ int Ground::actml(Ground* ground, Item* item1, Item* item2, int method, float po
     check301026(ground, item1->g[0]);
 
     check0014420(ground, item1->g[0]);
+    check0016120(ground, item1->g[0]);
     check3011221(ground, item1->g[0], 1);
     check4010722(ground, item1->g[0], item2->g[0]);
     check0020820(ground, item1->g[0], 1);
@@ -2360,6 +2363,32 @@ bool check0014420(Ground* ground, int obj)
         }
     }
     return true;
+}
+
+bool check0016120(Ground* ground, int obj)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[3][obj])
+    {
+        if (pbuff->id == 16120)
+        {
+            pbuff->run(ground);
+            return true;
+        }
+    }
+    return false;
+}
+
+bool check0016220(Ground* ground, int obj)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[3][obj])
+    {
+        if (pbuff->id == 16220)
+        {
+            pbuff->run(ground);
+            return true;
+        }
+    }
+    return false;
 }
 
 bool check0016420(Ground* ground, int des)
@@ -3651,6 +3680,7 @@ bool Ground::run2223(Ground* ground, int obj1, int obj2, bool b2224, bool b113)
 
         check0013221(ground, obj1);
         check0014220(ground, obj1);
+        check0016220(ground, obj1);
         check0030120(ground, obj1);
         check1010420(ground, obj1);
         check1040121(ground, obj1);
@@ -3708,6 +3738,7 @@ bool Ground::run3332(Ground* ground, int obj1, int obj2, bool b113)
 
             check0013221(ground, obj1);
             check0014220(ground, obj1);
+            check0016220(ground, obj1);
             check0030120(ground, obj1);
             check1010420(ground, obj1);
             check1040121(ground, obj1);
