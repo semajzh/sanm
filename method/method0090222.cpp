@@ -29,7 +29,7 @@ int Method0090222::run(Ground* ground, Item* item1)
     }
     if (item1->g[1] == 0)
     {
-        Ground::hloi(ground, item1, item1, id, point1, item1->i[2] + item1->i[3]);
+        Ground::hloi(ground, item1, item1, id, point1, item1->i[1] + item1->i[3]);
     }
 
     return 1;
