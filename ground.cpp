@@ -34,6 +34,7 @@
 #include "buff/buff409011.h"
 #include "buff/buff411021.h"
 #include "buff/buff0010320.h"
+#include "buff/buff0016620.h"
 #include "buff/buff0011721.h"
 #include "buff/buff0013221.h"
 #include "buff/buff0016420.h"
@@ -186,6 +187,7 @@ static bool check0014420(Ground* ground, int);
 static bool check0016120(Ground* ground, int);
 static bool check0016220(Ground* ground, int);
 static bool check0016420(Ground* ground, int);
+static bool check0016620(Ground* ground, int obj, float point);
 static bool check0020820(Ground* ground, int obj, int type);
 static bool check0030120(Ground* ground, int);
 static bool check0050220(Ground* ground, int obj);
@@ -895,6 +897,7 @@ int act(Ground* ground, Item* item1, Item* item2, int method, float& point, int 
     if (method == 2223 || method == 3332)
     {
         check0010320(ground, item1->g[0], item2->g[0], point);
+        check0016620(ground, item1->g[0], point);
     }
     check001730(ground, item1->g[0]);
     check001740(ground, item1->g[0]);
@@ -1343,10 +1346,10 @@ bool Ground::excheck(Ground* ground, int src, int des, int id)
 #ifdef S6
         check600B(ground, src);
 #endif
-        check0016420(ground, des);
+        check3010221(ground, des, id);
     }
     check0014120(ground, src);
-    check3010221(ground, des, id);
+    check0016420(ground, des);
     check0102021(ground, src, id);
 #ifdef XYX
     check7000321(ground, src);
@@ -2410,6 +2413,20 @@ bool check0016420(Ground* ground, int des)
         }
     }
     return true;
+}
+
+bool check0016620(Ground* ground, int obj, float point)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[3][obj])
+    {
+        if (pbuff->id == 16620)
+        {
+            QSharedPointer<Buff0016620> buff = qSharedPointerCast<Buff0016620>(pbuff);
+            buff->run(ground, point);
+            return true;
+        }
+    }
+    return false;
 }
 
 bool check0020820(Ground* ground, int obj, int type)
