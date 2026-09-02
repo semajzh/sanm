@@ -18,6 +18,11 @@ void Buff0110120::exit(Ground* ground)
 
 void Buff0110120::run(Ground* ground)
 {
+    if (round != ground->m_round)
+    {
+        round = ground->m_round;
+        count = 0;
+    }
     if (count > 5)
     {
         count = 5;

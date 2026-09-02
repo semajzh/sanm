@@ -6,7 +6,7 @@
 void Buff0100220::run(Ground* ground, int obj)
 {
     float point1 = Ground::pointbystar(ground, 60, src, method);
-    if (qrand() % 100 + 1 < 100 - point1)
+    if (qrand() % 100 + 1 <= 100 - point1)
     {
         return;
     }

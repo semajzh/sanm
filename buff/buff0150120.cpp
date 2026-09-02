@@ -8,7 +8,7 @@ void Buff0150120::exit(Ground* ground)
     for (int n = 0; n < 4; ++n)
     {
         ground->m_group[des/10].m_item[des%10].i[n] -= i[n];
-        i[0] = 0;
+        i[n] = 0;
     }
     ground->m_group[des/10].m_item[des%10].k[0] -= k0;
 }

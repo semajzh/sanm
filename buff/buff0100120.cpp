@@ -6,7 +6,7 @@
 void Buff0100120::run(Ground* ground, int obj)
 {
     float point1 = Ground::pointbystar(ground, 55, src, method);
-    if (qrand() % 100 + 1 < 100 - point1)
+    if (qrand() % 100 + 1 <= 100 - point1)
     {
         return;
     }
@@ -31,7 +31,7 @@ void Buff0100120::run(Ground* ground, int obj)
     if (b002)
     {
         QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff01001203(des, obj, method, 2));
-        Ground::addBuff(ground, ground->buff[0][obj], buff);
+        Ground::addBuff(ground, ground->buff[1][obj], buff);
     }
 }
 
