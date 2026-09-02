@@ -16,7 +16,8 @@ void Buff0013320::exit(Ground* ground)
 
 void Buff0013320::run(Ground* ground)
 {
-    float point1 = Ground::pointbystar(ground, 35, src, method);
+    float point1 = Ground::pointbystar(ground, 20, src, method);
+
     if (ground->m_round % 2 == 1)
     {
         ground->m_group[des/10].m_item[des%10].l[2] -= l2;
@@ -49,5 +50,9 @@ void Buff0013320::run(Ground* ground)
 
 int Buff0013320::run(Ground* , int round)
 {
+    if (des != src)
+    {
+        return  -1;
+    }
     return (round % 2);
 }

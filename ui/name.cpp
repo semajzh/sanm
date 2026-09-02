@@ -1256,7 +1256,7 @@ void Name::methodName(int id, QSharedPointer<Method> method)
         memcpy(method->name, ch, sizeof(ch));
     } break;
     case 40220: {
-        unsigned char ch[] = {0xe6, 0xb4, 0x97, 0xe7, 0xb2, 0xbe, 0xe4, 0xbc, 0x90, 0xe9, 0xab, 0x93};
+        unsigned char ch[] = {0xe6, 0xb4, 0x97, 0xe7, 0xad, 0x8b, 0xe4, 0xbc, 0x90, 0xe9, 0xab, 0x93};
         memcpy(method->name, ch, sizeof(ch));
     } break;
     case 40322: {
@@ -1417,6 +1417,10 @@ void Name::methodName(int id, QSharedPointer<Method> method)
     } break;
     case 160122: {
         unsigned char ch[] = {0xe4, 0xb9, 0x90, 0xe4, 0xb8, 0x8d, 0xe6, 0x80, 0x9d, 0xe8, 0x9c, 0x80};
+        memcpy(method->name, ch, sizeof(ch));
+    } break;
+    case 160220: {
+        unsigned char ch[] = {0xe6, 0x9a, 0x97, 0xe6, 0xb8, 0xa1, 0xe9, 0x98, 0xb4, 0xe5, 0xb9, 0xb3};
         memcpy(method->name, ch, sizeof(ch));
     } break;
 // insert method
@@ -3295,7 +3299,7 @@ void Name::buffName(int id, Buff* buff)
         memcpy(buff->name, ch, sizeof(ch));
     } break;
     case 402201: {
-        unsigned char ch[] = {0xe6, 0xb4, 0x97, 0xe7, 0xb2, 0xbe};
+        unsigned char ch[] = {0xe6, 0xb4, 0x97, 0xe7, 0xad, 0x8b};
         memcpy(buff->name, ch, sizeof(ch));
     } break;
     case 402202: {
@@ -3303,7 +3307,7 @@ void Name::buffName(int id, Buff* buff)
         memcpy(buff->name, ch, sizeof(ch));
     } break;
     case 402203: {
-        unsigned char ch[] = {0xe6, 0xb4, 0x97, 0xe7, 0xb2, 0xbe, 0xe4, 0xbc, 0x90, 0xe9, 0xab, 0x93};
+        unsigned char ch[] = {0xe6, 0xb4, 0x97, 0xe7, 0xad, 0x8b, 0xe4, 0xbc, 0x90, 0xe9, 0xab, 0x93};
         memcpy(buff->name, ch, sizeof(ch));
     } break;
     case 40322: {
@@ -3513,6 +3517,10 @@ void Name::buffName(int id, Buff* buff)
     } break;
     case 4040222: {
         unsigned char ch[] = {0xe9, 0xa3, 0x8e, 0xe7, 0x96, 0xbe, 0xe9, 0x9b, 0xa8, 0xe6, 0x99, 0xa6};
+        memcpy(buff->name, ch, sizeof(ch));
+    } break;
+    case 160220: {
+        unsigned char ch[] = {0xe6, 0x9a, 0x97, 0xe6, 0xb8, 0xa1, 0xe9, 0x98, 0xb4, 0xe5, 0xb9, 0xb3};
         memcpy(buff->name, ch, sizeof(ch));
     } break;
 

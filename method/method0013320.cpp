@@ -20,9 +20,13 @@ int Method0013320::run(Ground* ground, Item* item1)
 {
     Logger::H().printmethod(ground, item1, this, true);
 
-    int obj = item1->g[0];
-    QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff0013320(item1->g[0], obj, id));
-    Ground::addBuff(ground, ground->buff[5][obj], buff);
+    QVector<int> objs = Ground::selectObjN(ground, item1->g[0], 0x0011, item1->g[0]);
+    objs.insert(0, item1->g[0]);
+    for (int obj : objs)
+    {
+        QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff0013320(item1->g[0], obj, id));
+        Ground::addBuff(ground, ground->buff[5][obj], buff);
+    }
 
     return 1;
 }

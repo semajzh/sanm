@@ -19,12 +19,12 @@ void Buff0014220::exit(Ground* ground)
 
 void Buff0014220::run(Ground* ground)
 {
-    float point1 = Ground::pointbystar(ground, 60, src, method);
+    float point1 = Ground::pointbystar(ground, 6, src, method);
     float point2 = Ground::pointbystar(ground, 200, src, method);
 
     if (++count <= 6)
     {
-        int k = Ground::addkn(ground, des, 1, point1);
+        float k = Ground::addkn(ground, des, 1, point1);
         k1 += k;
         ground->m_group[des/10].m_item[des%10].k[1] += k;
     }

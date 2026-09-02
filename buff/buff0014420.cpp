@@ -6,7 +6,7 @@
 void Buff0014420::enter(Ground* ground)
 {
     Logger::H().printbuffenter(ground, src, des, this);
-    float point1 = Ground::pointbystar(ground, 25, src, method);
+    float point1 = Ground::pointbystar(ground, 24, src, method);
     j2 = point1 + ground->m_group[src/10].m_item[src%10].i[1] / 20; //
     ground->m_group[des/10].m_item[des%10].j[2] += j2;
 }
@@ -24,7 +24,7 @@ void Buff0014420::run(Ground* ground)
         return;
     }
     QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff00144202(des, des, method, 2));
-    Ground::addBuff(ground, ground->buff[0][des], buff);
+    Ground::addBuff(ground, ground->buff[1][des], buff);
 }
 
 void Buff00144202::enter(Ground* ground)
