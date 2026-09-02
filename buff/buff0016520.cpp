@@ -9,7 +9,7 @@ void Buff0016520::run(Ground* ground)
     QVector<int> objs = Ground::selectObjN(ground, des, 0x0023);
     for (int obj : objs)
     {
-        if (Ground::exsize(ground, obj) <= 0)
+        if (Ground::exsize(ground, obj, 1) <= 0)
         {
             continue;
         }

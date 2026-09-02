@@ -38,7 +38,7 @@ int Method4010422::run(Ground* ground, Item* item1)
     QVector<int> objs = Ground::selectObjN(ground, item1->g[0], 0x0043, item1->g[0]);
     for (int obj : objs)
     {
-        int ex = ground->exceptions[obj].size();
+        int ex = Ground::exsize(ground, obj);
         if (ex > 3)
         {
             ex = 3;

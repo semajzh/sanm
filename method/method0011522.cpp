@@ -68,14 +68,7 @@ bool Method0011522::checkzb(Ground* ground, int obj)
 
 int Method0011522::checkex(Ground* ground, int obj)
 {
-    int count = 0;
-    for (int ex : ground->exceptions[obj])
-    {
-        if (ex >= 1 && ex < 100)
-        {
-            ++count;
-        }
-    }
+    int count = Ground::exsize(ground, obj, 1);
     return (count > 5 ? 5 : count);
 }
 

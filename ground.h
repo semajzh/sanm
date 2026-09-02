@@ -89,7 +89,7 @@ public:
     static void exexit(Ground* ground, int src, int des, int id);
     static void exupdate(Ground* ground, int src, int des, int id);
     static bool excheck(Ground* ground, int src, int des, int id);
-    static int exsize(Ground* ground, int pos);
+    static int exsize(Ground* ground, int obj, int type = 0);
     static void exremove(Ground* ground, int obj, int n);
     static float addin(Ground* ground, int obj, int n, float point);
     static void addi2(Ground* ground, int obj, float point);

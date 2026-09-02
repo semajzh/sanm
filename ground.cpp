@@ -1343,23 +1343,30 @@ bool Ground::excheck(Ground* ground, int src, int des, int id)
 {
     if (id > 0 && id < 20)
     {
-#ifdef S6
-        check600B(ground, src);
-#endif
         check3010221(ground, des, id);
     }
     check0014120(ground, src);
     check0016420(ground, des);
     check0102021(ground, src, id);
-#ifdef XYX
-    check7000321(ground, src);
-#endif
+
     return true;
 }
 
-int Ground::exsize(Ground* ground, int des)
+int Ground::exsize(Ground* ground, int obj, int type)
 {
-    return ground->exceptions[des].size();
+    if (type == 1)
+    {
+        int size = 0;
+        for (int id : ground->exceptions[obj])
+        {
+            if (id > 0 && id < 20)
+            {
+                ++size;
+            }
+        }
+        return size;
+    }
+    return ground->exceptions[obj].size();
 }
 
 void Ground::exremove(Ground* ground, int obj, int n)
