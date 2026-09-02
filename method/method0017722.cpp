@@ -19,18 +19,16 @@ Method0017722::~Method0017722()
 int Method0017722::run(Ground* ground, Item* item1)
 {
     Logger::H().printmethod(ground, item1, this, true);
-    float point1 = Ground::pointbystar(ground, 100, item1->g[0], id);
-    float point2 = Ground::pointbystar(ground, 60, item1->g[0], id);
     QVector<int> objs = Ground::selectObjN(ground, item1->g[0], 0x0042, item1->g[0]);
     for (int obj : objs)
     {
         bool b004 = check004(ground, obj);
         Item& item2 = ground->m_group[obj/10].m_item[obj%10];
-        Ground::actml(ground, item1, &item2, id, point1);
+        Ground::actml(ground, item1, &item2, id, 115);
 
         if (b004)
         {
-            Ground::actml(ground, item1, &item2, id, point2);
+            Ground::actml(ground, item1, &item2, id, 69);
         }
         else
         {

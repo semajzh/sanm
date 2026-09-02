@@ -12,9 +12,6 @@ public:
     virtual void enter(Ground* );
     virtual void exit(Ground* );
     virtual void update(Ground* , QSharedPointer<Buff> );
-
-private:
-    float k0 = 0.0f;
 };
 
 #endif // BUFF0017422_H

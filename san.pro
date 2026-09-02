@@ -82,6 +82,9 @@ SOURCES += \
         method/method0017722.cpp \
         method/method0017822.cpp \
         method/method0017922.cpp \
+        method/method0018022.cpp \
+        method/method0018122.cpp \
+        method/method0018222.cpp \
         method/method0020120.cpp \
         method/method0020222.cpp \
         method/method0020324.cpp \
@@ -683,6 +686,8 @@ SOURCES += \
         buff/buff0017522.cpp \
         buff/buff0017822.cpp \
         buff/buff0017922.cpp \
+        buff/buff0018022.cpp \
+        buff/buff0018122.cpp \
         buff/buff0020120.cpp \
         buff/buff0020222.cpp \
         buff/buff0020324.cpp \
@@ -1052,6 +1057,9 @@ HEADERS += \
     method/method0017722.h \
     method/method0017822.h \
     method/method0017922.h \
+    method/method0018022.h \
+    method/method0018122.h \
+    method/method0018222.h \
     method/method0020120.h \
     method/method0020222.h \
     method/method0020324.h \
@@ -1654,6 +1662,8 @@ HEADERS += \
     buff/buff0017522.h \
     buff/buff0017822.h \
     buff/buff0017922.h \
+    buff/buff0018022.h \
+    buff/buff0018122.h \
     buff/buff0020120.h \
     buff/buff0020222.h \
     buff/buff0020324.h \

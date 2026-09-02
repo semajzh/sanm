@@ -71,6 +71,9 @@
 #include "method0017722.h"
 #include "method0017822.h"
 #include "method0017922.h"
+#include "method0018022.h"
+#include "method0018122.h"
+#include "method0018222.h"
 #include "method0020120.h"
 #include "method0020222.h"
 #include "method0020324.h"
@@ -612,6 +615,21 @@ QSharedPointer<Method> Method::getMethod(int id)
         unsigned char ch[] = {0xe8, 0xbf, 0x8e, 0xe6, 0x95, 0x8c};
         Logger::H().printname(ch, sizeof(ch), id);
         method = QSharedPointer<Method0017922>::create();
+    } break;
+    case 18022: {
+        unsigned char ch[] = {0xe4, 0xbb, 0xbb, 0xe4, 0xba, 0xba, 0xe5, 0x94, 0xaf, 0xe8, 0xb4, 0xa4};
+        Logger::H().printname(ch, sizeof(ch), id);
+        method = QSharedPointer<Method0018022>::create();
+    } break;
+    case 18122: {
+        unsigned char ch[] = {0xe7, 0xad, 0xb9, 0xe5, 0x88, 0x92, 0xe8, 0x89, 0xaf, 0xe7, 0xad, 0x96};
+        Logger::H().printname(ch, sizeof(ch), id);
+        method = QSharedPointer<Method0018122>::create();
+    } break;
+    case 18222: {
+        unsigned char ch[] = {0xe6, 0x8f, 0xad, 0xe7, 0xab, 0xbf, 0xe8, 0x80, 0x8c, 0xe8, 0xb5, 0xb7};
+        Logger::H().printname(ch, sizeof(ch), id);
+        method = QSharedPointer<Method0018222>::create();
     } break;
     case 20120: {
         unsigned char ch[] = {0xe6, 0x91, 0xa7, 0xe5, 0x9d, 0x9a, 0xe5, 0x85, 0x8b, 0xe9, 0x9a, 0xbe};

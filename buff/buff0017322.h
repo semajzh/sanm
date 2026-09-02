@@ -11,9 +11,6 @@ public:
 
     virtual void enter(Ground* ground);
     virtual void exit(Ground* ground);
-
-private:
-    float i2 = 0.0f;
 };
 
 #endif // BUFF0017322_H

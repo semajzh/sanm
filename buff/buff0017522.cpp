@@ -5,8 +5,7 @@
 void Buff0017522::enter(Ground* ground)
 {
     Logger::H().printbuffenter(ground, src, des, this);
-    float point1 = Ground::pointbystar(ground, 25, src, method);
-    i3 = Ground::addin(ground, des, 3, -point1);
+    i3 = Ground::addin(ground, des, 3, -28.75f);
     ground->m_group[des/10].m_item[des%10].i[3] += i3;
 }
 

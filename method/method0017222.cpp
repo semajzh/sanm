@@ -19,13 +19,12 @@ Method0017222::~Method0017222()
 int Method0017222::run(Ground* ground, Item* item1)
 {
     Logger::H().printmethod(ground, item1, this, true);
-    float point1 = Ground::pointbystar(ground, 150, item1->g[0], id);
     for (int n = 0; n < 2; ++n)
     {
         QVector<int> objs = Ground::selectObjN(ground, item1->g[0], 0x0041, item1->g[0]);
         for (int obj : objs)
         {
-            Ground::actbr(ground, item1, &ground->m_group[obj/10].m_item[obj%10], id, point1);
+            Ground::actbr(ground, item1, &ground->m_group[obj/10].m_item[obj%10], id, 172.5);
 
             QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff002(item1->g[0], obj, id, 2));
             Ground::addBuff(ground, ground->buff[1][obj], buff);
