@@ -1354,19 +1354,15 @@ bool Ground::excheck(Ground* ground, int src, int des, int id)
 
 int Ground::exsize(Ground* ground, int obj, int type)
 {
-    if (type == 1)
+    int size = ground->exceptions[obj].size();
+    for (int id : ground->exceptions[obj])
     {
-        int size = 0;
-        for (int id : ground->exceptions[obj])
+        if ((type == 1 && !(id > 0 && id < 20)) || (type == 2 && !(id >= 10 && id < 20)))
         {
-            if (id > 0 && id < 20)
-            {
-                ++size;
-            }
+            --size;
         }
-        return size;
     }
-    return ground->exceptions[obj].size();
+    return size;
 }
 
 void Ground::exremove(Ground* ground, int obj, int n)

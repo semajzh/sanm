@@ -13,7 +13,6 @@ public:
 
 private:
     int check02(Ground* ground, int obj);
-    bool checkex(Ground* ground, int obj);
     float check201023(Ground* ground, int obj1, int obj2);
 };
 

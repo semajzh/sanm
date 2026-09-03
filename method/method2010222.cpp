@@ -38,7 +38,7 @@ int Method2010222::run(Ground* ground, Item* item1)
     for (int obj : objs)
     {
         Ground::actbr(ground, item1, &ground->m_group[obj/10].m_item[obj%10], id, point3);
-        if (checkex(ground, obj))
+        if (Ground::exsize(ground, obj, 2) > 0)
         {
             Ground::acttb(ground, item1, &ground->m_group[obj/10].m_item[obj%10], id, item1->i[0], check201023(ground, item1->g[0], obj));
         }
@@ -57,18 +57,6 @@ int Method2010222::check02(Ground* ground, int obj)
         }
     }
     return 0;
-}
-
-bool Method2010222::checkex(Ground* ground, int obj)
-{
-    for (int ex : ground->exceptions[obj])
-    {
-        if (ex >= 10 && ex < 20)
-        {
-            return true;
-        }
-    }
-    return false;
 }
 
 float Method2010222::check201023(Ground* ground, int obj1, int obj2)
