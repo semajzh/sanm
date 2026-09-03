@@ -21,7 +21,7 @@ bool Strategy101032::run(Ground* ground, Item* item1)
 
     int obj = item1->g[0];
     QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff101032(item1->g[0], obj, id));
-    Ground::addBuff(ground, ground->buff[0][obj], buff);
+    Ground::addBuff(ground, ground->buff[3][obj], buff);
 
     return true;
 }

@@ -9,12 +9,12 @@ public:
     Buff101032(int s, int d, int m) : BuffR(s, d, m) { id = 101032; }
     virtual ~Buff101032() {}
 
-    virtual void enter(Ground* ground);
-    virtual void exit(Ground* ground);
+    virtual void run(Ground* ) {}
+    void run(Ground* ground, int obj2);
 
 private:
-    float j13 = 0.0f;
-    float k8 = 0.0f;
+    int round = 0;
+    int count = 0;
 };
 
 #endif // BUFF101032_H

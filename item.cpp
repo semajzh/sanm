@@ -71,7 +71,7 @@ bool Item::getItem(int id, Item& item)
         item.i[3] = 65+2.30*45;
         item.methods[0] = 1010320; //j8+60,acted:k8+20(2)(*5),i2+20(2)(*5)
         item.strategys[0] = 101031; //i0+10,k8+20
-//        item.strategys[0] = 101032; //j13+7,k8+10
+//        item.strategys[0] = 101032; //ml-recv,r1:30%(i0),3332
     } break;
 
     case 10104: {

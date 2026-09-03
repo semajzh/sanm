@@ -53,6 +53,7 @@
 #include "buff/buff0120321.h"
 #include "buff/buff0130121.h"
 #include "buff/buff0150221.h"
+#include "buff/buff101032.h"
 #include "buff/buff1010121.h"
 #include "buff/buff1010620.h"
 #include "buff/buff1010721.h"
@@ -145,6 +146,7 @@ static bool check009010(Ground* ground, int obj, int point);
 static bool check009020(Ground* ground, int obj);
 static float check009030(Ground* ground, int obj);
 
+static bool check101032(Ground* ground, int obj1, int obj2);
 static bool check106011(Ground* ground, int obj);
 static bool check201011(Ground* ground, int obj);
 static bool check201021(Ground* ground, int obj);
@@ -1165,6 +1167,7 @@ int Ground::actml(Ground* ground, Item* item1, Item* item2, int method, float po
     check201021(ground, item2->g[0]);
     check201081(ground, item1->g[0], 1);
     check301026(ground, item1->g[0]);
+    check101032(ground, item2->g[0], item1->g[0]);
 
     check0014420(ground, item1->g[0]);
     check0016120(ground, item1->g[0]);
@@ -1876,6 +1879,20 @@ float check009030(Ground* ground, int obj)
         }
     }
     return 0.0f;
+}
+
+bool check101032(Ground *ground, int obj1, int obj2)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[3][obj1])
+    {
+        if (pbuff->id == 101032)
+        {
+            QSharedPointer<Buff101032> buff = qSharedPointerCast<Buff101032>(pbuff);
+            buff->run(ground, obj2);
+            return true;
+        }
+    }
+    return false;
 }
 
 bool check106011(Ground* ground, int obj)

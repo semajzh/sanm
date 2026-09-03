@@ -2,18 +2,23 @@
 #include "ground.h"
 #include "log/logger.h"
 
-void Buff101032::enter(Ground* ground)
+void Buff101032::run(Ground* ground, int obj2)
 {
-    Logger::H().printbuffenter(ground, src, des, this);
-    j13 = Ground::addjn(ground, des, 13, 7);
-    k8 = Ground::addkn(ground, des, 8, 10);
-    ground->m_group[des/10].m_item[des%10].j[13] += j13;
-    ground->m_group[des/10].m_item[des%10].k[8] += k8;
-}
+    if (round != ground->m_round)
+    {
+        round = ground->m_round;
+        count = 0;
+    }
+    if (++count > 1)
+    {
+        return;
+    }
 
-void Buff101032::exit(Ground* ground)
-{
-    Logger::H().printbuffexit(ground, src, des, this);
-    ground->m_group[des/10].m_item[des%10].j[13] -= j13;
-    ground->m_group[des/10].m_item[des%10].k[8] -= k8;
+    float p = Ground::addbyix(ground, 30, ground->m_group[des/10].m_item[des%10].i[0]);
+    if (qrand() % 100 + 1 <= 100 - p)
+    {
+        return;
+    }
+
+    Ground::run3332(ground, des, obj2, false);
 }
