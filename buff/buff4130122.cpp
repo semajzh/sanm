@@ -44,9 +44,11 @@ bool Buff41301222::run(Ground* ground, int m)
 {
     float point1 = Ground::pointbystar(ground, 50, src, method);
     float point2 = Ground::addbyix(ground, point1, ground->m_group[src/10].m_item[src%10].i[0]);
-    if (m != method || qrand() % 100 + 1 <= 100 - point2)
+    if (method22 != m || qrand() % 100 + 1 <= 100 - point2)
     {
         return false;
     }
+    method22 = m;
+    Logger::H().printcustom(ground, 4130122, des, 4130122, method);
     return true;
 }

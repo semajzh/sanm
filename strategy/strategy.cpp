@@ -91,6 +91,7 @@
 #include "strategy101011.h"
 #include "strategy101012.h"
 #include "strategy101021.h"
+#include "strategy101022.h"
 #include "strategy101031.h"
 #include "strategy101032.h"
 #include "strategy101041.h"
@@ -715,6 +716,11 @@ QSharedPointer<Strategy> Strategy::getStrategy(int id)
         unsigned char ch[] = {0xe5, 0x8d, 0x81, 0xe8, 0x83, 0x9c, 0xe8, 0xae, 0xba};
         Logger::H().printname(ch, sizeof(ch), id);
         strategy = QSharedPointer<Strategy101021>::create();
+    } break;
+    case 101022: {
+        unsigned char ch[] = {0xe5, 0xa4, 0xa9, 0xe5, 0xa6, 0x92};
+        Logger::H().printname(ch, sizeof(ch), id);
+        strategy = QSharedPointer<Strategy101022>::create();
     } break;
     case 101031: {
         unsigned char ch[] = {0xe6, 0x8a, 0x98, 0xe6, 0xad, 0xa6};

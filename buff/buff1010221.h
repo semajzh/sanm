@@ -27,7 +27,9 @@ public:
     virtual bool run(Ground* ground, int );
 
 private:
+    bool check101022(Ground* ground, int obj);
     int round = 0;
+    int method22 = 0;
 };
 
 #endif // BUFF1010221_H

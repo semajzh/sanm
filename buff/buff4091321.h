@@ -17,7 +17,7 @@ public:
 private:
     float j0 = 0.0f;
     float j2 = 0.0f;
-    int method = 0;
+    int method22 = 0;
     int round = 0;
 };
 

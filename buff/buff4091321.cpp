@@ -24,16 +24,16 @@ bool Buff4091321::run(Ground* ground, int m)
     if (round != ground->m_round)
     {
         round = ground->m_round;
-        method = 0;
+        method22 = 0;
     }
 
     float jl = 35 + ground->m_group[src/10].m_item[src%10].i[3] / 30;
-    if (m == method || qrand() % 100 + 1 <= 100 - jl)
+    if (method22 == m || qrand() % 100 + 1 <= 100 - jl)
     {
         return false;
     }
 
-    method = m;
+    method22 = m;
     Logger::H().printcustom(ground, 4091321, des, 4091321, method);
     return true;
 }

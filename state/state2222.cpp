@@ -44,13 +44,13 @@ void State2222::run(Ground* ground, int obj)
         }
 
         float jl = item.j[4] + (k == 0 ? item.j[5] : 0);
-        for (int n = 0; n < 2; ++n)
+        for (int n = 0; n < 3; ++n)
         {
             float luck = 0;
-            if (n == 1)
+            if (n >= 1)
             {
                 luck = 999;
-                Logger::H().printcustom(ground, m, item.g[0]); //twice
+                Logger::H().printcustom(ground, m, item.g[0]); //again
             }
 
             int r = methodrun(ground, &item, method, jl + luck);

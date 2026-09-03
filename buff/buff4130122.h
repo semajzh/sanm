@@ -29,6 +29,9 @@ public:
 
     virtual void run(Ground* ) {}
     bool run(Ground * , int );
+
+private:
+    int method22 = 0;
 };
 
 #endif // BUFF4130122_H

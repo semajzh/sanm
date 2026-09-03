@@ -57,6 +57,7 @@ bool Item::getItem(int id, Item& item)
         item.i[3] = 53+1.81*45;
         item.methods[0] = 1010221; //1+1:j4+6;2222,70%:2222
         item.strategys[0] = 101021; //l4-12,l5-12
+        item.strategys[0] = 101022; //1010221,2:18%(i0):3
     } break;
 
     case 10103: {
