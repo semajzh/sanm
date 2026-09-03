@@ -8,6 +8,13 @@ public:
     Buff105011() {}
     Buff105011(int s, int d, int m) : BuffR(s, d, m) { id = 105011; }
     virtual ~Buff105011() {}
+
+    virtual void run(Ground* ground);
+
+private:
+    int checkbuff(Ground* ground, int obj);
+    void addbuff(Ground* ground, int obj1, int obj2, int e);
+    int count = 0;
 };
 
 #endif // BUFF105011_H

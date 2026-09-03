@@ -39,13 +39,16 @@ public:
     virtual ~Buff10901213() {}
 
     virtual void run(Ground* );
+
+private:
+    bool check109011(Ground* ground, int obj);
 };
 
 class Buff10901214 : public BuffR
 {
 public:
     Buff10901214() {}
-    Buff10901214(int s, int d, int m) : BuffR(s, d, m) { id = 10901214; }
+    Buff10901214(int s, int d, int m, int t) : BuffR(s, d, m, t) { id = 10901214; }
     virtual ~Buff10901214() {}
 
     virtual void enter(Ground* );
@@ -61,7 +64,7 @@ class Buff10901215 : public BuffR
 {
 public:
     Buff10901215() {}
-    Buff10901215(int s, int d, int m) : BuffR(s, d, m) { id = 10901215; }
+    Buff10901215(int s, int d, int m, int t) : BuffR(s, d, m, t) { id = 10901215; }
     virtual ~Buff10901215() {}
 
     virtual void enter(Ground* );

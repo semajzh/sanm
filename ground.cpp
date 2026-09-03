@@ -202,6 +202,7 @@ static bool check0101021(Ground* ground, int obj, float point);
 static bool check01010212(Ground* ground, int obj);
 static bool check0102021(Ground* ground, int obj, int );
 static bool check0104021(Ground* ground, int obj);
+static bool check0105011(Ground* ground, int obj);
 static bool check0110120(Ground* ground, int obj);
 static bool check0110321(Ground* ground, int obj1, int obj2, int type);
 static bool check0120321(Ground* ground, int obj1, int obj2);
@@ -1344,6 +1345,7 @@ bool Ground::excheck(Ground* ground, int src, int des, int id)
     if (id > 0 && id < 20)
     {
         check3010221(ground, des, id);
+        check0105011(ground, src);
     }
     check0014120(ground, src);
     check0016420(ground, des);
@@ -2619,6 +2621,19 @@ bool check0104021(Ground *ground, int obj)
     for (QSharedPointer<Buff> pbuff : ground->buff[3][obj])
     {
         if (pbuff->id == 104021)
+        {
+            pbuff->run(ground);
+            return true;
+        }
+    }
+    return false;
+}
+
+bool check0105011(Ground *ground, int obj)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[3][obj])
+    {
+        if (pbuff->id == 105011)
         {
             pbuff->run(ground);
             return true;

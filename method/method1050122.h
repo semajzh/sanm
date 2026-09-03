@@ -14,7 +14,6 @@ public:
 
 private:
     void addbuff(Ground* ground, int obj1, int obj2);
-    bool check105011(Ground* ground, int obj);
 };
 
 #endif // METHOD1050122_H

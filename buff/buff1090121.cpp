@@ -47,25 +47,42 @@ void Buff10901212::update(Ground* ground, QSharedPointer<Buff> )
 
 void Buff10901213::run(Ground* ground)
 {
-    QVector<int> objs = Ground::selectObjN(ground, des, 0x22);
+    int mask = check109011(ground, src) ? 0x23 : 0x22;
+    QVector<int> objs = Ground::selectObjN(ground, des, mask);
     for (int obj : objs)
     {
-        QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff10901214(src, obj, id));
+        float point1 = 10 * (check109011(ground, src) ? 0.8f : 1.0f);
+        float point2 = Ground::pointbystar(ground, point1, src, method);
+        float point3 = Ground::addbyix(ground, point2, ground->m_group[src/10].m_item[src%10].i[1]);
+        int point4 = point3 * 1000;
+
+        QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff10901214(src, obj, id, point4));
         Ground::addBuff(ground, ground->buff[0][obj], buff);
 
-        QSharedPointer<Buff> buff1 = QSharedPointer<Buff>(new Buff10901215(src, des, id));
+        QSharedPointer<Buff> buff1 = QSharedPointer<Buff>(new Buff10901215(src, des, id, point4));
         Ground::addBuff(ground, ground->buff[0][des], buff1);
     }
+}
+
+bool Buff10901213::check109011(Ground* ground, int obj)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[3][obj])
+    {
+        if (pbuff->id == 109011)
+        {
+            return true;
+        }
+    }
+    return false;
 }
 
 void Buff10901214::enter(Ground* ground)
 {
     Logger::H().printbuffenter(ground, src, des, this);
-    float point1 = Ground::pointbystar(ground, 10, src, method);
-    float i = Ground::addbyix(ground, point1, ground->m_group[src/10].m_item[src%10].i[1]);
-    i = Ground::addin(ground, des, 1, -i);
-    i1 += i;
-    ground->m_group[des/10].m_item[des%10].i[1] += i;
+    float point1 = meta / 1000.0f;
+    float point2 = Ground::addin(ground, des, 1, -point1);
+    i1 += point2;
+    ground->m_group[des/10].m_item[des%10].i[1] += point2;
     Buff020::check020(ground, src, des, true);
     check4110121(ground);
     Ground::exenter(ground, src, des, id);
@@ -79,14 +96,14 @@ void Buff10901214::exit(Ground* ground)
     Ground::exexit(ground, src, des, id);
 }
 
-void Buff10901214::update(Ground* ground, QSharedPointer<Buff> )
+void Buff10901214::update(Ground* ground, QSharedPointer<Buff> buff)
 {
     Logger::H().printbuffupdate(ground, src, des, this);
-    float point1 = Ground::pointbystar(ground, 10, src, method);
-    float i = Ground::addbyix(ground, point1, ground->m_group[src/10].m_item[src%10].i[1]);
-    i = Ground::addin(ground, des, 1, -i);
-    i1 += i;
-    ground->m_group[des/10].m_item[des%10].i[1] += i;
+    meta = buff->meta;
+    float point1 = meta / 1000.0f;
+    float point2 = Ground::addin(ground, des, 1, -point1);
+    i1 += point2;
+    ground->m_group[des/10].m_item[des%10].i[1] += point2;
     check4110121(ground);
     Ground::exupdate(ground, src, des, id);
 }
@@ -107,10 +124,9 @@ bool Buff10901214::check4110121(Ground* ground)
 void Buff10901215::enter(Ground* ground)
 {
     Logger::H().printbuffenter(ground, src, des, this);
-    float point1 = Ground::pointbystar(ground, 10, src, method);
-    float i = Ground::addbyix(ground, point1, ground->m_group[src/10].m_item[src%10].i[1]);
-    i1 += i;
-    ground->m_group[des/10].m_item[des%10].i[1] += i;
+    float point1 = meta / 1000.0f;
+    i1 += point1;
+    ground->m_group[des/10].m_item[des%10].i[1] += point1;
 }
 
 void Buff10901215::exit(Ground* ground)
@@ -119,11 +135,11 @@ void Buff10901215::exit(Ground* ground)
     ground->m_group[des/10].m_item[des%10].i[1] -= i1;
 }
 
-void Buff10901215::update(Ground* ground, QSharedPointer<Buff> )
+void Buff10901215::update(Ground* ground, QSharedPointer<Buff> buff)
 {
     Logger::H().printbuffupdate(ground, src, des, this);
-    float point1 = Ground::pointbystar(ground, 10, src, method);
-    float i = Ground::addbyix(ground, point1, ground->m_group[src/10].m_item[src%10].i[1]);
-    i1 += i;
-    ground->m_group[des/10].m_item[des%10].i[1] += i;
+    meta = buff->meta;
+    float point1 = meta / 1000.0f;
+    i1 += point1;
+    ground->m_group[des/10].m_item[des%10].i[1] += point1;
 }

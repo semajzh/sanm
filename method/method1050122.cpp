@@ -73,8 +73,7 @@ void Method1050122::addbuff(Ground* ground, int obj1, int obj2)
     int size0 = exv0.size();
     int size1 = exv1.size();
 
-    float f105011 = check105011(ground, obj1) ? 1.3 : 1;
-    int base = size0 * 10 + size1 * 10 * f105011; //60+70/91
+    int base = size0 * 10 + size1 * 10; //60+70
     int q, e;
     if (base != 0)
     {
@@ -152,16 +151,4 @@ void Method1050122::addbuff(Ground* ground, int obj1, int obj2)
     default:
         break;
     }
-}
-
-bool Method1050122::check105011(Ground* ground, int obj)
-{
-    for (QSharedPointer<Buff> pbuff : ground->buff[3][obj])
-    {
-        if (pbuff->id == 105011)
-        {
-            return true;
-        }
-    }
-    return false;
 }
