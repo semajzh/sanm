@@ -3,7 +3,7 @@
 #include "item.h"
 #include "buff/buff001.h"
 #include "buff/buff0103022.h"
-#include "buff/buff007.h"
+#include "buff/buff022.h"
 #include "log/logger.h"
 
 Method0103022::Method0103022()
@@ -72,13 +72,13 @@ bool Method0103022::check001(Ground *ground, int obj)
     return false;
 }
 
-int Method0103022::check007(Ground *ground, int obj)
+int Method0103022::check022(Ground *ground, int obj)
 {
     for (QSharedPointer<Buff> pbuff : ground->buff[1][obj])
     {
-        if (pbuff->id == 7)
+        if (pbuff->id == 22)
         {
-            QSharedPointer<Buff007> buff = qSharedPointerCast<Buff007>(pbuff);
+            QSharedPointer<Buff022> buff = qSharedPointerCast<Buff022>(pbuff);
             return buff->run(ground, 0);
         }
     }

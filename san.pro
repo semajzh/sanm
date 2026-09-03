@@ -551,9 +551,6 @@ SOURCES += \
         buff/buff003.cpp \
         buff/buff004.cpp \
         buff/buff005.cpp \
-        buff/buff006.cpp \
-        buff/buff007.cpp \
-        buff/buff008.cpp \
         buff/buff011.cpp \
         buff/buff012.cpp \
         buff/buff013.cpp \
@@ -562,6 +559,9 @@ SOURCES += \
         buff/buff016.cpp \
         buff/buff017.cpp \
         buff/buff020.cpp \
+        buff/buff021.cpp \
+        buff/buff022.cpp \
+        buff/buff023.cpp \
         buff/buff101.cpp \
         buff/buff102.cpp \
         buff/buff104.cpp \
@@ -1547,9 +1547,6 @@ HEADERS += \
     buff/buff003.h \
     buff/buff004.h \
     buff/buff005.h \
-    buff/buff006.h \
-    buff/buff007.h \
-    buff/buff008.h \
     buff/buff011.h \
     buff/buff012.h \
     buff/buff013.h \
@@ -1558,6 +1555,9 @@ HEADERS += \
     buff/buff016.h \
     buff/buff017.h \
     buff/buff020.h \
+    buff/buff021.h \
+    buff/buff022.h \
+    buff/buff023.h \
     buff/buff101.h \
     buff/buff102.h \
     buff/buff104.h \

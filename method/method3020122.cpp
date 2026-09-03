@@ -2,7 +2,7 @@
 #include "ground.h"
 #include "item.h"
 #include "buff/buff001.h"
-#include "buff/buff007.h"
+#include "buff/buff022.h"
 #include "log/logger.h"
 
 
@@ -40,7 +40,7 @@ int Method3020122::run(Ground* ground, Item* item1)
     objs = selectObj001(ground, item1->g[0]);
     for (int obj : objs)
     {
-        QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff007(item1->g[0], obj, id, 2));
+        QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff022(item1->g[0], obj, id, 2));
         Ground::addBuff(ground, ground->buff[1][obj], buff);
 
         Item& item2 = ground->m_group[obj/10].m_item[obj%10];
@@ -48,7 +48,7 @@ int Method3020122::run(Ground* ground, Item* item1)
 
         if (qrand() % 100 + 1 > 100 - 40 - item1->i[1]/36.0)
         {
-            QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff007(item1->g[0], obj, id, 2));
+            QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff022(item1->g[0], obj, id, 2));
             Ground::addBuff(ground, ground->buff[1][obj], buff);
         }
     }

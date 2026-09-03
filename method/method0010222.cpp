@@ -1,7 +1,6 @@
 #include "method0010222.h"
 #include "ground.h"
 #include "item.h"
-#include "buff/buff008.h"
 #include "log/logger.h"
 
 Method0010222::Method0010222()

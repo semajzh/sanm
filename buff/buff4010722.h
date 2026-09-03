@@ -13,7 +13,7 @@ public:
     void run(Ground* , int);
 
 private:
-    bool check006(Ground* ground, int obj);
+    bool check021(Ground* ground, int obj);
 };
 
 #endif // BUFF4010722_H

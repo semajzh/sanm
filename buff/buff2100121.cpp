@@ -1,5 +1,5 @@
 #include "buff2100121.h"
-#include "buff008.h"
+#include "buff023.h"
 #include "ground.h"
 #include "log/logger.h"
 
@@ -12,7 +12,7 @@ void Buff21001211::run(Ground* ground, int obj)
     float jl = Ground::addbyix(ground, point2, ground->m_group[src/10].m_item[src%10].i[0]);
     if (qrand() % 100 + 1 > 100 - jl && ground->m_group[obj/10].m_item[obj%10].h[0] > 0)
     {
-        QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff008(src, obj, method, 2));
+        QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff023(src, obj, method, 2));
         Ground::addBuff(ground, ground->buff[1][obj], buff);
     }
 }
@@ -62,15 +62,15 @@ void Buff21001213::run(Ground* ground)
     QVector<int> objs = Ground::selectObjN(ground, des, 6, des);
     for (int obj : objs)
     {
-        check008(ground, obj);
+        check023(ground, obj);
     }
 }
 
-bool Buff21001213::check008(Ground* ground, int obj)
+bool Buff21001213::check023(Ground* ground, int obj)
 {
     for (QSharedPointer<Buff> pbuff : ground->buff[1][obj])
     {
-        if (pbuff->id == 8)
+        if (pbuff->id == 23)
         {
             pbuff->run(ground);
             return true;

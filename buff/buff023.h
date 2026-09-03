@@ -1,13 +1,13 @@
-#ifndef BUFF008_H
-#define BUFF008_H
+#ifndef BUFF023_H
+#define BUFF023_H
 #include "buff.h"
 
-class Buff008 : public BuffC
+class Buff023 : public BuffC
 {
 public:
-    Buff008() {}
-    Buff008(int s, int d, int m, int r) : BuffC(s, d, m, r)  { id = 8; };
-    virtual ~Buff008() {}
+    Buff023() {}
+    Buff023(int s, int d, int m, int r) : BuffC(s, d, m, r)  { id = 23; };
+    virtual ~Buff023() {}
 
     virtual void enter(Ground* ground);
     virtual void exit(Ground* ground);
@@ -19,4 +19,4 @@ private:
     int count = 0;
 };
 
-#endif // BUFF008_H
+#endif // BUFF023_H

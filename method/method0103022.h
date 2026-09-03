@@ -13,7 +13,7 @@ public:
 
 private:
     bool check001(Ground *ground, int obj);
-    int check007(Ground *ground, int obj);
+    int check022(Ground *ground, int obj);
 };
 
 #endif // METHOD0103022_H

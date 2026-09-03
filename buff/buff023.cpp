@@ -1,22 +1,22 @@
-#include "buff008.h"
+#include "buff023.h"
 #include "ground.h"
 #include "log/logger.h"
 
-void Buff008::enter(Ground* ground)
+void Buff023::enter(Ground* ground)
 {
     Logger::H().printbuffenter(ground, src, des, this);
     ++count;
     Ground::exenter(ground, src, des, id);
 }
 
-void Buff008::exit(Ground* ground)
+void Buff023::exit(Ground* ground)
 {
     Logger::H().printbuffexit(ground, src, des, this);
     count = 0;
     Ground::exexit(ground, src, des, id);
 }
 
-void Buff008::update(Ground* ground, QSharedPointer<Buff> buff)
+void Buff023::update(Ground* ground, QSharedPointer<Buff> buff)
 {
     Logger::H().printbuffupdate(ground, src, des, this);
     BuffC::update(ground, buff);
@@ -24,7 +24,7 @@ void Buff008::update(Ground* ground, QSharedPointer<Buff> buff)
     Ground::exupdate(ground, src, des, id);
 }
 
-void Buff008::run(Ground* ground)
+void Buff023::run(Ground* ground)
 {
     if (count > 5)
     {
@@ -35,7 +35,7 @@ void Buff008::run(Ground* ground)
     check2100121(ground, src);
 }
 
-bool Buff008::check2100121(Ground* ground, int obj)
+bool Buff023::check2100121(Ground* ground, int obj)
 {
     for (QSharedPointer<Buff> pbuff : ground->buff[3][obj])
     {

@@ -1,5 +1,5 @@
 #include "buff4010722.h"
-#include "buff006.h"
+#include "buff021.h"
 #include "ground.h"
 #include "log/logger.h"
 
@@ -10,18 +10,18 @@ void Buff4010722::run(Ground* ground, int obj)
     {
         return;
     }
-    if (check006(ground, obj))
+    if (check021(ground, obj))
     {
-        QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff006(des, obj, method, 2));
+        QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff021(des, obj, method, 2));
         Ground::addBuff(ground, ground->buff[1][obj], buff);
     }
 }
 
-bool Buff4010722::check006(Ground* ground, int obj)
+bool Buff4010722::check021(Ground* ground, int obj)
 {
     for (QSharedPointer<Buff> pbuff : ground->buff[1][obj])
     {
-        if (pbuff->id == 6)
+        if (pbuff->id == 21)
         {
             return true;
         }

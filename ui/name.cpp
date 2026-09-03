@@ -2924,18 +2924,6 @@ void Name::buffName(int id, Buff* buff)
         unsigned char ch[] = {0xe5, 0xa6, 0x96, 0xe6, 0x9c, 0xaf};
         memcpy(buff->name, ch, sizeof(ch));
     } break;
-    case 6: {
-        unsigned char ch[] = {0xe9, 0xb8, 0xa9, 0xe6, 0xaf, 0x92};
-        memcpy(buff->name, ch, sizeof(ch));
-    } break;
-    case 7: {
-        unsigned char ch[] = {0xe7, 0x84, 0x9a, 0xe7, 0x83, 0xa7};
-        memcpy(buff->name, ch, sizeof(ch));
-    } break;
-    case 8: {
-        unsigned char ch[] = {0xe6, 0xb5, 0x81, 0xe8, 0xa1, 0x80};
-        memcpy(buff->name, ch, sizeof(ch));
-    } break;
     case 11: {
         unsigned char ch[] = {0xe9, 0x9c, 0x87, 0xe6, 0x85, 0x91};
         memcpy(buff->name, ch, sizeof(ch));
@@ -2962,6 +2950,18 @@ void Name::buffName(int id, Buff* buff)
     } break;
     case 17: {
         unsigned char ch[] = {0xe6, 0xb7, 0xb7, 0xe4, 0xb9, 0xb1};
+        memcpy(buff->name, ch, sizeof(ch));
+    } break;
+    case 21: {
+        unsigned char ch[] = {0xe9, 0xb8, 0xa9, 0xe6, 0xaf, 0x92};
+        memcpy(buff->name, ch, sizeof(ch));
+    } break;
+    case 22: {
+        unsigned char ch[] = {0xe7, 0x84, 0x9a, 0xe7, 0x83, 0xa7};
+        memcpy(buff->name, ch, sizeof(ch));
+    } break;
+    case 23: {
+        unsigned char ch[] = {0xe6, 0xb5, 0x81, 0xe8, 0xa1, 0x80};
         memcpy(buff->name, ch, sizeof(ch));
     } break;
     case 111: {

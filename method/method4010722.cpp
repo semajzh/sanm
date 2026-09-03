@@ -1,7 +1,7 @@
 #include "method4010722.h"
 #include "ground.h"
 #include "item.h"
-#include "buff/buff006.h"
+#include "buff/buff021.h"
 #include "buff/buff4010722.h"
 #include "log/logger.h"
 
@@ -30,7 +30,7 @@ int Method4010722::run(Ground* ground, Item* item1)
     QVector<int> objs = Ground::selectObjN(ground, item1->g[0], 0x0042, item1->g[0]);
     for (int obj : objs)
     {
-        QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff006(item1->g[0], obj, id, 2));
+        QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff021(item1->g[0], obj, id, 2));
         Ground::addBuff(ground, ground->buff[1][obj], buff);
     }
 

@@ -36,7 +36,7 @@ public:
     virtual void run(Ground* ground);
 
 private:
-    bool check008(Ground* ground, int obj);
+    bool check023(Ground* ground, int obj);
     int count = 0;
     float j11 = 0.0f;
 };
