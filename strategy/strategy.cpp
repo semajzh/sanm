@@ -843,7 +843,7 @@ QSharedPointer<Strategy> Strategy::getStrategy(int id)
         strategy = QSharedPointer<Strategy109011>::create();
     } break;
     case 110011: {
-        unsigned char ch[] = {0xe6, 0x89, 0xb6, 0xe5, 0x8d, 0xb1};
+        unsigned char ch[] = {0xe6, 0x8c, 0xbd, 0xe5, 0x8d, 0xb1};
         Logger::H().printname(ch, sizeof(ch), id);
         strategy = QSharedPointer<Strategy110011>::create();
     } break;
