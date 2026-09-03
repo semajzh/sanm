@@ -27,10 +27,12 @@ int Method0013524::run(Ground* ground, Item* item1)
         return 0;
     }
 
-    Ground::actml(ground, item1, &ground->m_group[obj/10].m_item[obj%10], id, 300);
+    float point1 = Ground::pointbystar(ground, 300, item1->g[0], id);
+    float point2 = Ground::pointbystar(ground, 100, item1->g[0], id);
+    Ground::actml(ground, item1, &ground->m_group[obj/10].m_item[obj%10], id, point1);
     if (check015(ground, obj))
     {
-        Ground::actml(ground, item1, &ground->m_group[obj/10].m_item[obj%10], id, 100);
+        Ground::actml(ground, item1, &ground->m_group[obj/10].m_item[obj%10], id, point2);
     }
 
     QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff015(item1->g[0], obj, id, 2));

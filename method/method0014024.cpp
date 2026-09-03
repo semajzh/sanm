@@ -33,4 +33,3 @@ int Method0014024::run(Ground* ground, Item* item1)
 
     return 1;
 }
-

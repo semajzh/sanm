@@ -28,7 +28,7 @@ int Method0013924::run(Ground* ground, Item* item1)
         float k12 = b016 ? 30 : 0;
         Ground::actbr(ground, item1, &ground->m_group[obj/10].m_item[obj%10], id, point1, false, 0, k12);
 
-        if (!b016 && qrand() % 100 + 1 > 100 - 65)
+        if (!b016 && qrand() % 100 + 1 > 100 - 80)
         {
             QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff016(item1->g[0], obj, id, 1));
             Ground::addBuff(ground, ground->buff[1][obj], buff);
