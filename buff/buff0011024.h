@@ -12,8 +12,6 @@ public:
     virtual void enter(Ground* ground);
     virtual void exit(Ground* ground);
     virtual void update(Ground* , QSharedPointer<Buff> );
-    virtual void run(Ground* ) {}
-    int run(Ground* , int);
 
 private:
     int count = 0;
