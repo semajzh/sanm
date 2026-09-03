@@ -5,7 +5,7 @@
 #include <QSharedPointer>
 
 //#define CCZ 1
-#define XYX 1
+//#define XYX 1
 
 class Buff;
 class Item
