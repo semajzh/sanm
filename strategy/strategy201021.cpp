@@ -20,7 +20,7 @@ bool Strategy201021::run(Ground* ground, Item* item1)
     Logger::H().printstrategy(ground, item1, this);
 
     int obj = item1->g[0];
-    QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff201021(item1->g[0], obj, id, 2));
+    QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff201021(item1->g[0], obj, id));
     Ground::addBuff(ground, ground->buff[3][obj], buff);
 
     return true;
