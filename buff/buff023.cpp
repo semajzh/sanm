@@ -5,7 +5,10 @@
 void Buff023::enter(Ground* ground)
 {
     Logger::H().printbuffenter(ground, src, des, this);
-    ++count;
+    if (count < 5)
+    {
+        ++count;
+    }
     Ground::exenter(ground, src, des, id);
 }
 
@@ -20,7 +23,10 @@ void Buff023::update(Ground* ground, QSharedPointer<Buff> buff)
 {
     Logger::H().printbuffupdate(ground, src, des, this);
     BuffC::update(ground, buff);
-    ++count;
+    if (count < 5)
+    {
+        ++count;
+    }
     Ground::exupdate(ground, src, des, id);
 }
 

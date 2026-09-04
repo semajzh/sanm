@@ -53,7 +53,7 @@ int Buff01502212::check01502213(Ground* ground, int obj)
         if (pbuff->id == 1502213)
         {
             QSharedPointer<Buff01502213> buff = qSharedPointerCast<Buff01502213>(pbuff);
-            return buff->count();
+            return buff->num();
         }
     }
     return 0;
@@ -65,9 +65,9 @@ void Buff01502213::enter(Ground* ground)
     float point1 = Ground::pointbystar(ground, 3, des, method);
     float point2 = Ground::addbyix(ground, point1, ground->m_group[src/10].m_item[src%10].i[1]);
     float point3 = Ground::addln(ground, des, 0, -point2);
-    if (cnt < 6)
+    if (count < 6)
     {
-        ++cnt;
+        ++count;
         l0 += point3;
         ground->m_group[des/10].m_item[des%10].l[0] += point3;
     }
@@ -85,13 +85,13 @@ void Buff01502213::update(Ground* ground, QSharedPointer<Buff> )
     float point1 = Ground::pointbystar(ground, 3, des, method);
     float point2 = Ground::addbyix(ground, point1, ground->m_group[src/10].m_item[src%10].i[1]);
     float point3 = Ground::addln(ground, des, 0, -point2);
-    if (cnt < 6)
+    if (count < 6)
     {
-        ++cnt;
+        ++count;
         l0 += point3;
         ground->m_group[des/10].m_item[des%10].l[0] += point3;
     }
-    if (cnt >= 6)
+    if (count >= 6)
     {
         QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff01502214(src, des, id, 1));
         Ground::addBuff(ground, ground->buff[1][des], buff);

@@ -5,14 +5,14 @@
 void Buff202021::enter(Ground* ground)
 {
     Logger::H().printbuffenter(ground, src, des, this);
-    l1 = Ground::addln(ground, des, 1, -10);
-    ground->m_group[des/10].m_item[des%10].l[1] += l1;
+    k1 = -10;
+    ground->m_group[des/10].m_item[des%10].k[1] += k1;
     Ground::exenter(ground, src, des, id);
 }
 
 void Buff202021::exit(Ground* ground)
 {
     Logger::H().printbuffexit(ground, src, des, this);
-    ground->m_group[des/10].m_item[des%10].l[1] -= l1;
+    ground->m_group[des/10].m_item[des%10].k[1] -= k1;
     Ground::exexit(ground, src, des, id);
 }

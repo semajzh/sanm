@@ -434,6 +434,7 @@ SOURCES += \
         strategy/strategy201032.cpp \
         strategy/strategy201041.cpp \
         strategy/strategy201051.cpp \
+        strategy/strategy201052.cpp \
         strategy/strategy201061.cpp \
         strategy/strategy201071.cpp \
         strategy/strategy201072.cpp \
@@ -444,12 +445,14 @@ SOURCES += \
         strategy/strategy201111.cpp \
         strategy/strategy202011.cpp \
         strategy/strategy202021.cpp \
+        strategy/strategy202022.cpp \
         strategy/strategy203011.cpp \
         strategy/strategy203021.cpp \
         strategy/strategy204011.cpp \
         strategy/strategy205011.cpp \
         strategy/strategy205012.cpp \
         strategy/strategy208011.cpp \
+        strategy/strategy210011.cpp \
 # insert strategy cpp 2
         strategy/strategy301011.cpp \
         strategy/strategy301012.cpp \
@@ -819,6 +822,7 @@ SOURCES += \
         buff/buff201041.cpp \
         buff/buff2010420.cpp \
         buff/buff201051.cpp \
+        buff/buff201052.cpp \
         buff/buff2010520.cpp \
         buff/buff201061.cpp \
         buff/buff201071.cpp \
@@ -834,6 +838,7 @@ SOURCES += \
         buff/buff2011120.cpp \
         buff/buff202011.cpp \
         buff/buff202021.cpp \
+        buff/buff202022.cpp \
         buff/buff2020222.cpp \
         buff/buff203011.cpp \
         buff/buff2030121.cpp \
@@ -846,6 +851,7 @@ SOURCES += \
         buff/buff2050121.cpp \
         buff/buff208011.cpp \
         buff/buff2080121.cpp \
+        buff/buff210011.cpp \
         buff/buff2091121.cpp \
         buff/buff2091222.cpp \
         buff/buff2100121.cpp \
@@ -1439,6 +1445,7 @@ HEADERS += \
     strategy/strategy201032.h \
     strategy/strategy201041.h \
     strategy/strategy201051.h \
+    strategy/strategy201052.h \
     strategy/strategy201061.h \
     strategy/strategy201071.h \
     strategy/strategy201072.h \
@@ -1449,12 +1456,14 @@ HEADERS += \
     strategy/strategy201111.h \
     strategy/strategy202011.h \
     strategy/strategy202021.h \
+    strategy/strategy202022.h \
     strategy/strategy203011.h \
     strategy/strategy203021.h \
     strategy/strategy204011.h \
     strategy/strategy205011.h \
     strategy/strategy205012.h \
     strategy/strategy208011.h \
+    strategy/strategy210011.h \
 # insert strategy h 2
     strategy/strategy301011.h \
     strategy/strategy301012.h \
@@ -1825,6 +1834,7 @@ HEADERS += \
     buff/buff201041.h \
     buff/buff2010420.h \
     buff/buff201051.h \
+    buff/buff201052.h \
     buff/buff2010520.h \
     buff/buff201061.h \
     buff/buff201071.h \
@@ -1840,6 +1850,7 @@ HEADERS += \
     buff/buff2011120.h \
     buff/buff202011.h \
     buff/buff202021.h \
+    buff/buff202022.h \
     buff/buff2020222.h \
     buff/buff203011.h \
     buff/buff2030121.h \
@@ -1852,6 +1863,7 @@ HEADERS += \
     buff/buff2050121.h \
     buff/buff2080121.h \
     buff/buff208011.h \
+    buff/buff210011.h \
     buff/buff2091121.h \
     buff/buff2091222.h \
     buff/buff2100121.h \

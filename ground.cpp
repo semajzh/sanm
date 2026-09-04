@@ -21,6 +21,7 @@
 #include "buff/buff201023.h"
 #include "buff/buff201072.h"
 #include "buff/buff201081.h"
+#include "buff/buff202022.h"
 #include "buff/buff301026.h"
 #include "buff/buff301091.h"
 #include "buff/buff301131.h"
@@ -72,6 +73,7 @@
 #include "buff/buff2011020.h"
 #include "buff/buff2020222.h"
 #include "buff/buff2030221.h"
+#include "buff/buff210011.h"
 #include "buff/buff2091121.h"
 #include "buff/buff2160121.h"
 #include "buff/buff3010221.h"
@@ -155,6 +157,8 @@ static float check201022(Ground* ground, int obj1, int obj2, int );
 static float check201023(Ground* ground, int obj1, int obj2);
 static bool check201072(Ground* ground, int obj1, int obj2);
 static float check201081(Ground* ground, int obj, int );
+static bool check202022(Ground* ground, int obj1, int obj2);
+static float check210011(Ground* ground, int obj1, int obj2);
 static bool check301026(Ground* ground, int obj);
 static bool check301081(Ground* ground, int obj);
 static bool check301082(Ground* ground, int obj);
@@ -1042,6 +1046,7 @@ int Ground::actbr(Ground* ground, Item* item1, Item* item2, int method, float po
     f *= 1 + check301091(ground, item2->g[0], item1->g[0])/100;
     f *= 1 + check409011(ground, item2->g[0], item1->g[0])/100;
     f *= 1 + check1011021(ground, item2->g[0], item1->g[0])/100;
+    f *= 1 + check210011(ground, item2->g[0], item1->g[0])/100;
     f *= 1 + ((item2->g[4] - item1->g[4] + 4) % 4 - 2) % 2 * 0.15;
 #if 0
     f *= 0.5 + (float)item1->h[0] / item1->h[3] / 2;
@@ -1142,6 +1147,7 @@ int Ground::actml(Ground* ground, Item* item1, Item* item2, int method, float po
     f *= 1 + check301091(ground, item2->g[0], item1->g[0])/100;
     f *= 1 + check409011(ground, item2->g[0], item1->g[0])/100;
     f *= 1 + check1011021(ground, item2->g[0], item1->g[0])/100;
+    f *= 1 + check210011(ground, item2->g[0], item1->g[0])/100;
     f *= 1 + ((item2->g[4] - item1->g[4] + 4) % 4 - 2) % 2 * 0.15;
 #if 0
     f *= 0.5 + (float)item1->h[0] / item1->h[3] / 2;
@@ -2003,6 +2009,33 @@ float check201081(Ground* ground, int obj, int b)
         }
     }
     return 0;
+}
+
+bool check202022(Ground* ground, int obj1, int obj2)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[3][obj1])
+    {
+        if (pbuff->id == 202022)
+        {
+            QSharedPointer<Buff202022> buff = qSharedPointerCast<Buff202022>(pbuff);
+            buff->run(ground, obj2);
+            return true;
+        }
+    }
+    return false;
+}
+
+float check210011(Ground* ground, int obj1, int obj2)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[3][obj1])
+    {
+        if (pbuff->id == 210011)
+        {
+            QSharedPointer<Buff210011> buff = qSharedPointerCast<Buff210011>(pbuff);
+            return buff->run(ground, obj2);
+        }
+    }
+    return 0.0f;
 }
 
 bool check301026(Ground* ground, int obj)
@@ -3031,6 +3064,7 @@ bool check2020222(Ground* ground, int obj1, int obj2, int method)
             buffs.remove(i);
             buff->run(ground, obj1);
             buff->exit(ground);
+            check202022(ground, buff->src, obj2);
             return true;
         }
     }

@@ -15,6 +15,7 @@ public:
     void run(Ground* , int );
 
 private:
+    bool check201052(Ground* ground, int obj);
     int round = 0;
     int count = 0;
     float j0 = 0.0f;

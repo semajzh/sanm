@@ -38,7 +38,7 @@ int Buff0140121::check01401213(Ground* ground, int obj)
         if (pbuff->id == 1401213)
         {
             QSharedPointer<Buff01401213> buff = qSharedPointerCast<Buff01401213>(pbuff);
-            return buff->count();
+            return buff->num();
         }
     }
     return 0;
@@ -67,9 +67,9 @@ void Buff01401213::enter(Ground* ground)
 {
     Logger::H().printbuffenter(ground, src, des, this);
     float point1 = Ground::pointbystar(ground, 24, des, method);
-    if (cnt < 3)
+    if (count < 3)
     {
-        ++cnt;
+        ++count;
         i2 += point1;
         Ground::addi2(ground, des, point1);
     }
@@ -86,9 +86,9 @@ void Buff01401213::update(Ground* ground, QSharedPointer<Buff> buff)
     Logger::H().printbuffupdate(ground, src, des, this);
     BuffC::update(ground, buff);
     float point1 = Ground::pointbystar(ground, 24, des, method);
-    if (cnt < 3)
+    if (count < 3)
     {
-        ++cnt;
+        ++count;
         i2 += point1;
         Ground::addi2(ground, des, point1);
     }

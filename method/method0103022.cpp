@@ -79,7 +79,7 @@ int Method0103022::check022(Ground *ground, int obj)
         if (pbuff->id == 22)
         {
             QSharedPointer<Buff022> buff = qSharedPointerCast<Buff022>(pbuff);
-            return buff->run(ground, 0);
+            return buff->num();
         }
     }
     return 0;

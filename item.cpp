@@ -558,6 +558,7 @@ bool Item::getItem(int id, Item& item)
         item.i[3] = 75+2.53*45;
         item.methods[0] = 2010520; //j0+45,j0:60(20)*5
         item.strategys[0] = 201051; //j0+6,j1+10
+//        item.strategys[0] = 201052; //j1+15;2010520:*2.8,*1
     } break;
 
     case 20106: {
@@ -674,6 +675,7 @@ bool Item::getItem(int id, Item& item)
         item.i[3] =  87 + 2.30 * 45;
         item.methods[0] = 2020222; //100%,-f3:zs;!2223,acted,1:+80(i1),-120
         item.strategys[0] = 202021; //-f3:k1-10(4)
+//        item.strategys[0] = 202022; //2020222,30%(i1):~1,r0
     } break;
 
     case 20301: {
@@ -794,7 +796,7 @@ bool Item::getItem(int id, Item& item)
         item.i[2] = 102 + 2.16 * 45;
         item.i[3] =  56 + 1.63 * 45;
         item.methods[0] = 2100121; //f3,buff2,-f1:-60br;30%(i0):buff6(2);actbuff6:kg;kg:j11+3(*15);kg=9/15,f6:buff6act
-        item.strategys[0] = 210011; //
+        item.strategys[0] = 210011; //atker.buff23count:-5(byix),self;g1=0:team*0.5
     } break;
 
     case 21601: {

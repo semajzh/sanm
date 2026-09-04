@@ -13,6 +13,7 @@ public:
     virtual void exit(Ground* ground);
     virtual void update(Ground* , QSharedPointer<Buff> buff);
     virtual void run(Ground* ground);
+    inline int num() { return count; }
 
 private:
     bool check2100121(Ground* ground, int obj);

@@ -14,7 +14,7 @@ public:
     virtual void update(Ground* , QSharedPointer<Buff> buff);
     virtual void run(Ground* ground);
     int run(Ground* ground, float& point);
-    inline int count() { return meta; }
+    inline int num() { return meta; }
 
 private:
     bool check1140121(Ground* ground, int t);

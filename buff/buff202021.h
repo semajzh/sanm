@@ -13,7 +13,7 @@ public:
     virtual void exit(Ground* ground);
 
 private:
-    float l1 = 0.0f;
+    float k1 = 0.0f;
 };
 
 #endif // BUFF202021_H

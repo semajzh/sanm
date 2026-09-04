@@ -55,7 +55,7 @@ bool Buff1140121::check102(Ground* ground)
         if (pbuff->id == 102)
         {
             QSharedPointer<Buff102> buff = qSharedPointerCast<Buff102>(pbuff);
-            return (buff->count() >= 2);
+            return (buff->num() >= 2);
         }
     }
     return false;

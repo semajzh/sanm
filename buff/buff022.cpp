@@ -40,11 +40,6 @@ void Buff022::run(Ground* ground)
     Ground::actml(ground, &item1, &item2, id, 60*count);
 }
 
-int Buff022::run(Ground* , int)
-{
-    return count;
-}
-
 bool Buff022::check302012(Ground* ground)
 {
     for (QSharedPointer<Buff> pbuff : ground->buff[3][src])

@@ -39,10 +39,10 @@ public:
     virtual void enter(Ground* ground);
     virtual void exit(Ground* ground);
     virtual void update(Ground* ground, QSharedPointer<Buff> buff);
-    inline int count() { return cnt; }
+    inline int num() { return count; }
 
 private:
-    int cnt = 0;
+    int count = 0;
     float l0 = 0.0f;
 };
 
