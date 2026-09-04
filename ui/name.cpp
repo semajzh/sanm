@@ -2468,6 +2468,10 @@ void Name::strategyName(int id, QSharedPointer<Strategy> strategy)
         unsigned char ch[] = {0xe9, 0x93, 0x81, 0xe9, 0xaa, 0x91, 0xe4, 0xbb, 0xa4};
         memcpy(strategy->name, ch, sizeof(ch));
     } break;
+    case 201052: {
+        unsigned char ch[] = {0xe9, 0xa9, 0xac, 0xe6, 0x9c, 0xaf};
+        memcpy(strategy->name, ch, sizeof(ch));
+    } break;
     case 201061: {
         unsigned char ch[] = {0xe6, 0x96, 0xb0, 0xe4, 0xba, 0xad, 0xe4, 0xbe, 0xaf, 0xe5, 0x88, 0x80, 0xe9, 0x93, 0xad};
         memcpy(strategy->name, ch, sizeof(ch));
@@ -2508,6 +2512,10 @@ void Name::strategyName(int id, QSharedPointer<Strategy> strategy)
         unsigned char ch[] = {0xe6, 0x96, 0x87, 0xe9, 0x9f, 0xac};
         memcpy(strategy->name, ch, sizeof(ch));
     } break;
+    case 202022: {
+        unsigned char ch[] = {0xe6, 0x97, 0xb6, 0xe7, 0xad, 0x96};
+        memcpy(strategy->name, ch, sizeof(ch));
+    } break;
     case 203011: {
         unsigned char ch[] = {0xe6, 0xb1, 0x89, 0xe5, 0xa5, 0xb3, 0xe4, 0xbc, 0xa0};
         memcpy(strategy->name, ch, sizeof(ch));
@@ -2530,6 +2538,10 @@ void Name::strategyName(int id, QSharedPointer<Strategy> strategy)
     } break;
     case 208011: {
         unsigned char ch[] = {0xe5, 0x85, 0xab, 0xe9, 0x98, 0xb5};
+        memcpy(strategy->name, ch, sizeof(ch));
+    } break;
+    case 210011: {
+        unsigned char ch[] = {0xe6, 0xa7, 0x8a, 0xe8, 0xa1, 0x80, 0xe4, 0xb9, 0xa6};
         memcpy(strategy->name, ch, sizeof(ch));
     } break;
 // insert strategy 2

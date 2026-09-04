@@ -20,6 +20,6 @@ void Buff202022::run(Ground* ground, int obj)
     }
 
     round = ground->m_round;
-    QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff2020222(des, obj, id));
+    QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff2020222(des, obj, 2020222));
     Ground::addBuff(ground, ground->buff[3][obj], buff);
 }
