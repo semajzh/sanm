@@ -28,6 +28,7 @@ public:
     virtual void update(Ground* ground, QSharedPointer<Buff> buff);
 
 private:
+    bool check216021(Ground* ground, int count);
     int count = 0;
     float k5 = 0.0f;
 };
@@ -44,6 +45,7 @@ public:
     virtual void update(Ground* ground, QSharedPointer<Buff> buff);
 
 private:
+    bool check216021(Ground* ground, int count);
     int count = 0;
     float j11 = 0.0f;
 };
@@ -60,6 +62,7 @@ public:
     virtual void update(Ground* ground, QSharedPointer<Buff> buff);
 
 private:
+    bool check216021(Ground* ground, int count);
     int count = 0;
     float j6 = 0.0f;
 };

@@ -148,6 +148,9 @@
 #include "strategy205012.h"
 #include "strategy208011.h"
 #include "strategy210011.h"
+#include "strategy216011.h"
+#include "strategy216012.h"
+#include "strategy216021.h"
 // insert include 2
 #include "strategy301011.h"
 #include "strategy301012.h"
@@ -1001,6 +1004,21 @@ QSharedPointer<Strategy> Strategy::getStrategy(int id)
         unsigned char ch[] = {0xe6, 0xa7, 0x8a, 0xe8, 0xa1, 0x80, 0xe4, 0xb9, 0xa6};
         Logger::H().printname(ch, sizeof(ch), id);
         strategy = QSharedPointer<Strategy210011>::create();
+    } break;
+    case 216011: {
+        unsigned char ch[] = {0xe6, 0x89, 0xbf, 0xe7, 0xa5, 0x9a, 0xe5, 0xbf, 0x83, 0xe4, 0xb9, 0xa6};
+        Logger::H().printname(ch, sizeof(ch), id);
+        strategy = QSharedPointer<Strategy216011>::create();
+    } break;
+    case 216012: {
+        unsigned char ch[] = {0xe5, 0xae, 0x88, 0xe8, 0x9c, 0x80, 0xe6, 0x81, 0xaf, 0xe6, 0x88, 0x88};
+        Logger::H().printname(ch, sizeof(ch), id);
+        strategy = QSharedPointer<Strategy216012>::create();
+    } break;
+    case 216021: {
+        unsigned char ch[] = {0xe6, 0xae, 0x89, 0xe4, 0xb9, 0x89, 0xe9, 0x81, 0x97, 0xe7, 0xaf, 0x87};
+        Logger::H().printname(ch, sizeof(ch), id);
+        strategy = QSharedPointer<Strategy216021>::create();
     } break;
 // insert case 2
     case 301011: {

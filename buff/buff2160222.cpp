@@ -1,4 +1,5 @@
 #include "buff2160222.h"
+#include "buff216021.h"
 #include "ground.h"
 #include "log/logger.h"
 
@@ -41,6 +42,21 @@ void Buff21602222::update(Ground* ground, QSharedPointer<Buff> )
         k5 += point1;
         ground->m_group[des/10].m_item[des%10].k[5] += point1;
     }
+    check216021(ground, count);
+}
+
+bool Buff21602222::check216021(Ground* ground, int count)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[3][src])
+    {
+        if (pbuff->id == 216021)
+        {
+            QSharedPointer<Buff216021> buff = qSharedPointerCast<Buff216021>(pbuff);
+            buff->run(ground, count);
+            return true;
+        }
+    }
+    return false;
 }
 
 void Buff21602223::enter(Ground* ground)
@@ -71,6 +87,21 @@ void Buff21602223::update(Ground* ground, QSharedPointer<Buff> )
         j11 += j;
         ground->m_group[des/10].m_item[des%10].j[11] += j;
     }
+    check216021(ground, count);
+}
+
+bool Buff21602223::check216021(Ground* ground, int count)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[3][src])
+    {
+        if (pbuff->id == 216021)
+        {
+            QSharedPointer<Buff216021> buff = qSharedPointerCast<Buff216021>(pbuff);
+            buff->run(ground, count);
+            return true;
+        }
+    }
+    return false;
 }
 
 void Buff21602224::enter(Ground* ground)
@@ -101,4 +132,19 @@ void Buff21602224::update(Ground* ground, QSharedPointer<Buff> )
         j6 += j;
         ground->m_group[des/10].m_item[des%10].j[6] += j;
     }
+    check216021(ground, count);
+}
+
+bool Buff21602224::check216021(Ground* ground, int count)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[3][src])
+    {
+        if (pbuff->id == 216021)
+        {
+            QSharedPointer<Buff216021> buff = qSharedPointerCast<Buff216021>(pbuff);
+            buff->run(ground, count);
+            return true;
+        }
+    }
+    return false;
 }

@@ -810,6 +810,8 @@ bool Item::getItem(int id, Item& item)
         item.i[2] = 101 + 2.35 * 45;
         item.i[3] =  56 + 1.62 * 45;
         item.methods[0] = 2160121;
+//        item.strategys[0] = 216011; //21601213:*0.5(l0,j13,j14);nodec@hit;clear@roundend
+        item.strategys[0] = 216012; //212:objs=team;r4:team+buff2160123(r1)
     } break;
 
     case 21602: {
@@ -824,6 +826,7 @@ bool Item::getItem(int id, Item& item)
         item.i[2] = 80 + 1.78 * 45;
         item.i[3] = 92 + 1.83 * 45;
         item.methods[0] = 2160222;
+        item.strategys[0] = 216021; //21602222/3/4count==4:atk(i0max,team)->h0min,enemy
     } break;
 
     case 30101: {

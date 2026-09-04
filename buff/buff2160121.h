@@ -28,6 +28,9 @@ public:
     virtual ~Buff21601212() {}
 
     virtual void run(Ground* ground);
+
+private:
+    bool check216012(Ground* ground, int obj);
 };
 
 class Buff21601213 : public BuffR
@@ -44,6 +47,8 @@ public:
     void run(Ground* ground, int );
 
 private:
+    bool check216011(Ground* ground, int obj);
+    bool check2160122(Ground* ground, int obj);
     int count = 0;
     QVector<float> l0;
     QVector<float> j13;

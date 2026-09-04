@@ -1,4 +1,6 @@
 #include "buff2160121.h"
+#include "buff216011.h"
+#include "buff216012.h"
 #include "ground.h"
 #include "log/logger.h"
 
@@ -36,22 +38,48 @@ void Buff21601212::run(Ground* ground)
 {
     float jl = Ground::addbyix(ground, 50, meta, 10000);
     int count = (qrand() % 100 + 1 <= 100 - jl) ? 1 : 2;
-    for (int i = 0; i < count; ++i)
+
+    QVector<int> objs;
+    if (check216012(ground, src))
     {
-        QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff21601213(src, des, method));
-        Ground::addBuff(ground, ground->buff[4][des], buff);
+        objs = Ground::selectObjN(ground, src, 0x0013, src);
     }
+    else
+    {
+        objs.append(des);
+    }
+    for (int obj : objs)
+    {
+        for (int i = 0; i < count; ++i)
+        {
+            QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff21601213(src, obj, method));
+            Ground::addBuff(ground, ground->buff[4][obj], buff);
+        }
+    }
+}
+
+bool Buff21601212::check216012(Ground* ground, int obj)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[3][obj])
+    {
+        if (pbuff->id == 216012)
+        {
+            return true;
+        }
+    }
+    return false;
 }
 
 void Buff21601213::enter(Ground* ground)
 {
     Logger::H().printbuffenter(ground, src, des, this);
     ++count;
+    float scale = check216011(ground, src) ? 0.5f : 1.0f;
     float point1 = Ground::addbyix(ground, 10, ground->m_group[src/10].m_item[src%10].i[2]);
-    float point2 = Ground::addln(ground, des, 0, -point1);
+    float point2 = Ground::addln(ground, des, 0, -point1) * scale;
     float point3 = Ground::addbyix(ground, 3, ground->m_group[src/10].m_item[src%10].i[2]);
-    float point4 = Ground::addjn(ground, des, 13, point3);
-    float point5 = Ground::addjn(ground, des, 14, point3);
+    float point4 = Ground::addjn(ground, des, 13, point3) * scale;
+    float point5 = Ground::addjn(ground, des, 14, point3) * scale;
     l0.push_back(point2);
     j13.push_back(point4);
     j14.push_back(point5);
@@ -63,29 +91,31 @@ void Buff21601213::enter(Ground* ground)
 void Buff21601213::exit(Ground* ground)
 {
     Logger::H().printbuffexit(ground, src, des, this);
-    for (float l : l0)
+    while (!l0.isEmpty())
     {
-        ground->m_group[des/10].m_item[des%10].l[0] -= l;
+        ground->m_group[des/10].m_item[des%10].l[0] -= l0.takeLast();
     }
-    for (float j : j13)
+    while (!j13.isEmpty())
     {
-        ground->m_group[des/10].m_item[des%10].j[13] -= j;
+        ground->m_group[des/10].m_item[des%10].j[13] -= j13.takeLast();
     }
-    for (float j : j14)
+    while (!j14.isEmpty())
     {
-        ground->m_group[des/10].m_item[des%10].j[14] -= j;
+        ground->m_group[des/10].m_item[des%10].j[14] -= j14.takeLast();
     }
+    count = 0;
 }
 
 void Buff21601213::update(Ground* ground, QSharedPointer<Buff> )
 {
     Logger::H().printbuffupdate(ground, src, des, this);
     ++count;
+    float scale = check216011(ground, src) ? 0.5f : 1.0f;
     float point1 = Ground::addbyix(ground, 10, ground->m_group[src/10].m_item[src%10].i[2]);
-    float point2 = Ground::addln(ground, des, 0, -point1);
+    float point2 = Ground::addln(ground, des, 0, -point1) * scale;
     float point3 = Ground::addbyix(ground, 3, ground->m_group[src/10].m_item[src%10].i[2]);
-    float point4 = Ground::addjn(ground, des, 13, point3);
-    float point5 = Ground::addjn(ground, des, 14, point3);
+    float point4 = Ground::addjn(ground, des, 13, point3) * scale;
+    float point5 = Ground::addjn(ground, des, 14, point3) * scale;
     l0.push_back(point2);
     j13.push_back(point4);
     j14.push_back(point5);
@@ -116,6 +146,23 @@ void Buff21601213::run(Ground* ground)
             Ground::actml(ground, &ground->m_group[des/10].m_item[des%10], &ground->m_group[obj/10].m_item[obj%10], method, point);
         }
     }
+
+    if (check216011(ground, src))
+    {
+        while (!l0.isEmpty())
+        {
+            ground->m_group[des/10].m_item[des%10].l[0] -= l0.takeLast();
+        }
+        while (!j13.isEmpty())
+        {
+            ground->m_group[des/10].m_item[des%10].j[13] -= j13.takeLast();
+        }
+        while (!j14.isEmpty())
+        {
+            ground->m_group[des/10].m_item[des%10].j[14] -= j14.takeLast();
+        }
+        count = 0;
+    }
 }
 
 void Buff21601213::run(Ground* ground, int )
@@ -124,7 +171,10 @@ void Buff21601213::run(Ground* ground, int )
     {
         return;
     }
-    count -= 1;
+    if (check216011(ground, src) || check2160122(ground, des))
+    {
+        return;
+    }
 
     if (!l0.isEmpty())
     {
@@ -138,6 +188,31 @@ void Buff21601213::run(Ground* ground, int )
     {
         ground->m_group[des/10].m_item[des%10].j[14] -= j14.takeLast();
     }
+    count -= 1;
+}
+
+bool Buff21601213::check216011(Ground* ground, int obj)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[3][obj])
+    {
+        if (pbuff->id == 216011)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool Buff21601213::check2160122(Ground* ground, int obj)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[6][obj])
+    {
+        if (pbuff->id == 2160122)
+        {
+            return true;
+        }
+    }
+    return false;
 }
 
 

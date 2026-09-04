@@ -453,6 +453,9 @@ SOURCES += \
         strategy/strategy205012.cpp \
         strategy/strategy208011.cpp \
         strategy/strategy210011.cpp \
+        strategy/strategy216011.cpp \
+        strategy/strategy216012.cpp \
+        strategy/strategy216021.cpp \
 # insert strategy cpp 2
         strategy/strategy301011.cpp \
         strategy/strategy301012.cpp \
@@ -852,6 +855,9 @@ SOURCES += \
         buff/buff208011.cpp \
         buff/buff2080121.cpp \
         buff/buff210011.cpp \
+        buff/buff216011.cpp \
+        buff/buff216012.cpp \
+        buff/buff216021.cpp \
         buff/buff2091121.cpp \
         buff/buff2091222.cpp \
         buff/buff2100121.cpp \
@@ -1464,6 +1470,9 @@ HEADERS += \
     strategy/strategy205012.h \
     strategy/strategy208011.h \
     strategy/strategy210011.h \
+    strategy/strategy216011.h \
+    strategy/strategy216012.h \
+    strategy/strategy216021.h \
 # insert strategy h 2
     strategy/strategy301011.h \
     strategy/strategy301012.h \
@@ -1864,6 +1873,9 @@ HEADERS += \
     buff/buff2080121.h \
     buff/buff208011.h \
     buff/buff210011.h \
+    buff/buff216011.h \
+    buff/buff216012.h \
+    buff/buff216021.h \
     buff/buff2091121.h \
     buff/buff2091222.h \
     buff/buff2100121.h \
