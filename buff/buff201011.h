@@ -18,6 +18,7 @@ private:
     float j15 = 0.0f;
     int round = 0;
     int count = 0;
+    bool triggered = false;
 };
 
 #endif // BUFF201011_H

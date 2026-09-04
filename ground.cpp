@@ -205,6 +205,7 @@ static bool check01010212(Ground* ground, int obj);
 static bool check0102021(Ground* ground, int obj, int );
 static bool check0104021(Ground* ground, int obj);
 static bool check0105011(Ground* ground, int obj);
+static bool check201012(Ground* ground, int obj);
 static bool check0110120(Ground* ground, int obj);
 static bool check0110321(Ground* ground, int obj1, int obj2, int type);
 static bool check0120321(Ground* ground, int obj1, int obj2);
@@ -228,7 +229,7 @@ static bool check1080121(Ground* ground, int obj1, int obj2);
 static bool check1091120(Ground* ground, int obj);
 static bool check1091321(Ground* ground, int obj1, int obj2);
 static bool check1100121(Ground* ground, int obj, float point);
-static bool check2010321(Ground* ground, int obj);
+static bool check2010321(Ground* ground, int obj, int type);
 static bool check2010420(Ground* ground, int obj);
 static bool check2010520(Ground* ground, int obj1, int obj2);
 static bool check2020222(Ground* ground, int obj1, int obj2, int method);
@@ -920,8 +921,8 @@ int act(Ground* ground, Item* item1, Item* item2, int method, float& point, int 
     check1010620(ground, item1->g[0], item2->g[0]);
     check1011320(ground, item2->g[0], item1->g[0]);
     check0014321(ground, item2->g[0]);
-    check2010321(ground, item1->g[0]);
-    check2010321(ground, item2->g[0]);
+    check2010321(ground, item1->g[0], 1);
+    check2010321(ground, item2->g[0], 0);
     check2030221(ground, item2->g[0], p);
     check4010520(ground, item2->g[0], item1->g[0]);
     check1020120(ground, item1->g[0], item2->g[0], p);
@@ -1349,6 +1350,7 @@ bool Ground::excheck(Ground* ground, int src, int des, int id)
     {
         check3010221(ground, des, id);
         check0105011(ground, src);
+        check201012(ground, src);
     }
     check0014120(ground, src);
     check0016420(ground, des);
@@ -2659,6 +2661,19 @@ bool check0105011(Ground *ground, int obj)
     return false;
 }
 
+bool check201012(Ground *ground, int obj)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[3][obj])
+    {
+        if (pbuff->id == 201012)
+        {
+            pbuff->run(ground);
+            return true;
+        }
+    }
+    return false;
+}
+
 bool check0110120(Ground *ground, int obj)
 {
     for (QSharedPointer<Buff> pbuff : ground->buff[4][obj])
@@ -2959,14 +2974,14 @@ bool check1100121(Ground* ground, int obj, float point)
     return true;
 }
 
-bool check2010321(Ground* ground, int obj)
+bool check2010321(Ground* ground, int obj, int type)
 {
     for (QSharedPointer<Buff> pbuff : ground->buff[3][obj])
     {
         if (pbuff->id == 2010321)
         {
             QSharedPointer<Buff2010321> buff = qSharedPointerCast<Buff2010321>(pbuff);
-            buff->run(ground);
+            buff->run(ground, type);
             break;
         }
     }

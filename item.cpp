@@ -496,7 +496,7 @@ bool Item::getItem(int id, Item& item)
         item.i[3] = 53+1.72*45;
         item.methods[0] = 2010121; //i2+18(i1)*3,223:+100*3,minh0:-ex*1,+90
         item.strategys[0] = 201011; //j15+12(i1),hlo4:111(1)
-//        item.strategys[0] = 201012; //f0:faction=10%
+//        item.strategys[0] = 201012; //friend-ex,4:k0+4(2)(*4)
     } break;
 
     case 20102: {
@@ -526,7 +526,8 @@ bool Item::getItem(int id, Item& item)
         item.i[2] = 111+2.3*45;
         item.i[3] = 57+1.65*45;
         item.methods[0] = 2010321; //j12+24,act,acted,50%:-80(5)
-        item.strategys[0] = 201031; //r1357:2*l0+12,r2468:2*l0-12
+//        item.strategys[0] = 201031; //r1357:2*l0+12,r2468:2*l0-12
+        item.strategys[0] = 201032; //g1=0:l0-12;2010321,des-only:+3
     } break;
 
     case 20104: {

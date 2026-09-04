@@ -13,11 +13,14 @@ public:
 
     virtual void enter(Ground* ground);
     virtual void exit(Ground* ground);
-    virtual void run(Ground* ground);
+    virtual void run(Ground* ) {}
+    void run(Ground* ground, int );
 
 private:
+    bool check201032(Ground* ground);
     int round = 0;
     int count = 0;
+    int countex = 0;
     float j12 = 0.0f;
 };
 

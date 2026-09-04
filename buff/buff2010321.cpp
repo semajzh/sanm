@@ -15,15 +15,29 @@ void Buff2010321::exit(Ground* ground)
     ground->m_group[des/10].m_item[des%10].j[12] -= j12;
 }
 
-void Buff2010321::run(Ground* ground)
+void Buff2010321::run(Ground* ground, int type)
 {
     if (round != ground->m_round)
     {
         round = ground->m_round;
         count = 0;
+        countex = 0;
     }
 
-    if (qrand() % 100 + 1 <= 100 - 50 || ++count > 5)
+    if (qrand() % 100 + 1 <= 100 - 50)
+    {
+        return;
+    }
+
+    if (count < 5)
+    {
+        ++count;
+    }
+    else if (type == 0 && countex < 3 && check201032(ground))
+    {
+        ++countex;
+    }
+    else
     {
         return;
     }
@@ -35,4 +49,16 @@ void Buff2010321::run(Ground* ground)
         int obj = objs.front();
         Ground::actml(ground, &ground->m_group[des/10].m_item[des%10], &ground->m_group[obj/10].m_item[obj%10], method, point1);
     }
+}
+
+bool Buff2010321::check201032(Ground* ground)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[3][des])
+    {
+        if (pbuff->id == 201032)
+        {
+            return true;
+        }
+    }
+    return false;
 }
