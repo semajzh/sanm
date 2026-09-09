@@ -7,7 +7,7 @@ void Buff301051::enter(Ground* ground)
     Logger::H().printbuffenter(ground, src, des, this);
     if (ground->m_round > 0 && ground->m_round % 2 == 0)
     {
-        j6 = 12;
+        j6 = 15;
         ground->m_group[des/10].m_item[des%10].j[6] += j6;
     }
 }
@@ -15,7 +15,7 @@ void Buff301051::enter(Ground* ground)
 void Buff301051::exit(Ground* ground)
 {
     Logger::H().printbuffexit(ground, src, des, this);
-    ground->m_group[des/10].m_item[des%10].j[12] -= j6;
+    ground->m_group[des/10].m_item[des%10].j[6] -= j6;
     j6 = 0;
 }
 

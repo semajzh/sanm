@@ -464,6 +464,7 @@ SOURCES += \
         strategy/strategy301031.cpp \
         strategy/strategy301041.cpp \
         strategy/strategy301051.cpp \
+        strategy/strategy301052.cpp \
         strategy/strategy301061.cpp \
         strategy/strategy301071.cpp \
         strategy/strategy301072.cpp \
@@ -872,6 +873,7 @@ SOURCES += \
         buff/buff301031.cpp \
         buff/buff301041.cpp \
         buff/buff301051.cpp \
+        buff/buff301052.cpp \
         buff/buff3010520.cpp \
         buff/buff3010621.cpp \
         buff/buff301071.cpp \
@@ -1481,6 +1483,7 @@ HEADERS += \
     strategy/strategy301031.h \
     strategy/strategy301041.h \
     strategy/strategy301051.h \
+    strategy/strategy301052.h \
     strategy/strategy301061.h \
     strategy/strategy301071.h \
     strategy/strategy301072.h \
@@ -1890,6 +1893,7 @@ HEADERS += \
     buff/buff301031.h \
     buff/buff301041.h \
     buff/buff301051.h \
+    buff/buff301052.h \
     buff/buff3010520.h \
     buff/buff3010621.h \
     buff/buff301071.h \

@@ -900,6 +900,7 @@ bool Item::getItem(int id, Item& item)
         item.i[3] =  80 + 2.54 * 45;
         item.methods[0] = 3010520; //j6+0.8*n;221,90%:xl;!2223,90%:xl;xl=2223(*10)
         item.strategys[0] = 301051; //r2468,j6+15
+        item.strategys[0] = 301052; //2224,r==0:j6+10,k5+10(3),buff6(1)
     } break;
 
     case 30106: {

@@ -161,6 +161,7 @@ static bool check202022(Ground* ground, int obj1, int obj2);
 static float check210011(Ground* ground, int obj1, int obj2);
 static bool check301026(Ground* ground, int obj);
 static bool check301081(Ground* ground, int obj);
+static bool check301052(Ground* ground, int obj);
 static bool check301082(Ground* ground, int obj);
 static float check301091(Ground* ground, int obj1, int obj2);
 static bool check301102(Ground* ground, int obj);
@@ -2077,6 +2078,19 @@ bool check301082(Ground* ground, int obj)
     return false;
 }
 
+bool check301052(Ground* ground, int obj)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[3][obj])
+    {
+        if (pbuff->id == 301052)
+        {
+            pbuff->run(ground);
+            return true;
+        }
+    }
+    return false;
+}
+
 float check301091(Ground* ground, int obj1, int obj2)
 {
     for (QSharedPointer<Buff> pbuff : ground->buff[6][obj1])
@@ -3902,9 +3916,13 @@ bool Ground::run2224(Ground* ground, Item* item1, int m)
         }
 
         int r = methodrun(ground, item1, method, jl);
-        if (r == 0 && check009020(ground, item1->g[0]))
+        if (r == 0)
         {
-            r = methodrun(ground, item1, method, jl);
+            check301052(ground, item1->g[0]);
+            if (check009020(ground, item1->g[0]))
+            {
+                r = methodrun(ground, item1, method, jl);
+            }
         }
         if (r == 1)
         {
