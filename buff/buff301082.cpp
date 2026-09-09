@@ -9,6 +9,10 @@ void Buff301082::run(Ground* ground)
         return;
     }
 
-    Logger::H().printcustom("[301082] 2223\n");
-    Ground::run2223(ground, des, -1, false, false);
+    QVector<int> objs = Ground::selectObjN(ground, des, 0xA021);
+    for (int obj : objs)
+    {
+        Logger::H().printcustom("[301082] 2223\n");
+        Ground::run2223(ground, des, obj, false, false);
+    }
 }
