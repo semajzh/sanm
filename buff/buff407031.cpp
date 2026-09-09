@@ -16,6 +16,7 @@ void Buff407031::run(Ground* ground)
         return;
     }
 
-    k0 = Ground::addkn(ground, des, 0, 8);
+    float point1 = Ground::addbyix(ground, 8, ground->m_group[src/10].m_item[src%10].i[1] + ground->m_group[src/10].m_item[src%10].i[2]);
+    k0 = Ground::addkn(ground, des, 0, point1);
     ground->m_group[des/10].m_item[des%10].k[0] += k0;
 }
