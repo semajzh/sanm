@@ -82,6 +82,9 @@
 #include "strategy001800.h"
 #include "strategy001810.h"
 #include "strategy001820.h"
+#include "strategy001830.h"
+#include "strategy001840.h"
+#include "strategy001850.h"
 #include "strategy007030.h"
 #include "strategy007040.h"
 #include "strategy009000.h"
@@ -679,6 +682,21 @@ QSharedPointer<Strategy> Strategy::getStrategy(int id)
         unsigned char ch[] = {0xe5, 0xa8, 0x81, 0xe6, 0x99, 0xba};
         Logger::H().printname(ch, sizeof(ch), id);
         strategy = QSharedPointer<Strategy001820>::create();
+    } break;
+    case 1830: {
+        unsigned char ch[] = {0xe6, 0xb2, 0xbb, 0xe5, 0x85, 0xb5};
+        Logger::H().printname(ch, sizeof(ch), id);
+        strategy = QSharedPointer<Strategy001830>::create();
+    } break;
+    case 1840: {
+        unsigned char ch[] = {0xe5, 0x86, 0x9b, 0xe7, 0x94, 0xa8};
+        Logger::H().printname(ch, sizeof(ch), id);
+        strategy = QSharedPointer<Strategy001840>::create();
+    } break;
+    case 1850: {
+        unsigned char ch[] = {0xe7, 0x95, 0xa5, 0xe5, 0x9c, 0xb0};
+        Logger::H().printname(ch, sizeof(ch), id);
+        strategy = QSharedPointer<Strategy001850>::create();
     } break;
     case 7030: {
         unsigned char ch[] = {0xe7, 0x8a, 0xac, 0xe9, 0x9f, 0xac};

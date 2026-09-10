@@ -387,6 +387,9 @@ SOURCES += \
         strategy/strategy001800.cpp \
         strategy/strategy001810.cpp \
         strategy/strategy001820.cpp \
+        strategy/strategy001830.cpp \
+        strategy/strategy001840.cpp \
+        strategy/strategy001850.cpp \
         strategy/strategy007030.cpp \
         strategy/strategy007040.cpp \
         strategy/strategy009000.cpp \
@@ -663,6 +666,9 @@ SOURCES += \
         buff/buff001800.cpp \
         buff/buff001810.cpp \
         buff/buff001820.cpp \
+        buff/buff001830.cpp \
+        buff/buff001840.cpp \
+        buff/buff001850.cpp \
         buff/buff009000.cpp \
         buff/buff009010.cpp \
         buff/buff009020.cpp \
@@ -1406,6 +1412,9 @@ HEADERS += \
     strategy/strategy001800.h \
     strategy/strategy001810.h \
     strategy/strategy001820.h \
+    strategy/strategy001830.h \
+    strategy/strategy001840.h \
+    strategy/strategy001850.h \
     strategy/strategy007030.h \
     strategy/strategy007040.h \
     strategy/strategy009000.h \
@@ -1683,6 +1692,9 @@ HEADERS += \
     buff/buff001800.h \
     buff/buff001810.h \
     buff/buff001820.h \
+    buff/buff001830.h \
+    buff/buff001840.h \
+    buff/buff001850.h \
     buff/buff009000.h \
     buff/buff009010.h \
     buff/buff009020.h \
