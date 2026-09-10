@@ -2295,6 +2295,14 @@ void Name::strategyName(int id, QSharedPointer<Strategy> strategy)
         unsigned char ch[] = {0xe7, 0x95, 0xa5, 0xe5, 0x9c, 0xb0};
         memcpy(strategy->name, ch, sizeof(ch));
     } break;
+    case 1860: {
+        unsigned char ch[] = {0xe7, 0xa8, 0xb3, 0xe9, 0x87, 0x8d};
+        memcpy(strategy->name, ch, sizeof(ch));
+    } break;
+    case 1870: {
+        unsigned char ch[] = {0xe4, 0xb8, 0x87, 0xe5, 0x85, 0xa8};
+        memcpy(strategy->name, ch, sizeof(ch));
+    } break;
     case 7030: {
         unsigned char ch[] = {0xe7, 0x8a, 0xac, 0xe9, 0x9f, 0xac};
         memcpy(strategy->name, ch, sizeof(ch));

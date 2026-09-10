@@ -1624,23 +1624,37 @@ QSharedPointer<Method> Method::getMethod(int id)
 
 int ZBMethod::run(Ground* ground, Item* item1)
 {
-    if (checkzb(ground, item1->g[0]))
-    {
-        return 1;
-    }
-    if (check101(ground, item1->g[0]))
-    {
-        Logger::H().printmethodzb(ground, item1, this, 1);
-        return 1;
-    }
-    if (qrand() % 100 + 1 > 100 - item1->j[17])
-    {
-        Logger::H().printmethodzb(ground, item1, this, 1);
-        return 1;
-    }
+    int ret = 2;
+    do {
+        if (checkzb(ground, item1->g[0]))
+        {
+            ret = 1;
+            break;
+        }
+        if (check101(ground, item1->g[0]))
+        {
+            Logger::H().printmethodzb(ground, item1, this, 1);
+            ret = 1;
+            break;
+        }
+        if (qrand() % 100 + 1 > 100 - item1->j[17])
+        {
+            Logger::H().printmethodzb(ground, item1, this, 1);
+            ret = 1;
+            break;
+        }
+    } while(0);
 
-    Logger::H().printmethodzb(ground, item1, this, 0);
-    return 2;
+    if (ret == 1)
+    {
+        check001860(ground, item1->g[0]);
+        check001870(ground, item1->g[0]);
+    }
+    else if (ret == 2)
+    {
+        Logger::H().printmethodzb(ground, item1, this, 0);
+    }
+    return ret;
 }
 
 bool ZBMethod::checkzb(Ground* ground, int obj)
@@ -1671,4 +1685,30 @@ bool ZBMethod::check101(Ground* ground, int obj)
         }
     }
     return false;
+}
+
+bool ZBMethod::check001860(Ground* ground, int obj)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[3][obj])
+    {
+        if (pbuff->id == 1860)
+        {
+            pbuff->run(ground);
+            break;
+        }
+    }
+    return true;
+}
+
+bool ZBMethod::check001870(Ground* ground, int obj)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[3][obj])
+    {
+        if (pbuff->id == 1870)
+        {
+            pbuff->run(ground);
+            break;
+        }
+    }
+    return true;
 }

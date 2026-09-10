@@ -36,6 +36,8 @@ protected:
 
 private:
     bool check101(Ground* ground, int obj);
+    bool check001860(Ground* ground, int obj);
+    bool check001870(Ground* ground, int obj);
 };
 
 #endif // METHOD_H
