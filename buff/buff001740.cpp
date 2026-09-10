@@ -13,7 +13,7 @@ void Buff001741::enter(Ground* ground)
     Logger::H().printbuffenter(ground, src, des, this);
     if (++count <= 4)
     {
-        float k = Ground::addkn(ground, des, 0, 2.5);
+        float k = Ground::addkn(ground, des, 5, 2.5);
         k5 += k;
         ground->m_group[des/10].m_item[des%10].k[5] += k;
     }

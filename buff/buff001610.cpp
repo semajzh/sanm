@@ -4,8 +4,11 @@
 
 void Buff001610::run(Ground* ground)
 {
-    QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff001611(src, des, 1610));
-    Ground::addBuff(ground, ground->buff[0][des], buff);
+    if (qrand() % 100 + 1 > 100 - 60)
+    {
+        QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff001611(src, des, 1610));
+        Ground::addBuff(ground, ground->buff[0][des], buff);
+    }
 }
 
 void Buff001611::enter(Ground* ground)

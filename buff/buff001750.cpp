@@ -5,7 +5,7 @@
 void Buff001750::run(Ground* ground)
 {
     QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff001751(src, des, 1750, 2));
-    Ground::addBuff(ground, ground->buff[0][des], buff);
+    Ground::addBuff(ground, ground->buff[1][des], buff);
 }
 
 void Buff001751::enter(Ground* ground)
