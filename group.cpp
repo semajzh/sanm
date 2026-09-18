@@ -180,6 +180,41 @@ bool Group::getGroup(int id, Group& group)
         group.m_item[n].i[4] += 20;
     } break;
 
+    case 193: {
+        group.formation = 6;
+        group.star = 0;
+
+        n = 0;
+        Item::getItem(20801, group.m_item[n]);
+        group.m_item[n].star = group.star;
+        group.m_item[n].methods[1] = 40121;
+        group.m_item[n].methods[2] = 100220;
+        group.m_item[n].strategys[1] = 1470;
+        group.m_item[n].strategys[2] = 1480;
+        group.m_item[n].i[5] += 20 + 10 * (5 + group.star);
+        group.m_item[n].i[6] += 20;
+
+        n = 1;
+        Item::getItem(20101, group.m_item[n]);
+        group.m_item[n].star = group.star;
+        group.m_item[n].methods[1] = 80222;
+        group.m_item[n].methods[2] = 20222;
+        group.m_item[n].strategys[1] = 1050;
+        group.m_item[n].strategys[2] = 1060;
+        group.m_item[n].i[5] += 20 + 10 * (5 + group.star);
+        group.m_item[n].i[6] += 20;
+
+        n = 2;
+        Item::getItem(10301, group.m_item[n]);
+        group.m_item[n].star = group.star;
+        group.m_item[n].methods[1] = 20820;
+        group.m_item[n].methods[2] = 80121;
+        group.m_item[n].strategys[1] = 1010;
+        group.m_item[n].strategys[2] = 1350;
+        group.m_item[n].i[5] += 20 + 10 * (5 + group.star);
+        group.m_item[n].i[6] += 20;
+    } break;
+
 #if 0
         group.m_item[n].methods[1] = 10320; //2223,60%:-2*100%,i0>:-30
         group.m_item[n].methods[1] = 12620; //50%,f2:+50(i1+i2)
