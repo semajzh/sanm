@@ -68,7 +68,7 @@ bool Buff1170121::check117012(Ground* ground, int obj)
 {
     for (QSharedPointer<Buff> pbuff : ground->buff[4][obj])
     {
-        if (pbuff->id == 1170122)
+        if (pbuff->id == 117012)
         {
             QSharedPointer<Buff117012> buff = qSharedPointerCast<Buff117012>(pbuff);
             buff->run(ground, obj);

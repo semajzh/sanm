@@ -1047,7 +1047,7 @@ int Ground::actbr(Ground* ground, Item* item1, Item* item2, int method, float po
     f *= 1 + (method%100 == 20 ? item2->l[7]/100 : 0);
     f *= 1 + (method == 3332 ? item2->l[8]/100 : 0);
     f *= 1 + (item1->f[1] != item2->f[1] ? item2->l[10]/100 : 0);
-    f *= 1 + (method == item1->methods[0] ? item2->l[13]/100 : 0);
+    f *= 1 + ((method >= 1000000 && method <= 5000000) ? item2->l[13]/100 : 0);
     f *= 1 + check301091(ground, item2->g[0], item1->g[0])/100;
     f *= 1 + check409011(ground, item2->g[0], item1->g[0])/100;
     f *= 1 + check1011021(ground, item2->g[0], item1->g[0])/100;
@@ -1141,7 +1141,7 @@ int Ground::actml(Ground* ground, Item* item1, Item* item2, int method, float po
     k += check201023(ground, item1->g[0], item2->g[0])/100;
     k += check411021(ground, item1->g[0], item2->g[0])/100;
     f *= k;
-    f *= 1 + check1170121(ground, item1->g[0], 1);
+    f *= 1 + check1170121(ground, item1->g[0], 1)/100;
     f *= 1 + item2->l[0]/100;
     f *= 1 + item2->l[2]/100;
     f *= 1 + (method%100 == 22 ? item2->l[4]/100 : 0);
@@ -1150,7 +1150,7 @@ int Ground::actml(Ground* ground, Item* item1, Item* item2, int method, float po
     f *= 1 + (method%100 == 20 ? item2->l[7]/100 : 0);
     f *= 1 + (item1->f[1] != item2->f[1] ? item2->l[10]/100 : 0);
     f *= 1 + l12/100;
-    f *= 1 + (method == item1->methods[0] ? item2->l[13]/100 : 0);
+    f *= 1 + ((method >= 1000000 && method <= 5000000) ? item2->l[13]/100 : 0);
     f *= 1 + check301091(ground, item2->g[0], item1->g[0])/100;
     f *= 1 + check409011(ground, item2->g[0], item1->g[0])/100;
     f *= 1 + check1011021(ground, item2->g[0], item1->g[0])/100;
@@ -3373,7 +3373,7 @@ bool check31501211(Ground* ground, Item** item2, float& point)
 
 float check1170121(Ground* ground, int obj, int type)
 {
-    for (QSharedPointer<Buff> pbuff : ground->buff[3][obj])
+    for (QSharedPointer<Buff> pbuff : ground->buff[2][obj])
     {
         if (pbuff->id == 1170121)
         {

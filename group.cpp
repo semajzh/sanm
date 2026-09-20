@@ -40,8 +40,8 @@ bool Group::getGroup(int id, Group& group)
         n = 1;
         Item::getItem(11701, group.m_item[n]);
         group.m_item[n].star = group.star;
-        group.m_item[n].methods[1] = 130121; //r123,m0,hlo:l0-3(i1+i2)(*6);r45678,2221,-f2:-50ml(hlo)    60221; //221+60%(+10):2*l0-20(i2)
-        group.m_item[n].methods[2] = 100220; //r123,acted,60%:i0-50(i1)(1)(*3),i1-50(i2)(1)(*3)
+        group.m_item[n].methods[1] = 60221; //221+60%(+10):2*l0-20(i2)
+        group.m_item[n].methods[2] = 13320;
         group.m_item[n].strategys[1] = 1050; //maxi0:k0+5
         group.m_item[n].strategys[2] = 1060; //maxi1:k0+5
         group.m_item[n].i[5] += 20 + 10 * (5 + group.star);
@@ -54,8 +54,8 @@ bool Group::getGroup(int id, Group& group)
         group.m_item[n].methods[2] = 40121; //l0-25*2,r4:+360(i1)*3
         group.m_item[n].strategys[1] = 1470; //g1=0:l0-5
         group.m_item[n].strategys[2] = 1480; //g1=1:k0+5.5
-        group.m_item[n].i[5] += 14 + 10 * (5 + group.star);
-        group.m_item[n].i[6] += 26;
+        group.m_item[n].i[5] += 10 + 10 * (5 + group.star);
+        group.m_item[n].i[7] += 30;
     } break;
 
     case 5: {

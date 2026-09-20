@@ -23,7 +23,7 @@ void Buff117011::exit(Ground* ground)
 void Buff117011::run(Ground* ground)
 {
     int src = check1170121(ground);
-    if (src < 0 || qrand() % 100 + 1 <= 100 - 20)
+    if (src < 0)
     {
         return;
     }
