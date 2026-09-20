@@ -67,6 +67,7 @@
 #include "buff/buff1080121.h"
 #include "buff/buff1091321.h"
 #include "buff/buff1100121.h"
+#include "buff/buff1170121.h"
 #include "buff/buff2010321.h"
 #include "buff/buff2010420.h"
 #include "buff/buff2010520.h"
@@ -234,6 +235,7 @@ static bool check1080121(Ground* ground, int obj1, int obj2);
 static bool check1091120(Ground* ground, int obj);
 static bool check1091321(Ground* ground, int obj1, int obj2);
 static bool check1100121(Ground* ground, int obj, float point);
+static float check1170121(Ground* ground, int obj, int type);
 static bool check2010321(Ground* ground, int obj, int type);
 static bool check2010420(Ground* ground, int obj);
 static bool check2010520(Ground* ground, int obj1, int obj2);
@@ -990,6 +992,7 @@ int Ground::actbr(Ground* ground, Item* item1, Item* item2, int method, float po
         j0 = -999;
     }
     check0110321(ground, item2->g[0], item1->g[0], 1);
+    check1170121(ground, item1->g[0], 0);
 
     // cal
     float f = 0.0f;
@@ -1044,6 +1047,7 @@ int Ground::actbr(Ground* ground, Item* item1, Item* item2, int method, float po
     f *= 1 + (method%100 == 20 ? item2->l[7]/100 : 0);
     f *= 1 + (method == 3332 ? item2->l[8]/100 : 0);
     f *= 1 + (item1->f[1] != item2->f[1] ? item2->l[10]/100 : 0);
+    f *= 1 + (method == item1->methods[0] ? item2->l[13]/100 : 0);
     f *= 1 + check301091(ground, item2->g[0], item1->g[0])/100;
     f *= 1 + check409011(ground, item2->g[0], item1->g[0])/100;
     f *= 1 + check1011021(ground, item2->g[0], item1->g[0])/100;
@@ -1137,6 +1141,7 @@ int Ground::actml(Ground* ground, Item* item1, Item* item2, int method, float po
     k += check201023(ground, item1->g[0], item2->g[0])/100;
     k += check411021(ground, item1->g[0], item2->g[0])/100;
     f *= k;
+    f *= 1 + check1170121(ground, item1->g[0], 1);
     f *= 1 + item2->l[0]/100;
     f *= 1 + item2->l[2]/100;
     f *= 1 + (method%100 == 22 ? item2->l[4]/100 : 0);
@@ -1145,6 +1150,7 @@ int Ground::actml(Ground* ground, Item* item1, Item* item2, int method, float po
     f *= 1 + (method%100 == 20 ? item2->l[7]/100 : 0);
     f *= 1 + (item1->f[1] != item2->f[1] ? item2->l[10]/100 : 0);
     f *= 1 + l12/100;
+    f *= 1 + (method == item1->methods[0] ? item2->l[13]/100 : 0);
     f *= 1 + check301091(ground, item2->g[0], item1->g[0])/100;
     f *= 1 + check409011(ground, item2->g[0], item1->g[0])/100;
     f *= 1 + check1011021(ground, item2->g[0], item1->g[0])/100;
@@ -3363,6 +3369,19 @@ bool check31501211(Ground* ground, Item** item2, float& point)
         }
     }
     return false;
+}
+
+float check1170121(Ground* ground, int obj, int type)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[3][obj])
+    {
+        if (pbuff->id == 1170121)
+        {
+            QSharedPointer<Buff1170121> buff = qSharedPointerCast<Buff1170121>(pbuff);
+			return buff->run(ground, type);
+        }
+    }
+    return 0.0f;
 }
 
 bool check31501212(Ground* ground, int obj, int method)

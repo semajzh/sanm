@@ -38,7 +38,7 @@ bool Group::getGroup(int id, Group& group)
         group.m_item[n].i[7] += 20;
 
         n = 1;
-        Item::getItem(20101, group.m_item[n]);
+        Item::getItem(11701, group.m_item[n]);
         group.m_item[n].star = group.star;
         group.m_item[n].methods[1] = 130121; //r123,m0,hlo:l0-3(i1+i2)(*6);r45678,2221,-f2:-50ml(hlo)    60221; //221+60%(+10):2*l0-20(i2)
         group.m_item[n].methods[2] = 100220; //r123,acted,60%:i0-50(i1)(1)(*3),i1-50(i2)(1)(*3)

@@ -32,7 +32,7 @@ Dispatcher::Dispatcher(int round)
         Name::jName(j);
     }
 #endif
-    m_ground->team[0] = 193;
+    m_ground->team[0] = 2;
     m_ground->team[1] = 6;
     Group::getGroup(m_ground->team[0], m_ground->m_group[0]);
     Group::getGroup(m_ground->team[1], m_ground->m_group[1]);

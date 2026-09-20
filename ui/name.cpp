@@ -485,6 +485,11 @@ void Name::itemName(int id, Item* item)
         unsigned char ch[] = {0xe7, 0x8e, 0x8b, 0xe5, 0x8f, 0x8c};
         memcpy(item->name, ch, sizeof(ch));
     } break;
+	
+    case 11701: {
+        unsigned char ch[] = {0xe9, 0x92, 0x9f, 0xe4, 0xbc, 0x9a};
+        memcpy(item->name, ch, sizeof(ch));
+    } break;
 
     case 20101: {
         unsigned char ch[] = {0xe5, 0x88, 0x98, 0xe5, 0xa4, 0x87};
@@ -1596,6 +1601,10 @@ void Name::methodName(int id, QSharedPointer<Method> method)
         unsigned char ch[] = {0xe6, 0x81, 0x83, 0xe5, 0x8b, 0x87, 0xe5, 0x85, 0x8b, 0xe6, 0x95, 0x8c};
         memcpy(method->name, ch, sizeof(ch));
     } break;
+    case 1170121: {
+        unsigned char ch[] = {0xe6, 0x80, 0x80, 0xe9, 0x94, 0x8b, 0xe7, 0x8c, 0xae, 0xe7, 0xad, 0x96};
+        memcpy(method->name, ch, sizeof(ch));
+    } break;
 // insert item method 1
     case 2010121: {
         unsigned char ch[] = {0xe6, 0x90, 0xba, 0xe6, 0xb0, 0x91, 0xe6, 0xb8, 0xa1, 0xe6, 0xb1, 0x9f};
@@ -2449,6 +2458,14 @@ void Name::strategyName(int id, QSharedPointer<Strategy> strategy)
     } break;
     case 114021: {
         unsigned char ch[] = {0xe6, 0xb5, 0x81, 0xe6, 0x98, 0x9f, 0xe9, 0x94, 0xa4, 0xe8, 0xb0, 0xb1};
+        memcpy(strategy->name, ch, sizeof(ch));
+    } break;
+    case 117011: {
+        unsigned char ch[] = {0xe6, 0x83, 0x91, 0xe6, 0x95, 0x8c};
+        memcpy(strategy->name, ch, sizeof(ch));
+    } break;
+    case 117012: {
+        unsigned char ch[] = {0xe5, 0xb9, 0xb6, 0xe5, 0x8a, 0xbf};
         memcpy(strategy->name, ch, sizeof(ch));
     } break;
 // insert strategy 1
@@ -3593,6 +3610,18 @@ void Name::buffName(int id, Buff* buff)
     } break;
     case 20801214: {
         unsigned char ch[] = {0xe6, 0x98, 0x9f, 0xe7, 0xbd, 0x97, 0xe6, 0xa3, 0x8b, 0xe5, 0xb8, 0x83, 0x28, 0xe5, 0x8d, 0x95, 0xe5, 0x89, 0x8d, 0xe6, 0x8e, 0x92, 0x29};
+        memcpy(buff->name, ch, sizeof(ch));
+    } break;
+    case 1170121: {
+        unsigned char ch[] = {0xe6, 0x96, 0xbd, 0xe7, 0xad, 0x96};
+        memcpy(buff->name, ch, sizeof(ch));
+    } break;
+    case 11701212: {
+        unsigned char ch[] = {0xe6, 0x96, 0x87, 0xe9, 0x9f, 0xac};
+        memcpy(buff->name, ch, sizeof(ch));
+    } break;
+    case 11701213: {
+        unsigned char ch[] = {0xe6, 0xad, 0xa6, 0xe7, 0x95, 0xa5};
         memcpy(buff->name, ch, sizeof(ch));
     } break;
     case 21601211: {
