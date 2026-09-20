@@ -22,6 +22,7 @@
 #include "buff/buff201072.h"
 #include "buff/buff201081.h"
 #include "buff/buff202022.h"
+#include "buff/buff217021.h"
 #include "buff/buff301026.h"
 #include "buff/buff301091.h"
 #include "buff/buff301131.h"
@@ -77,6 +78,7 @@
 #include "buff/buff210011.h"
 #include "buff/buff2091121.h"
 #include "buff/buff2160121.h"
+#include "buff/buff2170221.h"
 #include "buff/buff3010221.h"
 #include "buff/buff3011221.h"
 #include "buff/buff3030120.h"
@@ -160,6 +162,7 @@ static bool check201072(Ground* ground, int obj1, int obj2);
 static float check201081(Ground* ground, int obj, int );
 static bool check202022(Ground* ground, int obj1, int obj2);
 static float check210011(Ground* ground, int obj1, int obj2);
+static float check217021(Ground* ground, int obj1, int obj2);
 static bool check301026(Ground* ground, int obj);
 static bool check301081(Ground* ground, int obj);
 static bool check301052(Ground* ground, int obj);
@@ -245,6 +248,8 @@ static bool check2091121(Ground* ground, int obj, Item** item2, float& point);
 static bool check2011020(Ground* ground, int obj1, int obj2);
 static bool check2160121(Ground* ground, Item** item2);
 static bool check21601213(Ground* ground, int obj);
+static bool check21702211(Ground* ground, int obj);
+static bool check21702211(Ground* ground, int obj1, int obj2);
 static bool check3010221(Ground* ground, int obj2, int);
 static bool check3010520(Ground* ground, int obj);
 static bool check30105202(Ground* ground, int obj);
@@ -950,6 +955,7 @@ int act(Ground* ground, Item* item1, Item* item2, int method, float& point, int 
     check0150221(ground, item1->g[0], method);
     check4010920(ground, item2->g[0]);
     check21601213(ground, item2->g[0]);
+    check21702211(ground, item1->g[0], item2->g[0]);
 
 #ifdef CCZ
     check500005(ground, item1->g[0], item2->g[0]);
@@ -1052,7 +1058,9 @@ int Ground::actbr(Ground* ground, Item* item1, Item* item2, int method, float po
     f *= 1 + check409011(ground, item2->g[0], item1->g[0])/100;
     f *= 1 + check1011021(ground, item2->g[0], item1->g[0])/100;
     f *= 1 + check210011(ground, item2->g[0], item1->g[0])/100;
-    f *= 1 + ((item2->g[4] - item1->g[4] + 4) % 4 - 2) % 2 * 0.15;
+    f *= 1 + check217021(ground, item2->g[0], item1->g[0])/100;
+    int g4 = check21702211(ground, item2->g[0]) ? item1->g[4] : item2->g[4];
+	f *= 1 + ((g4 - item1->g[4] + 4) % 4 - 2) % 2 * 0.15;
 #if 0
     f *= 0.5 + (float)item1->h[0] / item1->h[3] / 2;
     f *= std::pow(item1->h[0], 0.1566);
@@ -1155,7 +1163,9 @@ int Ground::actml(Ground* ground, Item* item1, Item* item2, int method, float po
     f *= 1 + check409011(ground, item2->g[0], item1->g[0])/100;
     f *= 1 + check1011021(ground, item2->g[0], item1->g[0])/100;
     f *= 1 + check210011(ground, item2->g[0], item1->g[0])/100;
-    f *= 1 + ((item2->g[4] - item1->g[4] + 4) % 4 - 2) % 2 * 0.15;
+    f *= 1 + check217021(ground, item2->g[0], item1->g[0])/100;
+    int g4 = check21702211(ground, item2->g[0]) ? item1->g[4] : item2->g[4];
+	f *= 1 + ((g4 - item1->g[4] + 4) % 4 - 2) % 2 * 0.15;
 #if 0
     f *= 0.5 + (float)item1->h[0] / item1->h[3] / 2;
     f *= std::pow(item1->h[0], 0.1566);
@@ -2039,6 +2049,19 @@ float check210011(Ground* ground, int obj1, int obj2)
         if (pbuff->id == 210011)
         {
             QSharedPointer<Buff210011> buff = qSharedPointerCast<Buff210011>(pbuff);
+            return buff->run(ground, obj2);
+        }
+    }
+    return 0.0f;
+}
+
+float check217021(Ground* ground, int obj1, int obj2)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[3][obj1])
+    {
+        if (pbuff->id == 2170211)
+        {
+            QSharedPointer<Buff2170211> buff = qSharedPointerCast<Buff2170211>(pbuff);
             return buff->run(ground, obj2);
         }
     }
@@ -3152,6 +3175,32 @@ bool check2160121(Ground* ground, Item** item2)
             {
                 *item2 = &ground->m_group[obj/10].m_item[obj%10];
             }
+            return true;
+        }
+    }
+    return false;
+}
+
+bool check21702211(Ground* ground, int obj)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[6][obj])
+    {
+        if (pbuff->id == 21702211)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool check21702211(Ground* ground, int obj1, int obj2)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[6][obj1])
+    {
+        if (pbuff->id == 21702211)
+        {
+			QSharedPointer<Buff21702211> buff = qSharedPointerCast<Buff21702211>(pbuff);
+            buff->run(ground, obj2);
             return true;
         }
     }

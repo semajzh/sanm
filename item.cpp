@@ -844,6 +844,20 @@ bool Item::getItem(int id, Item& item)
         item.strategys[0] = 216021; //21602222/3/4count==4:atk(i0max,team)->h0min,enemy
     } break;
 
+    case 21702: {
+        unsigned char ch[] = {0xe7, 0x8e, 0x8b, 0xe5, 0xb9, 0xb3};
+        Logger::H().printname(ch, sizeof(ch), id);
+        item.id = id;
+        item.f[0] = 2;
+        item.g[4] = 0;
+        item.i[0] =  89 + 1.90 * 45;
+        item.i[1] =  72 + 1.57 * 45;
+        item.i[2] = 102 + 2.32 * 45;
+        item.i[3] =  62 + 1.69 * 45;
+        item.methods[0] = 2170221;
+        item.strategys[0] = 217021;
+    } break;
+
     case 30101: {
         unsigned char ch[] = {0xe5, 0xad, 0x99, 0xe6, 0x9d, 0x83};
         Logger::H().printname(ch, sizeof(ch), id);

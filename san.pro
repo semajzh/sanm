@@ -211,6 +211,7 @@ SOURCES += \
         method/method2100121.cpp \
         method/method2160121.cpp \
         method/method2160222.cpp \
+        method/method2170221.cpp \
 # insert item method cpp 2
         method/method3010121.cpp \
         method/method3010221.cpp \
@@ -464,6 +465,7 @@ SOURCES += \
         strategy/strategy216011.cpp \
         strategy/strategy216012.cpp \
         strategy/strategy216021.cpp \
+        strategy/strategy217021.cpp \
 # insert strategy cpp 2
         strategy/strategy301011.cpp \
         strategy/strategy301012.cpp \
@@ -880,6 +882,8 @@ SOURCES += \
         buff/buff2100121.cpp \
         buff/buff2160121.cpp \
         buff/buff2160222.cpp \
+        buff/buff217021.cpp \
+        buff/buff2170221.cpp \
         buff/buff301011.cpp \
         buff/buff301012.cpp \
         buff/buff3010121.cpp \
@@ -1246,6 +1250,7 @@ HEADERS += \
     method/method2100121.h \
     method/method2160121.h \
     method/method2160222.h \
+    method/method2170221.h \
 # insert item method h 2
     method/method3010121.h \
     method/method3010221.h \
@@ -1499,6 +1504,7 @@ HEADERS += \
     strategy/strategy216011.h \
     strategy/strategy216012.h \
     strategy/strategy216021.h \
+    strategy/strategy217021.h \
 # insert strategy h 2
     strategy/strategy301011.h \
     strategy/strategy301012.h \
@@ -1916,6 +1922,8 @@ HEADERS += \
     buff/buff2100121.h \
     buff/buff2160121.h \
     buff/buff2160222.h \
+    buff/buff2170221.h \
+    buff/buff217021.h \
     buff/buff301011.h \
     buff/buff301012.h \
     buff/buff3010121.h \

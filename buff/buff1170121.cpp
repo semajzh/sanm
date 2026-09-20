@@ -103,7 +103,7 @@ void Buff1170121::act(Ground* ground, int criteria)
 
     QVector<int> objs = (qrand() % 100 + 1 > 100 - point2)
             ? Ground::selectObjN(ground, des, criteria)
-            : Ground::selectObjN(ground, des, 0x0041);
+            : Ground::selectObjN(ground, des, 0x0021);
 
     Item& item1 = ground->m_group[des/10].m_item[des%10];
     for (int obj : objs)
