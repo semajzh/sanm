@@ -1060,7 +1060,7 @@ int Ground::actbr(Ground* ground, Item* item1, Item* item2, int method, float po
     f *= 1 + check210011(ground, item2->g[0], item1->g[0])/100;
     f *= 1 + check217021(ground, item2->g[0], item1->g[0])/100;
     int g4 = ((item2->g[4] - item1->g[4] + 4) % 4 - 2) % 2;
-    g4 = (g4 < 0 && check21702211(ground, item2->g[0])) ? 0 : g4;
+    g4 = (g4 > 0 && check21702211(ground, item2->g[0])) ? 0 : g4;
     f *= 1 + g4 * 0.15;
 #if 0
     f *= 0.5 + (float)item1->h[0] / item1->h[3] / 2;
@@ -1166,7 +1166,7 @@ int Ground::actml(Ground* ground, Item* item1, Item* item2, int method, float po
     f *= 1 + check210011(ground, item2->g[0], item1->g[0])/100;
     f *= 1 + check217021(ground, item2->g[0], item1->g[0])/100;
     int g4 = ((item2->g[4] - item1->g[4] + 4) % 4 - 2) % 2;
-    g4 = (g4 < 0 && check21702211(ground, item2->g[0])) ? 0 : g4;
+    g4 = (g4 > 0 && check21702211(ground, item2->g[0])) ? 0 : g4;
     f *= 1 + g4 * 0.15;
 #if 0
     f *= 0.5 + (float)item1->h[0] / item1->h[3] / 2;
