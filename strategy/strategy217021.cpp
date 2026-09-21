@@ -19,7 +19,7 @@ bool Strategy217021::run(Ground* ground, Item* item1)
 {
     Logger::H().printstrategy(ground, item1, this);
 
-    QVector<int> objs = Ground::selectObjN(ground, item1->g[0], 0x0031);
+    QVector<int> objs = Ground::selectObjN(ground, item1->g[0], 0x0013);
     for (int obj : objs)
     {
         QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff2170211(item1->g[0], obj, id));

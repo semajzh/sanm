@@ -48,4 +48,5 @@ QVector<int> Method2170221::selectObj(Ground* ground, int obj)
         }
         objs.append(g*10+i);
     }
+    return objs;
 }
