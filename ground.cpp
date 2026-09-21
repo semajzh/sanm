@@ -1621,20 +1621,24 @@ bool check104(Ground* ground, int obj)
 
 bool check106(Ground* ground, int obj1, int obj2, float& point)
 {
-    QVector<QSharedPointer<Buff>>& buffs = ground->buff[3][obj1];
-    for (int i = 0; i < buffs.size(); ++i)
+    QSharedPointer<Buff106> buff;
+    for (QSharedPointer<Buff> pbuff : ground->buff[3][obj1])
     {
-        if (buffs.at(i)->id == 106)
+        if (pbuff->id == 106)
         {
-            QSharedPointer<Buff106> buff = qSharedPointerCast<Buff106>(buffs.at(i));
-            if (buff->run(ground, obj2, point) <= 0)
-            {
-                buffs.remove(i);
-            }
-            return true;
+            buff = qSharedPointerCast<Buff106>(pbuff);
+            break;
         }
     }
-    return false;
+    if (buff.isNull())
+    {
+        return false;
+    }
+    if (buff->run(ground, obj2, point) <= 0)
+    {
+        ground->buff[3][obj1].removeOne(buff);
+    }
+    return true;
 }
 
 bool check001020(Ground* ground, int obj)
