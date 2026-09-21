@@ -144,6 +144,8 @@
 #include "method0150221.h"
 #include "method0160122.h"
 #include "method0160220.h"
+#include "method0170121.h"
+#include "method0170221.h"
 // insert include
 #include "method1010121.h"
 #include "method1010221.h"
@@ -996,6 +998,16 @@ QSharedPointer<Method> Method::getMethod(int id)
         unsigned char ch[] = {0xe6, 0x9a, 0x97, 0xe6, 0xb8, 0xa1, 0xe9, 0x98, 0xb4, 0xe5, 0xb9, 0xb3};
         Logger::H().printname(ch, sizeof(ch), id);
         method = QSharedPointer<Method0160220>::create();
+    } break;
+    case 170121: {
+        unsigned char ch[] = {0xe4, 0xbf, 0x9d, 0xe5, 0xa2, 0x83, 0xe5, 0xae, 0x89, 0xe6, 0xb0, 0x91};
+        Logger::H().printname(ch, sizeof(ch), id);
+        method = QSharedPointer<Method0170121>::create();
+    } break;
+    case 170221: {
+        unsigned char ch[] = {0xe9, 0x9a, 0x8f, 0xe6, 0x9c, 0xba, 0xe5, 0xba, 0x94, 0xe5, 0x8f, 0x98};
+        Logger::H().printname(ch, sizeof(ch), id);
+        method = QSharedPointer<Method0170221>::create();
     } break;
 // insert case
     case 1010121: {

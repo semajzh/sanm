@@ -50,7 +50,7 @@ bool Group::getGroup(int id, Group& group)
         n = 2;
         Item::getItem(20801, group.m_item[n]);
         group.m_item[n].star = group.star;
-        group.m_item[n].methods[1] = 20222; //75%:maxi1,l0-25(i1)(2)
+        group.m_item[n].methods[1] = 170121;
         group.m_item[n].methods[2] = 40121; //l0-25*2,r4:+360(i1)*3
         group.m_item[n].strategys[1] = 1470; //g1=0:l0-5
         group.m_item[n].strategys[2] = 1480; //g1=1:k0+5.5

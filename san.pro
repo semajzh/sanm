@@ -155,6 +155,8 @@ SOURCES += \
         method/method0150221.cpp \
         method/method0160122.cpp \
         method/method0160220.cpp \
+        method/method0170121.cpp \
+        method/method0170221.cpp \
 # insert method cpp
         method/method1010121.cpp \
         method/method1010221.cpp \
@@ -1016,6 +1018,8 @@ SOURCES += \
         buff/buff0150221.cpp \
         buff/buff0160122.cpp \
         buff/buff0160220.cpp \
+        buff/buff0170121.cpp \
+        buff/buff0170221.cpp \
 # insert buff cpp 4
         buff/buff500001.cpp \
         buff/buff500002.cpp \
@@ -1194,6 +1198,8 @@ HEADERS += \
     method/method0150221.h \
     method/method0160122.h \
     method/method0160220.h \
+    method/method0170121.h \
+    method/method0170221.h \
 # insert method h
     method/method1010121.h \
     method/method1010221.h \
@@ -2056,6 +2062,8 @@ HEADERS += \
     buff/buff0150221.h \
     buff/buff0160122.h \
     buff/buff0160220.h \
+    buff/buff0170121.h \
+    buff/buff0170221.h \
 # insert buff h
     buff/buff500001.h \
     buff/buff500002.h \
