@@ -17,7 +17,7 @@ void Buff4070121::exit(Ground* ground)
     ground->m_group[des/10].m_item[des%10].l[0] -= l0;
     for (int i = 0; i < 3; ++i)
     {
-        Ground::addi2(ground, des, -i2[i]);
+        Ground::addi2(ground, des/10*10+i, -i2[i]);
     }
 }
 
@@ -29,10 +29,6 @@ void Buff4070121::run(Ground* ground, int)
     }
     round = ground->m_round;
     addbl(ground);
-    if (bl >= 10)
-    {
-        actbr(ground);
-    }
 }
 
 void Buff4070121::run(Ground* ground)
@@ -46,15 +42,12 @@ void Buff4070121::run(Ground* ground)
         i2base += 60;
         addbl(ground);
     }
-    if (bl >= 10)
-    {
-        actbr(ground);
-    }
 }
 
 void Buff4070121::addbl(Ground* ground)
 {
-    if (++bl > 10)
+    const int layer = ++bl;
+    if (layer > 10)
     {
         return;
     }
@@ -63,15 +56,12 @@ void Buff4070121::addbl(Ground* ground)
     {
         if (ground->m_group[des/10].m_item[i].h[0] > 0)
         {
-            Ground::addi2(ground, i, point1);
-            i2[i] += point1;
+            i2[i] += Ground::addi2(ground, des/10*10+i, point1);
         }
     }
-
-    if (ground->m_group[des/10].m_item[des%10].i[2] - i2base >= 60)
+    if (layer == 10)
     {
-        i2base += 60;
-        addbl(ground);
+        actbr(ground);
     }
 }
 

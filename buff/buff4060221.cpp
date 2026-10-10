@@ -22,8 +22,7 @@ void Buff40602211::run(Ground* ground)
     {
         return;
     }
-    Ground::addi2(ground, des, -15);
-    i2 -= 15;
+    i2 += Ground::addi2(ground, des, -15);
 }
 
 void Buff40602212::run(Ground* ground)

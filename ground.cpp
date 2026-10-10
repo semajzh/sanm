@@ -3812,13 +3812,15 @@ float Ground::addin(Ground* ground, int obj, int n, float point)
     return point;
 }
 
-void Ground::addi2(Ground* ground, int obj, float point)
+float Ground::addi2(Ground* ground, int obj, float point)
 {
-    addin(ground, obj, 2, point);
+    point = addin(ground, obj, 2, point);
+    ground->m_group[obj/10].m_item[obj%10].i[2] += point;
     if (point > 0.0f)
     {
         check4070121(ground, obj);
     }
+    return point;
 }
 
 float Ground::addj9(Ground* ground, int obj, int , float point)
