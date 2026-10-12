@@ -42,6 +42,8 @@ int Method2223::run(Ground* ground, int obj1, int obj2, bool b113)
     }
 
     check101012(ground, obj1);
+    check301081(ground, obj1);
+    check3010820(ground, obj1);
 
     QVector<int> objs;
     if (check014(ground, obj1, obj2))
@@ -175,6 +177,32 @@ bool Method2223::check101012(Ground* ground, int obj)
         }
     }
     return false;
+}
+
+bool Method2223::check301081(Ground* ground, int obj)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[3][obj])
+    {
+        if (pbuff->id == 301081)
+        {
+            pbuff->run(ground);
+            break;
+        }
+    }
+    return true;
+}
+
+bool Method2223::check3010820(Ground* ground, int obj)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[3][obj])
+    {
+        if (pbuff->id == 3010820)
+        {
+            pbuff->run(ground);
+            break;
+        }
+    }
+    return true;
 }
 
 #ifdef CCZ

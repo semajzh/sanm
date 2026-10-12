@@ -39,7 +39,15 @@ int Method3332::run(Ground* ground, int obj1, int obj2, bool b113)
         return 0;
     }
 
+    int& count = ground->data[obj1].count3332;
+    if (++count > 5)
+    {
+        return -1;
+    }
+
     check101012(ground, obj1);
+    check301081(ground, obj1);
+    check3010820(ground, obj1);
 
     int obj = obj2;
     check1091321(ground, obj);
@@ -125,6 +133,32 @@ bool Method3332::check101012(Ground* ground, int obj)
         }
     }
     return false;
+}
+
+bool Method3332::check301081(Ground* ground, int obj)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[3][obj])
+    {
+        if (pbuff->id == 301081)
+        {
+            pbuff->run(ground);
+            break;
+        }
+    }
+    return true;
+}
+
+bool Method3332::check3010820(Ground* ground, int obj)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[3][obj])
+    {
+        if (pbuff->id == 3010820)
+        {
+            pbuff->run(ground);
+            break;
+        }
+    }
+    return true;
 }
 
 #ifdef CCZ

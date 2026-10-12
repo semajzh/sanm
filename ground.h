@@ -23,6 +23,7 @@ public:
     int round = 8;
 
     int actrc; //2050121
+    int count3332 = 0;
 };
 
 class Ground

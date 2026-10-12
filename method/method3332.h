@@ -19,6 +19,8 @@ private:
     bool check0090121(Ground* ground, int obj);
     bool check1091321(Ground* ground, int& obj);
     bool check101012(Ground* ground, int obj);
+    bool check301081(Ground* ground, int obj);
+    bool check3010820(Ground* ground, int obj);
 };
 
 #endif // METHOD3332_H

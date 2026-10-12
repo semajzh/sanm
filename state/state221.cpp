@@ -28,6 +28,7 @@ void State221::speed(Ground* ground)
         for (int j = 0; j < 3; ++j)
         {
             ground->data[i*10+j].actrc = 0;
+            ground->data[i*10+j].count3332 = 0;
         }
     }
 
