@@ -2582,15 +2582,11 @@ bool check0050220(Ground* ground, int pos1, int pos2)
 
 bool check0070124(Ground* ground, int obj, int method)
 {
-    for (QSharedPointer<Buff> pbuff : ground->buff[1][obj])
+    if (method != 70124)
     {
-        if (pbuff->id == 70124)
-        {
-            QSharedPointer<Buff0070124> buff = qSharedPointerCast<Buff0070124>(pbuff);
-            return buff->run(ground, method);
-        }
+        return false;
     }
-    return false;
+    return Buff0070124(obj, obj, method).run(ground, method);
 }
 
 bool check0088121(Ground *ground, int obj)
@@ -3623,15 +3619,11 @@ bool check4110220(Ground* ground, int obj, float point)
 
 bool check9070124(Ground* ground, int obj, int method)
 {
-    for (QSharedPointer<Buff> pbuff : ground->buff[1][obj])
+    if (method != 9070124)
     {
-        if (pbuff->id == 9070124)
-        {
-            QSharedPointer<Buff9070124> buff = qSharedPointerCast<Buff9070124>(pbuff);
-            return buff->run(ground, method);
-        }
+        return false;
     }
-    return false;
+    return Buff9070124(obj, obj, method).run(ground, method);
 }
 
 #ifdef CCZ
@@ -4009,7 +4001,7 @@ bool Ground::run2224(Ground* ground, Item* item1, int m)
             check3091220(ground, item1->g[0]);
             check0104021(ground, item1->g[0]);
 
-            if (check0070124(ground, item1->g[0], m) || check9070124(ground, item1->g[0], m))
+            if (n == 0 && (check0070124(ground, item1->g[0], m) || check9070124(ground, item1->g[0], m)))
             {
                 jl = 999;
                 continue;

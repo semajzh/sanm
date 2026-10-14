@@ -1,7 +1,6 @@
 #include "method0070124.h"
 #include "ground.h"
 #include "item.h"
-#include "buff/buff0070124.h"
 #include "log/logger.h"
 
 Method0070124::Method0070124()
@@ -27,10 +26,6 @@ int Method0070124::run(Ground* ground, Item* item1)
     {
         Ground::actml(ground, item1, &ground->m_group[obj/10].m_item[obj%10], id, point);
     }
-
-    int obj = item1->g[0];
-    QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff0070124(item1->g[0], obj, id));
-    Ground::addBuff(ground, ground->buff[1][obj], buff);
 
     return 1;
 }
