@@ -94,7 +94,7 @@ void Buff31202212::run(Ground* ground)
         }
         else
         {
-            Ground::actml(ground, &ground->m_group[des/10].m_item[des%10], &ground->m_group[obj/10].m_item[obj%10], method, point, false, j0);
+            Ground::actml(ground, &ground->m_group[des/10].m_item[des%10], &ground->m_group[obj/10].m_item[obj%10], method, point, j0);
         }
     }
 
