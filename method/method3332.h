@@ -14,6 +14,7 @@ public:
     int run(Ground* ground, int obj1, int obj2, bool b113);
 
 private:
+    bool check011(Ground* ground, int obj);
     bool check013(Ground* ground, int obj, bool b113);
     bool check0013320(Ground* ground, int obj);
     bool check0090121(Ground* ground, int obj);

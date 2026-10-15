@@ -23,6 +23,11 @@ Method3332::~Method3332()
 
 int Method3332::run(Ground* ground, int obj1, int obj2, bool b113)
 {
+    if (check011(ground, obj1))
+    {
+        Logger::H().printcustom(ground, 11, obj1);
+        return 0;
+    }
     if (check013(ground, obj1, b113))
     {
         Logger::H().printcustom(ground, 13, obj1);
@@ -60,6 +65,23 @@ int Method3332::run(Ground* ground, int obj1, int obj2, bool b113)
 #endif
     Ground::actbr(ground, &ground->m_group[obj1/10].m_item[obj1%10], &ground->m_group[obj/10].m_item[obj%10], id, 100); //100->100
     return 1;
+}
+
+bool Method3332::check011(Ground* ground, int obj)
+{
+    bool b = false;
+    for (QSharedPointer<Buff> pbuff : ground->buff[1][obj])
+    {
+        if (pbuff->id == 111)
+        {
+            return false;
+        }
+        if (pbuff->id == 11)
+        {
+            b = true;
+        }
+    }
+    return b;
 }
 
 bool Method3332::check013(Ground* ground, int obj, bool b113)

@@ -32,7 +32,7 @@ void State2222::run(Ground* ground, int obj)
     for (int k = 0; k < 4; ++k)
     {
         int m = item.methods[k];
-        if (item.h[0] <= 0 || m % 100 != 22 || check011(ground, obj) || check012(ground, obj) || check0013320(ground, obj))
+        if (item.h[0] <= 0 || m % 100 != 22 || check0013320(ground, obj))
         {
             continue;
         }
@@ -90,10 +90,20 @@ void State2222::run(Ground* ground, int obj)
 
 int State2222::methodrun(Ground* ground, Item* item, QSharedPointer<Method> method, float luck)
 {
+    if (check011(ground, item->g[0]) || check012(ground, item->g[0]))
+    {
+        return -1;
+    }
+	
     check4091221(ground, item->g[0]);
     check0104021(ground, item->g[0]);
     check4130220(ground, item->g[0]);
     check0150120(ground, item->g[0]);
+
+    if (check011(ground, item->g[0]) || check012(ground, item->g[0]))
+    {
+        return -1;
+    }
 
     int r = 0;
     luck += method->getLuck(ground, item);

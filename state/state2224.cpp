@@ -20,11 +20,10 @@ void State2224::run(Ground* ground, int obj)
     Item& item1 = ground->m_group[obj/10].m_item[obj%10];
     for (int m : item1.methods)
     {
-        if (item1.h[0] <= 0 || m % 100 != 24 || check011(ground, obj))
+        if (item1.h[0] <= 0 || m % 100 != 24)
         {
             continue;
         }
-
         Ground::run2224(ground, &item1, m);
     }
 }

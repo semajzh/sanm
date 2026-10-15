@@ -848,10 +848,6 @@ int act(Ground* ground, Item* item1, Item* item2, int method, float& point, int 
     {
         return -1;
     }
-    if (check011(ground, item1->g[0]))
-    {
-        return -1;
-    }
     if (!tb && checkj9(ground, item1, item2))
     {
         check0110120(ground, item2->g[0]);
@@ -1086,7 +1082,7 @@ int Ground::actbr(Ground* ground, Item* item1, Item* item2, int method, float po
     }
     if (item1->j[11] > 0)
     {
-        hlo(ground, item1, item1, 11, f * item1->j[11] / 100);
+        hlo(ground, item1, item1, 11, (p - (bj0 ? J02_FLAG_1 : 0)) * item1->j[11] / 100);
     }
     check001210(ground, item1->g[0]);
     check001440(ground, item1->g[0], item2->g[0]);
@@ -1188,8 +1184,7 @@ int Ground::actml(Ground* ground, Item* item1, Item* item2, int method, float po
     // after
     if (item1->j[12] > 0)
     {
-        float j9 = f * item1->j[12] / 100;
-        hlo(ground, item1, item1, 12, j9);
+        hlo(ground, item1, item1, 12, (p - (bj2 ? J02_FLAG_1 : 0)) * item1->j[12] / 100);
     }
     check103(ground, item1->g[0]);
     check001450(ground, item2->g[0]);
@@ -3886,9 +3881,6 @@ bool Ground::run2223(Ground* ground, int obj1, int obj2, bool b2224, bool b113)
         }
         checkj8(ground, obj1, obj2);
         check30105202(ground, obj1);
-#ifdef CCZ
-        check500008(ground, obj1, obj2);
-#endif
     }
     else
     {
@@ -3900,48 +3892,33 @@ bool Ground::run2223(Ground* ground, int obj1, int obj2, bool b2224, bool b113)
 bool Ground::run3332(Ground* ground, int obj1, int obj2, bool b113)
 {
     QSharedPointer<Method3332> method = qSharedPointerCast<Method3332>(Method::getMethod(3332));
-    if (method.isNull() || method->id == 0)
+    int r = method->run(ground, obj1, obj2, b113);
+    if (r > 0)
     {
-        return false;
-    }
+        check001490(ground, obj2);
+        check001690(ground, obj1);
+        check001700(ground, obj1);
+        check106011(ground, obj1);
 
-    for (int n = 0; n < 2; ++n)
+        check0013221(ground, obj1);
+        check0014220(ground, obj1);
+        check0016220(ground, obj1);
+        check0030120(ground, obj1);
+        check1010420(ground, obj1);
+        check1040121(ground, obj1);
+        check0050220(ground, obj1);
+        check1060120(ground, obj1);
+        check1080121(ground, obj1, obj2);
+        check1091120(ground, obj1);
+        check01010212(ground, obj1);
+
+        checkj8(ground, obj1, obj2);
+    }
+    else if (r == 0)
     {
-        int p = method->run(ground, obj1, obj2, b113);
-        if (p > 0)
-        {
-            check001490(ground, obj2);
-            check001690(ground, obj1);
-            check001700(ground, obj1);
-            check106011(ground, obj1);
-
-            check0013221(ground, obj1);
-            check0014220(ground, obj1);
-            check0016220(ground, obj1);
-            check0030120(ground, obj1);
-            check1010420(ground, obj1);
-            check1040121(ground, obj1);
-            check0050220(ground, obj1);
-            check1060120(ground, obj1);
-            check1080121(ground, obj1, obj2);
-            check1091120(ground, obj1);
-            check01010212(ground, obj1);
-
-            checkj8(ground, obj1, obj2);
-#ifdef CCZ
-            if (check500003(ground, obj1))
-            {
-                continue;
-            }
-#endif
-        }
-        else if (p == 0)
-        {
-            check3010520(ground, obj1);
-        }
-        break;
+        check3010520(ground, obj1);
     }
-    return true;
+    return (r > 0);
 }
 
 bool Ground::run2224(Ground* ground, Item* item1, int m)
@@ -3978,7 +3955,10 @@ bool Ground::run2224(Ground* ground, Item* item1, int m)
         {
             Logger::H().printcustom(ground, m, item1->g[0]); //twice
         }
-
+        if  (check011(ground, item1->g[0]))
+        {
+             break;
+        }
         int r = methodrun(ground, item1, method, jl);
         if (r == 0)
         {

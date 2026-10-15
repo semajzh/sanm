@@ -30,20 +30,14 @@ bool State2223::run(Ground* ground, int current)
     Item& item1 = ground->m_group[g].m_item[i];
     for (int k = 0; k < 4; ++k)
     {
-        if (item1.h[0] > 0 && item1.methods[k] == 2223)
+        if (item1.h[0] <= 0 || item1.methods[k] != 2223)
         {
-#ifdef CCZ
-            if (check5000120(ground, current) || check5000220(ground, current) || check5000320(ground, current))
-            {
-                ret = false;
-                break;
-            }
-#endif
-            if (!Ground::run2223(ground, item1.g[0], -1, false, false))
-            {
-                ret = false;
-                break;
-            }
+            continue;
+        }
+        if (!Ground::run2223(ground, item1.g[0], -1, false, false))
+        {
+            ret = false;
+            break;
         }
     }
     return ret;
