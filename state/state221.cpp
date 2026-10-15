@@ -32,7 +32,7 @@ void State221::speed(Ground* ground)
         }
     }
 
-    int speed[6] = {0};
+    float speed[6] = {0};
     for (int i = 0; i < 3; ++i)
     {
         speed[i] = ground->m_group[0].m_item[i].i[3];

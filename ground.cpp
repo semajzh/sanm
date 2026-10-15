@@ -790,7 +790,8 @@ void selectObj0010(Ground* ground, QVector<int>& objs, int fof, int obj)
 // [0x1000]maxi0=1,mini0=2,maxi1=3,mini1=4,maxi2=5,mini2=6,maxi3=7,mini3=8,maxh0=9,minh0=a
 void selectObj1000(Ground* ground, QVector<int>& objs, int ic)
 {
-    int min = 99999, max = 0, obj1 = -1;
+    float min = 99999, max = 0;
+    int obj1 = -1;
     for (int obj : objs)
     {
         float ix = 0;
