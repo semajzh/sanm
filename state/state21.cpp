@@ -394,18 +394,21 @@ void State21::method(Ground* ground)
         {
             continue;
         }
-        for (int m : item.methods)
+        for (int type : {20, 21})
         {
-            if (m == 88324)
+            for (int m : item.methods)
             {
-                item.j[7] += 10;
-            }
-            if (m % 100 == 20 || m % 100 == 21)
-            {
-                QSharedPointer<Method> method = Method::getMethod(m);
-                if (!method.isNull() && method->id > 0)
+                if (m == 88324 && type == 20)
                 {
-                    method->run(ground, &item);
+                    item.j[7] += 10;
+                }
+                if (m % 100 == type)
+                {
+                    QSharedPointer<Method> method = Method::getMethod(m);
+                    if (!method.isNull() && method->id > 0)
+                    {
+                        method->run(ground, &item);
+                    }
                 }
             }
         }
