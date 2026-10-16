@@ -1,5 +1,5 @@
-#ifndef BUFF2010121_H
-#define BUFF2010121_H
+#ifndef BUFF2010222_H
+#define BUFF2010222_H
 #include "buff.h"
 
 class Buff2010222 : public BuffC
@@ -13,4 +13,4 @@ public:
     virtual void exit(Ground* ground);
 };
 
-#endif // BUFF2010121_H
+#endif // BUFF2010222_H

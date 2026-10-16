@@ -1,5 +1,5 @@
-#ifndef BUFF2091222_H
-#define BUFF2091222_H
+#ifndef BUFF2020222_H
+#define BUFF2020222_H
 #include "buff.h"
 
 class Buff2020222 : public BuffR
@@ -19,4 +19,4 @@ private:
     int count = 1;
 };
 
-#endif // BUFF2091222_H
+#endif // BUFF2020222_H

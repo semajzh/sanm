@@ -1,5 +1,5 @@
-#ifndef BUFF0102021_H
-#define BUFF0102021_H
+#ifndef BUFF0103022_H
+#define BUFF0103022_H
 #include "buff.h"
 
 class Buff0103022 : public BuffC
@@ -18,4 +18,4 @@ private:
     float i1 = 0.0f;
 };
 
-#endif // BUFF0102021_H
+#endif // BUFF0103022_H
