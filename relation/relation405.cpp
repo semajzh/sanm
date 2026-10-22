@@ -29,10 +29,12 @@ bool Relation405::run(Ground* ground, int group)
         return false;
     }
     Logger::H().printrelation(ground, objs, this);
-
+    
+    float point = 5 * objs.size();
     for (int obj : objs)
     {
-        ground->m_group[obj/10].m_item[obj%10].j[11] += 10;
+        ground->m_group[obj/10].m_item[obj%10].j[11] += point;
+        ground->m_group[obj/10].m_item[obj%10].j[12] += point;
     }
 
     return true;

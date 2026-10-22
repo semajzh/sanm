@@ -28,7 +28,7 @@ int Method0120122::run(Ground* ground, Item* item1)
         Ground::addBuff(ground, ground->buff[1][obj], buff);
     }
 
-    float point1 = Ground::pointbystar(ground, 5, item1->g[0], id);
+    float point1 = Ground::pointbystar(ground, 6, item1->g[0], id);
     float point = Ground::addbyix(ground, point1, item1->i[3]);
     point = item1->h[0] * point / 100;
     int obj = item1->g[0];

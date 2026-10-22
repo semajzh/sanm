@@ -14,6 +14,7 @@ public:
 
 protected:
     virtual bool checkzb(Ground* ground, int obj);
+    bool check401042(Ground* ground, int obj1, int obj2);
 };
 
 #endif // METHOD4010422_H

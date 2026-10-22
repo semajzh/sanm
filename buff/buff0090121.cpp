@@ -14,6 +14,12 @@ void Buff00901211::exit(Ground* ground)
     Ground::exexit(ground, src, des, id);
 }
 
+void Buff00901211::run(Ground* ground)
+{
+    QSharedPointer<Buff> buff(new Buff00901213(src, des, method));
+    Ground::addBuff(ground, ground->buff[0][des], buff);
+}
+
 void Buff00901212::run(Ground* ground)
 {
     if (ground->m_round != 4 && ground->m_round != 6 && ground->m_round != 8)
@@ -35,5 +41,54 @@ void Buff00901212::run(Ground* ground)
         {
             Ground::actml(ground, &ground->m_group[des/10].m_item[des%10], &ground->m_group[obj/10].m_item[obj%10], method, point);
         }
+    }
+}
+
+void Buff00901213::enter(Ground* ground)
+{
+    Logger::H().printbuffenter(ground, src, des, this);
+    if (++count > 8)
+    {
+        return;
+    }
+    Item& item = ground->m_group[des/10].m_item[des%10];
+    float point = Ground::pointbystar(ground, 4, src, method);
+    if (item.i[0] > item.i[1])
+    {
+        i0 += point;
+        item.i[0] += point;
+    }
+    else
+    {
+        i1 += point;
+        item.i[1] += point;
+    }
+}
+
+void Buff00901213::exit(Ground* ground)
+{
+    Logger::H().printbuffexit(ground, src, des, this);
+    ground->m_group[des/10].m_item[des%10].i[0] -= i0;
+    ground->m_group[des/10].m_item[des%10].i[1] -= i1;
+}
+
+void Buff00901213::update(Ground* ground, QSharedPointer<Buff> )
+{
+    Logger::H().printbuffupdate(ground, src, des, this);
+    if (++count > 8)
+    {
+        return;
+    }
+    Item& item = ground->m_group[des/10].m_item[des%10];
+    float point = Ground::pointbystar(ground, 4, src, method);
+    if (item.i[0] > item.i[1])
+    {
+        i0 += point;
+        item.i[0] += point;
+    }
+    else
+    {
+        i1 += point;
+        item.i[1] += point;
     }
 }

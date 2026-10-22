@@ -14,6 +14,7 @@
 #include "relation402.h"
 #include "relation403.h"
 #include "relation404.h"
+#include "relation405.h"
 #include "relation502.h"
 #include "relation503.h"
 #include "log/logger.h"
@@ -113,6 +114,11 @@ QSharedPointer<Relation> Relation::getRelation(int id)
         unsigned char ch[] = {0xe5, 0x8d, 0x97, 0xe7, 0x96, 0x86, 0xe9, 0x94, 0x8b, 0xe5, 0xbd, 0xbb};
         Logger::H().printname(ch, sizeof(ch), id);
         relation = QSharedPointer<Relation404>::create();
+    } break;
+    case 405: {
+        unsigned char ch[] = {0xe9, 0xaa, 0x81, 0xe9, 0xbe, 0x99, 0xe9, 0xa3, 0x9e, 0xe5, 0xb0, 0x86};
+        Logger::H().printname(ch, sizeof(ch), id);
+        relation = QSharedPointer<Relation405>::create();
     } break;
     case 502: {
         unsigned char ch[] = {0xe8, 0xa5, 0xbf, 0xe5, 0x87, 0x89, 0xe9, 0x93, 0x81, 0xe9, 0xaa, 0x91};

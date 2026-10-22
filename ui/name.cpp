@@ -1454,7 +1454,7 @@ void Name::methodName(int id, QSharedPointer<Method> method)
         memcpy(method->name, ch, sizeof(ch));
     } break;
     case 130121: {
-        unsigned char ch[] = {0xe6, 0x81, 0xa9, 0xe5, 0xa8, 0x81, 0xe5, 0xb9, 0xb6, 0xe6, 0x96, 0xbd};
+        unsigned char ch[] = {0xe6, 0x81, 0xa9, 0xe5, 0xa8, 0x81, 0xe5, 0xb9, 0xb6, 0xe8, 0xa1, 0x8c};
         memcpy(method->name, ch, sizeof(ch));
     } break;
     case 130222: {
@@ -2764,6 +2764,10 @@ void Name::strategyName(int id, QSharedPointer<Strategy> strategy)
         unsigned char ch[] = {0xe6, 0x97, 0xa0, 0xe5, 0x8f, 0x8c};
         memcpy(strategy->name, ch, sizeof(ch));
     } break;
+    case 401023: {
+        unsigned char ch[] = {0xe9, 0xa3, 0x9e, 0xe5, 0xb0, 0x86};
+        memcpy(strategy->name, ch, sizeof(ch));
+    } break;
     case 401031: {
         unsigned char ch[] = {0xe9, 0x9d, 0x92, 0xe5, 0x9b, 0x8a, 0xe7, 0xbb, 0x8f};
         memcpy(strategy->name, ch, sizeof(ch));
@@ -2782,6 +2786,10 @@ void Name::strategyName(int id, QSharedPointer<Strategy> strategy)
     } break;
     case 401041: {
         unsigned char ch[] = {0xe5, 0xa4, 0xaa, 0xe5, 0xb9, 0xb3, 0xe9, 0x81, 0x93, 0xe6, 0xb3, 0x95};
+        memcpy(strategy->name, ch, sizeof(ch));
+    } break;
+    case 401042: {
+        unsigned char ch[] = {0xe5, 0xa4, 0xa7, 0xe8, 0xb4, 0xa4, 0xe8, 0x89, 0xaf, 0xe5, 0xb8, 0x88};
         memcpy(strategy->name, ch, sizeof(ch));
     } break;
     case 401051: {
@@ -2993,6 +3001,10 @@ void Name::relationName(int id, QSharedPointer<Relation> relation)
     } break;
     case 404: {
         unsigned char ch[] = {0xe5, 0x8d, 0x97, 0xe7, 0x96, 0x86, 0xe9, 0x94, 0x8b, 0xe5, 0xbd, 0xbb};
+        memcpy(relation->name, ch, sizeof(ch));
+    } break;
+    case 405: {
+        unsigned char ch[] = {0xe9, 0xaa, 0x81, 0xe9, 0xbe, 0x99, 0xe9, 0xa3, 0x9e, 0xe5, 0xb0, 0x86};
         memcpy(relation->name, ch, sizeof(ch));
     } break;
     case 502: {

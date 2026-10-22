@@ -960,7 +960,7 @@ QSharedPointer<Method> Method::getMethod(int id)
         method = QSharedPointer<Method0120321>::create();
     } break;
     case 130121: {
-        unsigned char ch[] = {0xe6, 0x81, 0xa9, 0xe5, 0xa8, 0x81, 0xe5, 0xb9, 0xb6, 0xe6, 0x96, 0xbd};
+        unsigned char ch[] = {0xe6, 0x81, 0xa9, 0xe5, 0xa8, 0x81, 0xe5, 0xb9, 0xb6, 0xe8, 0xa1, 0x8c};
         Logger::H().printname(ch, sizeof(ch), id);
         method = QSharedPointer<Method0130121>::create();
     } break;

@@ -507,11 +507,13 @@ SOURCES += \
         strategy/strategy401011.cpp \
         strategy/strategy401021.cpp \
         strategy/strategy401022.cpp \
+        strategy/strategy401023.cpp \
         strategy/strategy401031.cpp \
         strategy/strategy401032.cpp \
         strategy/strategy401037.cpp \
         strategy/strategy401038.cpp \
         strategy/strategy401041.cpp \
+        strategy/strategy401042.cpp \
         strategy/strategy401051.cpp \
         strategy/strategy401052.cpp \
         strategy/strategy401056.cpp \
@@ -938,12 +940,14 @@ SOURCES += \
         buff/buff4010121.cpp \
         buff/buff401021.cpp \
         buff/buff401022.cpp \
+        buff/buff401023.cpp \
         buff/buff401031.cpp \
         buff/buff401032.cpp \
         buff/buff401037.cpp \
         buff/buff401038.cpp \
         buff/buff4010321.cpp \
         buff/buff401041.cpp \
+        buff/buff401042.cpp \
         buff/buff4010422.cpp \
         buff/buff401051.cpp \
         buff/buff401052.cpp \
@@ -1550,11 +1554,13 @@ HEADERS += \
     strategy/strategy401011.h \
     strategy/strategy401021.h \
     strategy/strategy401022.h \
+    strategy/strategy401023.h \
     strategy/strategy401031.h \
     strategy/strategy401032.h \
     strategy/strategy401037.h \
     strategy/strategy401038.h \
     strategy/strategy401041.h \
+    strategy/strategy401042.h \
     strategy/strategy401051.h \
     strategy/strategy401052.h \
     strategy/strategy401056.h \
@@ -1982,12 +1988,14 @@ HEADERS += \
     buff/buff4010121.h \
     buff/buff401021.h \
     buff/buff401022.h \
+    buff/buff401023.h \
     buff/buff401031.h \
     buff/buff401032.h \
     buff/buff401037.h \
     buff/buff401038.h \
     buff/buff4010321.h \
     buff/buff401041.h \
+    buff/buff401042.h \
     buff/buff4010422.h \
     buff/buff401051.h \
     buff/buff401052.h \

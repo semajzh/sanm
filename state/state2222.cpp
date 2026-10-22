@@ -148,6 +148,10 @@ bool State2222::check012(Ground* ground, int obj)
         {
             return false;
         }
+        if (pbuff->id == 401023)
+        {
+            return false;
+        }
         if (pbuff->id == 12)
         {
             b = true;

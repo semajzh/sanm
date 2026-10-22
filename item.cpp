@@ -1253,6 +1253,7 @@ bool Item::getItem(int id, Item& item)
         item.methods[0] = 4010222; //40%:2223*3,i0>:-100
         item.strategys[0] = 401021; //l1-7,r2,maxi0:2223
 //        item.strategys[0] = 401022; //l1-5,j8+20
+//        item.strategys[0] = 401023; //40+25=65,buff112,k5-100%
     } break;
 
     case 40103: {
@@ -1281,7 +1282,8 @@ bool Item::getItem(int id, Item& item)
         item.i[2] = 105+1.99*45;
         item.i[3] = 62+1.53*45;
         item.methods[0] = 4010422; //zb60%:-300*3,buff+30*3,50%skip(4)
-        item.strategys[0] = 401041; //2222:j2+4(*6),k2+4(*6)
+//        item.strategys[0] = 401041; //2222:j2+4(*6),k2+4(*6)
+        item.strategys[0] = 401042; //4010422,b5:i1±10(i1)
     } break;
 
     case 40105: {

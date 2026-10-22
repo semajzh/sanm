@@ -1,5 +1,6 @@
 #include "buff0130121.h"
 #include "ground.h"
+#include "buff002.h"
 #include "log/logger.h"
 
 void Buff01301211::run(Ground* ground, int obj, int m)
@@ -15,7 +16,7 @@ void Buff01301211::run(Ground* ground, int obj, int m)
 
 void Buff01301212::run(Ground* ground)
 {
-    if (ground->m_round < 4)
+    if (ground->m_round < 3)
     {
         return;
     }
@@ -27,6 +28,8 @@ void Buff01301212::run(Ground* ground)
     for (int obj : objs)
     {
         Ground::actml(ground, &ground->m_group[des/10].m_item[des%10], &ground->m_group[obj/10].m_item[obj%10], method, point3);
+		QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff002(des, obj, method, 1));
+        Ground::addBuff(ground, ground->buff[1][obj], buff);
     }
 }
 

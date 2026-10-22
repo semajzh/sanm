@@ -3,6 +3,7 @@
 #include "item.h"
 #include "buff/buff101.h"
 #include "buff/buff4010422.h"
+#include "buff/buff401042.h"
 #include "log/logger.h"
 
 Method4010422::Method4010422()
@@ -38,6 +39,8 @@ int Method4010422::run(Ground* ground, Item* item1)
     QVector<int> objs = Ground::selectObjN(ground, item1->g[0], 0x0043, item1->g[0]);
     for (int obj : objs)
     {
+        check401042(ground, item1->g[0], obj);
+
         int ex = Ground::exsize(ground, obj);
         if (ex > 3)
         {
@@ -65,3 +68,16 @@ bool Method4010422::checkzb(Ground* ground, int obj)
     return false;
 }
 
+bool Method4010422::check401042(Ground* ground, int obj1, int obj2)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[3][obj1])
+    {
+        if (pbuff->id == 401042)
+        {
+            QSharedPointer<Buff401042> buff = qSharedPointerCast<Buff401042>(pbuff);
+            buff->run(ground, obj2);
+            return true;
+        }
+    }
+    return false;
+}
