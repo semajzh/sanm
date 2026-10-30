@@ -11,6 +11,15 @@ Item::Item()
     methods[3] = 2223;
 }
 
+void Item::setStar(int s)
+{
+    star = s;
+    for (int& ms : methodstars)
+    {
+        ms = s;
+    }
+}
+
 bool Item::getItem(int id, Item& item)
 {
     bool ret = true;
@@ -1226,6 +1235,19 @@ bool Item::getItem(int id, Item& item)
         item.strategys[0] = 315021; //
     } break;
 
+    case 31802: {
+        unsigned char ch[] = {0xe8, 0x92, 0x8b, 0xe9, 0x92, 0xa6};
+        Logger::H().printname(ch, sizeof(ch), id);
+        item.id = id;
+        item.f[0] = 3;
+        item.g[4] = 0;
+        item.i[0] = 100 + 2.05 * 45;
+        item.i[1] = 100 + 2.05 * 45;
+        item.i[2] =  97 + 1.83 * 45;
+        item.i[3] =  56 + 1.78 * 45;
+        item.methods[0] = 3180221;
+    } break;
+
     case 40101: {
         unsigned char ch[] = {0xe8, 0x91, 0xa3, 0xe5, 0x8d, 0x93};
         Logger::H().printname(ch, sizeof(ch), id);
@@ -1732,6 +1754,19 @@ bool Item::getItem(int id, Item& item)
         item.i[3] =  88 + 1.98 * 45;
         item.methods[0] = 4130220; //pre2222,50%(maxi),-f1~2,*2:maxi-6%(maxi),l0±8,-80ml
         item.strategys[0] = 413021; //l0-5;4130220,f2:+50(i1)
+    } break;
+
+    case 41801: {
+        unsigned char ch[] = {0xe5, 0x8d, 0x97, 0xe5, 0x8d, 0x8e, 0xe8, 0x80, 0x81, 0xe4, 0xbb, 0x99};
+        Logger::H().printname(ch, sizeof(ch), id);
+        item.id = id;
+        item.f[0] = 4;
+        item.g[4] = 1;
+        item.i[0] =  48 + 0.65 * 45;
+        item.i[1] = 113 + 2.58 * 45;
+        item.i[2] = 101 + 2.08 * 45;
+        item.i[3] =  71 + 1.52 * 45;
+        item.methods[0] = 4180121;
     } break;
 
 #ifdef XYX

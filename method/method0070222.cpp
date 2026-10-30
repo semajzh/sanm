@@ -22,6 +22,7 @@ int Method0070222::run(Ground* ground, Item* item1)
 {
     Logger::H().printmethod(ground, item1, this, true);
     float point1 = Ground::pointbystar(ground, 140, item1->g[0], id);
+    float point2 = Ground::pointbystar(ground, 16, item1->g[0], id);
     QVector<int> objs = Ground::selectObjN(ground, item1->g[0], 0x0043, item1->g[0]);
     for (int obj : objs)
     {
@@ -29,7 +30,7 @@ int Method0070222::run(Ground* ground, Item* item1)
 
         if (check005(ground, obj))
         {
-            QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff0070222(item1->g[0], obj, id, 1));
+            QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff0070222(item1->g[0], obj, id, 1, point2*1000));
             Ground::addBuff(ground, ground->buff[1][obj], buff);
         }
 

@@ -7,31 +7,21 @@ void Buff40201221::enter(Ground* ground)
 {
     Logger::H().printbuffenter(ground, src, des, this);
     float point1 = Ground::pointbystar(ground, 40, src, method);
-    float sx = Ground::getMaxi(ground, src);
-    float i = (point1 + sx / 10);
-    for (int j = 0; j < 4; ++j)
-    {
-        if (j == 2)
-        {
-            continue;
-        }
-        ix[j] = i;
-        ground->m_group[des/10].m_item[des%10].i[j] += ix[j];
-    }
+    float point2 = point1 + Ground::getMaxi(ground, src) / 10;
+    ix[0] += point2;
+    ix[1] += point2;
+    ix[3] += point2;
+    Ground::addin(ground, des, 0, point2);
+    Ground::addin(ground, des, 1, point2);
+    Ground::addin(ground, des, 3, point2);
 }
 
 void Buff40201221::exit(Ground* ground)
 {
     Logger::H().printbuffexit(ground, src, des, this);
-
-    for (int j = 0; j < 4; ++j)
-    {
-        if (j == 2)
-        {
-            continue;
-        }
-        ground->m_group[des/10].m_item[des%10].i[j] -= ix[j];
-    }
+    Ground::addin(ground, des, 0, -ix[0], true);
+    Ground::addin(ground, des, 1, -ix[1], true);
+    Ground::addin(ground, des, 3, -ix[3], true);
 }
 
 void Buff40201222::enter(Ground* ground)
@@ -39,35 +29,22 @@ void Buff40201222::enter(Ground* ground)
     Logger::H().printbuffenter(ground, src, des, this);
     float point1 = Ground::pointbystar(ground, 40, src, method);
     float point2 = Ground::addbyix(ground, point1, Ground::getMaxi(ground, src));
-    for (int j = 0; j < 4; ++j)
-    {
-        if (j == 2)
-        {
-            continue;
-        }
-        ix[j] = Ground::addin(ground, des, j, -point2);
-        ground->m_group[des/10].m_item[des%10].i[j] += ix[j];
-        if (j == 0)
-        {
-            Buff020::check020(ground, src, des, true);
-        }
-        check4110121(ground);
-    }
+    ix[0] = Ground::addin(ground, des, 0, -point2);
+    Buff020::check020(ground, src, des, true);
+    check4110121(ground);
+    ix[1] = Ground::addin(ground, des, 1, -point2);
+    check4110121(ground);
+    ix[3] = Ground::addin(ground, des, 3, -point2);
+    check4110121(ground);
     Ground::exenter(ground, src, des, id);
 }
 
 void Buff40201222::exit(Ground* ground)
 {
     Logger::H().printbuffexit(ground, src, des, this);
-
-    for (int j = 0; j < 4; ++j)
-    {
-        if (j == 2)
-        {
-            continue;
-        }
-        ground->m_group[des/10].m_item[des%10].i[j] -= ix[j];
-    }
+    Ground::addin(ground, des, 0, -ix[0], true);
+    Ground::addin(ground, des, 1, -ix[1], true);
+    Ground::addin(ground, des, 3, -ix[3], true);
     Buff020::check020(ground, src, des, false);
     Ground::exexit(ground, src, des, id);
 }

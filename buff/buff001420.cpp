@@ -11,11 +11,11 @@ void Buff001420::run(Ground* ground)
 void Buff001421::enter(Ground* ground)
 {
     Logger::H().printbuffenter(ground, src, des, this);
-    ground->m_group[des/10].m_item[des%10].i[2] += 10;
+    Ground::addin(ground, des, 2, 10);
 }
 
 void Buff001421::exit(Ground* ground)
 {
     Logger::H().printbuffexit(ground, src, des, this);
-    ground->m_group[des/10].m_item[des%10].i[2] -= 10;
+    Ground::addin(ground, des, 2, -10, true);
 }

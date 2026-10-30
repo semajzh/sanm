@@ -7,7 +7,7 @@ void Buff0150120::exit(Ground* ground)
     Logger::H().printbuffexit(ground, src, des, this);
     for (int n = 0; n < 4; ++n)
     {
-        ground->m_group[des/10].m_item[des%10].i[n] -= i[n];
+        Ground::addin(ground, des, n, -i[n], true);
         i[n] = 0;
     }
     ground->m_group[des/10].m_item[des%10].k[0] -= k0;
@@ -25,9 +25,9 @@ void Buff0150120::run(Ground* ground)
         int index = Ground::getMaxiIndex(ground, des);
         if (index >= 0 && index <= 3)
         {
-            i[index] += point1;
             k0 += point3;
-            ground->m_group[des/10].m_item[des%10].i[index] += point1;
+            i[index] += point1;
+            Ground::addin(ground, des, index, point1);
             ground->m_group[des/10].m_item[des%10].k[0] += point3;
         }
     }

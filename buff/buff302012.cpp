@@ -35,15 +35,15 @@ void Buff3020122::enter(Ground* ground)
         }
     }
     maxi = max * Ground::addbyix(ground, 5, ground->m_group[src/10].m_item[src%10].i[1]) / 100;
-    ground->m_group[des/10].m_item[des%10].i[index] -= maxi;
+    maxi = -Ground::addin(ground, des, index, -maxi);
     Ground::exenter(ground, src, des, id);
 }
 
 void Buff3020122::exit(Ground* ground)
 {
     Logger::H().printbuffexit(ground, src, des, this);
-    ground->m_group[des/10].m_item[des%10].i[index] += maxi;
     Ground::exexit(ground, src, des, id);
+    Ground::addin(ground, des, index, maxi, true);
 }
 
 void Buff3020122::update(Ground* ground, QSharedPointer<Buff> buff)

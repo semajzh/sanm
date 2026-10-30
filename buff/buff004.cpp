@@ -13,9 +13,7 @@ Buff004::Buff004(int s, int d, int m, int r) : BuffC(s, d, m, r)
 void Buff004::enter(Ground* ground)
 {
     Logger::H().printbuffenter(ground, src, des, this);
-    i2 = ground->m_group[des/10].m_item[des%10].i[2] > 20 ? 20 : ground->m_group[des/10].m_item[des%10].i[2];
-    i2 = Ground::addin(ground, des, 2, -i2);
-    ground->m_group[des/10].m_item[des%10].i[2] += i2;
+    i2 = Ground::addin(ground, des, 2, -20);
     Buff020::check020(ground, src, des, true);
     Ground::exenter(ground, src, des, id);
 }
@@ -23,7 +21,7 @@ void Buff004::enter(Ground* ground)
 void Buff004::exit(Ground* ground)
 {
     Logger::H().printbuffexit(ground, src, des, this);
-    ground->m_group[des/10].m_item[des%10].i[2] -= i2;
+    Ground::addin(ground, des, 2, -i2, true);
     Buff020::check020(ground, src, des, false);
     Ground::exexit(ground, src, des, id);
 }

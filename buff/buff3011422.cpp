@@ -14,7 +14,6 @@ void Buff3011422::enter(Ground* ground)
         i2 *= 1.5;
     }
     i2 = Ground::addin(ground, des, 2, -i2);
-    ground->m_group[des/10].m_item[des%10].i[2] += i2;
     Buff020::check020(ground, src, des, true);
     check4110121(ground);
     Ground::exenter(ground, src, des, id);
@@ -23,7 +22,7 @@ void Buff3011422::enter(Ground* ground)
 void Buff3011422::exit(Ground* ground)
 {
     Logger::H().printbuffexit(ground, src, des, this);
-    ground->m_group[des/10].m_item[des%10].i[2] -= i2;
+    Ground::addin(ground, des, 2, -i2, true);
     Buff020::check020(ground, src, des, false);
     Ground::exexit(ground, src, des, id);
 }

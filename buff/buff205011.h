@@ -14,10 +14,9 @@ public:
     virtual void exit(Ground* ground);
 
 private:
+    int index = -1;
     float ix = 0.0f;
     float l0 = 0.0f;
-    int index = -1;
-    int maxi(Ground* ground, int pos);
 };
 
 

@@ -92,8 +92,7 @@ public:
     static bool excheck(Ground* ground, int src, int des, int id);
     static int exsize(Ground* ground, int obj, int type = 0);
     static void exremove(Ground* ground, int obj, int n);
-    static float addin(Ground* ground, int obj, int n, float point);
-    static float addi2(Ground* ground, int obj, float point);
+    static float addin(Ground* ground, int obj, int n, float point, bool undo = false);
     static float addj9(Ground* ground, int obj, int n, float point);
     static float addj17(Ground* ground, int obj, int n, float point);
     static float addjn(Ground* ground, int obj, int n, float point);

@@ -16,8 +16,8 @@ void Buff1170121::enter(Ground* ground)
     float point2 = Ground::addbyix(ground, point1, item1.i[2]);
     i0 = item1.i[0] * point2 / 100;
     i1 = item1.i[1] * point2 / 100;
-    item2.i[0] += i0;
-    item2.i[1] += i1;
+    Ground::addin(ground, des, 0, i0);
+    Ground::addin(ground, des, 1, i1);
 
     float point3 = Ground::pointbystar(ground, 10, src, method);
     float point4 = Ground::addbyix(ground, point3, item1.i[2]);
@@ -28,8 +28,8 @@ void Buff1170121::enter(Ground* ground)
 void Buff1170121::exit(Ground* ground)
 {
     Logger::H().printbuffexit(ground, src, des, this);
-    ground->m_group[des/10].m_item[des%10].i[0] -= i0;
-    ground->m_group[des/10].m_item[des%10].i[1] -= i1;
+    Ground::addin(ground, des, 0, -i0, true);
+    Ground::addin(ground, des, 1, -i1, true);
     ground->m_group[des/10].m_item[des%10].l[13] -= l13;
 }
 

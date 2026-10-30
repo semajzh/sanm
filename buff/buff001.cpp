@@ -15,7 +15,7 @@ void Buff001::enter(Ground* ground)
     Logger::H().printbuffenter(ground, src, des, this);
 
     data = (ground->m_group[des/10].m_item[des%10].i[1] < 15) ? ground->m_group[des/10].m_item[des%10].i[1] : 15;
-    ground->m_group[des/10].m_item[des%10].i[1] -= data;
+    Ground::addin(ground, des, 1, -data);
     Ground::exenter(ground, src, des, id);
     check015(ground);
 }
@@ -24,7 +24,7 @@ void Buff001::exit(Ground* ground)
 {
     Logger::H().printbuffexit(ground, src, des, this);
 
-    ground->m_group[des/10].m_item[des%10].i[1] += data;
+    Ground::addin(ground, des, 1, data, true);
     Ground::exexit(ground, src, des, id);
 }
 

@@ -56,6 +56,7 @@
 #include "buff/buff0130121.h"
 #include "buff/buff0150221.h"
 #include "buff/buff0170121.h"
+#include "buff/buff0180121.h"
 #include "buff/buff101032.h"
 #include "buff/buff1010121.h"
 #include "buff/buff1010620.h"
@@ -89,6 +90,7 @@
 #include "buff/buff3120221.h"
 #include "buff/buff3150121.h"
 #include "buff/buff3150221.h"
+#include "buff/buff3180221.h"
 #include "buff/buff4010520.h"
 #include "buff/buff4010722.h"
 #include "buff/buff4010920.h"
@@ -98,11 +100,13 @@
 //#include "buff/buff4070221.h"
 #include "buff/buff4090121.h"
 #include "buff/buff4110220.h"
+#include "buff/buff4180121.h"
 #include "buff/buff9070124.h"
 #include "buff/buffs600.h"
 #include "buff/buffs602.h"
 #include "log/logger.h"
 #include <cmath>
+#include <cstdlib>
 
 static void selectObj0001(Ground* ground, QVector<int>& objs, int );
 static void selectObj0010(Ground* ground, QVector<int>& objs, int , int );
@@ -207,6 +211,7 @@ static bool check0070124(Ground* ground, int obj, int );
 static bool check0088121(Ground* ground, int obj);
 static bool check0088324(Ground* ground, int obj, Item** item2);
 static bool check0090121(Ground* ground, int obj);
+static bool check0180121(Ground* ground, int obj);
 static bool check0100120(Ground* ground, int obj1, int obj2);
 static bool check0170121(Ground* ground, int obj, float& point);
 static bool check0170121(Ground* ground, int obj);
@@ -267,6 +272,7 @@ static bool check3120221(Ground* ground, int obj, int method);
 static bool check31501211(Ground* ground, Item** item2, float& point);
 static bool check31501212(Ground* ground, int obj, int method);
 static bool check3150221(Ground* ground, int obj1, int obj2, int method, float& point);
+static bool check3180221(Ground* ground, int obj);
 static bool check4010520(Ground* ground, int obj1, int obj2);
 static bool check4010722(Ground* ground, int obj1, int obj2);
 static bool check4010920(Ground* ground, int obj);
@@ -278,6 +284,7 @@ static bool check4070121(Ground* ground, int obj);
 static bool check4090121(Ground* ground, int obj, float point);
 static bool check4110220(Ground* ground, int obj1, int obj2);
 static bool check4110220(Ground* ground, int obj, float point);
+static bool check4180121(Ground* ground, int obj, int n);
 static bool check9070124(Ground* ground, int obj, int );
 
 // CCZ
@@ -679,11 +686,12 @@ QVector<int> Ground::selectObjN(Ground* ground, int obj, int criteria, int excep
     QVector<int> objs = {0, 1, 2, 10, 11, 12};
 
     // except or h0=0
-    for (int obj : objs)
+    for (int i = objs.size() - 1; i >= 0; --i)
     {
-        if ((except >= 0 && except == obj) || ground->m_group[obj/10].m_item[obj%10].h[0] <= 0)
+        int current = objs.at(i);
+        if ((except >= 0 && except == current) || ground->m_group[current/10].m_item[current%10].h[0] <= 0)
         {
-            objs.removeOne(obj);
+            objs.remove(i);
         }
     }
 
@@ -721,22 +729,17 @@ void selectObj0001(Ground* ground, QVector<int>& objs, int n)
     QVector<int> objs1;
     while (objs1.size() < n && objs.size() > 0)
     {
-        int g2[6] = {0};
+        double g2[6] = {0};
         for (int i = 0; i < objs.size(); ++i)
         {
             Item& item = ground->m_group[objs[i]/10].m_item[objs[i]%10];
-            int g = item.g[2];
-            if (item.g[3] > 0)
-            {
-                g = item.g[3] + ((float)item.h[0] / item.h[3]) * (item.g[2] - item.g[3]);
-            }
-            g2[i] = g;
+            g2[i] = item.g[3] + ((double)item.h[0] / item.h[3]) * (item.g[2] - item.g[3]);
         }
-        int r = qrand() % (g2[0] + g2[1] + g2[2] + g2[3] + g2[4] + g2[5]) + 1;
-        for (int i = 0, row = 0; i < objs.size(); ++i)
+        double r = qrand() / (RAND_MAX + 1.0) * (g2[0] + g2[1] + g2[2] + g2[3] + g2[4] + g2[5]);
+        for (int i = 0; i < objs.size(); ++i)
         {
-            row += g2[i];
-            if (r <= row)
+            r -= g2[i];
+            if (r < 0)
             {
                 objs1.append(objs.at(i));
                 objs.takeAt(i);
@@ -958,6 +961,11 @@ int act(Ground* ground, Item* item1, Item* item2, int method, float& point, int 
     check21702211(ground, item1->g[0], item2->g[0]);
     check0170121(ground, item2->g[0]);
     check0090121(ground, item2->g[0]);
+    if (method % 100 == 22 || method % 100 == 24)
+    {
+        check3180221(ground, item2->g[0]);
+    }
+    check0180121(ground, item2->g[0]);
 
 #ifdef CCZ
     check500005(ground, item1->g[0], item2->g[0]);
@@ -974,14 +982,16 @@ void actclear(Ground* ground, Item* item)
     int size = sizeof(ground->buff) / sizeof(QMap<int, QVector<QSharedPointer<Buff>>>);
     for (int i = 0; i < size; ++i)
     {
-        for (QVector<QSharedPointer<Buff>>& buffs : ground->buff[i])
+        for (int obj : ground->buff[i].keys())
         {
+            const auto buffs = ground->buff[i].value(obj);
             for (int n = buffs.size() - 1; n >= 0; --n)
             {
-                if (buffs.at(n)->src == item->g[0] || buffs.at(n)->des == item->g[0])
+                QSharedPointer<Buff> buff = buffs.at(n);
+                int index = ground->buff[i].value(obj).indexOf(buff);
+                if (index >= 0 && (buff->src == item->g[0] || buff->des == item->g[0]))
                 {
-                    buffs.at(n)->exit(ground);
-                    buffs.remove(n);
+                    ground->buff[i][obj].takeAt(index)->exit(ground);
                 }
             }
         }
@@ -1350,7 +1360,8 @@ void Ground::addBuff(Ground* ground, QVector<QSharedPointer<Buff>>& buffs, QShar
     }
     else
     {
-        buffs[pos]->update(ground, buff);
+        QSharedPointer<Buff> pbuff = buffs[pos];
+        pbuff->update(ground, buff);
     }
 }
 
@@ -1410,14 +1421,15 @@ void Ground::exremove(Ground* ground, int obj, int n)
     int size = sizeof(ground->buff) / sizeof(QMap<int, QVector<QSharedPointer<Buff>>>);
     for (int i = 0; m.size() > 0 && i < size; ++i)
     {
-        for (int j = ground->buff[i][obj].size() - 1; m.size() > 0 && j >= 0; --j)
+        const auto buffs = ground->buff[i].value(obj);
+        for (int j = buffs.size() - 1; m.size() > 0 && j >= 0; --j)
         {
-            int id = ground->buff[i][obj][j]->id;
-            if (m.contains(id))
+            QSharedPointer<Buff> buff = buffs.at(j);
+            int index = ground->buff[i].value(obj).indexOf(buff);
+            if (index >= 0 && m.contains(buff->id))
             {
-                m.removeOne(id);
-                ground->buff[i][obj][j]->exit(ground);
-                ground->buff[i][obj].remove(j);
+                m.removeOne(buff->id);
+                ground->buff[i][obj].takeAt(index)->exit(ground);
             }
         }
     }
@@ -1574,7 +1586,7 @@ bool check017(Ground* ground, int obj)
 
 bool check102(Ground* ground, int obj, float& point)
 {
-    QVector<QSharedPointer<Buff>>& buffs = ground->buff[3][obj];
+    const auto buffs = ground->buff[3].value(obj);
     for (int i = 0; i < buffs.size(); ++i)
     {
         if (buffs.at(i)->id == 102)
@@ -1582,7 +1594,11 @@ bool check102(Ground* ground, int obj, float& point)
             QSharedPointer<Buff102> buff = qSharedPointerCast<Buff102>(buffs.at(i));
             if (buff->run(ground, point) <= 0)
             {
-                buffs.remove(i);
+                int index = ground->buff[3].value(obj).indexOf(buff);
+                if (index >= 0)
+                {
+                    ground->buff[3][obj].remove(index);
+                }
             }
             break;
         }
@@ -2631,6 +2647,32 @@ bool check0090121(Ground* ground, int obj)
     return false;
 }
 
+bool check4180121(Ground* ground, int obj, int n)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[3][obj])
+    {
+        if (pbuff->id == 4180121)
+        {
+            qSharedPointerCast<Buff4180121>(pbuff)->run(ground, n);
+            return true;
+        }
+    }
+    return false;
+}
+
+bool check0180121(Ground* ground, int obj)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[6][obj])
+    {
+        if (pbuff->id == 1801211)
+        {
+            pbuff->run(ground);
+            return true;
+        }
+    }
+    return false;
+}
+
 bool check0100120(Ground *ground, int obj1, int obj2)
 {
     for (QSharedPointer<Buff> pbuff : ground->buff[3][obj1])
@@ -3476,6 +3518,19 @@ bool check3150221(Ground* ground, int obj1, int obj2, int method, float& point)
     return false;
 }
 
+bool check3180221(Ground* ground, int obj)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[6][obj])
+    {
+        if (pbuff->id == 31802211)
+        {
+            pbuff->run(ground);
+            return true;
+        }
+    }
+    return false;
+}
+
 bool check4010520(Ground* ground, int obj1, int obj2)
 {
     for (QSharedPointer<Buff> pbuff : ground->buff[4][obj1])
@@ -3778,22 +3833,30 @@ bool check7000321(Ground* ground, int obj)
 }
 #endif
 
-float Ground::addin(Ground* ground, int obj, int n, float point)
+float Ground::addin(Ground* ground, int obj, int n, float point, bool undo)
 {
-    if (point < 0)
+    if (n < 0 || n >= 4)
     {
-        point = (ground->m_group[obj/10].m_item[obj%10].i[n] + point) < 0 ? (0 - ground->m_group[obj/10].m_item[obj%10].i[n]) : point;
+        return point;
     }
-    return point;
-}
 
-float Ground::addi2(Ground* ground, int obj, float point)
-{
-    point = addin(ground, obj, 2, point);
-    ground->m_group[obj/10].m_item[obj%10].i[2] += point;
-    if (point > 0.0f)
+    Item& item = ground->m_group[obj/10].m_item[obj%10];
+    float previous = item.i[n];
+    if (!undo && point < -previous)
+    {
+        point = -previous;
+    }
+    float value = previous - item.idebt[n] + point;
+    item.i[n] = qMax(value, 0.0f);
+    item.idebt[n] = qMax(-value, 0.0f);
+    bool increased = item.i[n] > previous;
+    if (increased && n == 2)
     {
         check4070121(ground, obj);
+    }
+    if (increased && !undo)
+    {
+        check4180121(ground, obj, n);
     }
     return point;
 }
@@ -3849,7 +3912,17 @@ float Ground::addbyix(Ground* , float base, float ix, float d)
 
 float Ground::pointbystar(Ground* ground, float base, int obj, int method, int op)
 {
-    int star = ground->m_group[obj/10].m_item[obj%10].star / ((method > 1000000 && method < 6000000) ? 2 : 1);
+    const Item& item = ground->m_group[obj/10].m_item[obj%10];
+    int star = item.star;
+    for (int n = 0; n < 4; ++n)
+    {
+        if (item.methods[n] == method)
+        {
+            star = item.methodstars[n];
+            break;
+        }
+    }
+    star /= (method > 1000000 && method < 6000000) ? 2 : 1;
     float point = (base * 3 / 100) * star;
     return base + op * point;
 }
@@ -4052,8 +4125,7 @@ void Ground::clearbuff(Ground* ground, int pos, int count)
             {
                 if (ground->buff[1][pos].at(k)->id == e)
                 {
-                    ground->buff[1][pos][k]->exit(ground);
-                    ground->buff[1][pos].remove(k);
+                    ground->buff[1][pos].takeAt(k)->exit(ground);
                     break;
                 }
             }

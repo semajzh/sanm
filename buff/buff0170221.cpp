@@ -35,7 +35,7 @@ void Buff01702212::enter(Ground* ground)
     index = Ground::getMaxiIndex(ground, des);
     if (index >= 0)
     {
-        ground->m_group[des/10].m_item[des%10].i[index] -= i0;
+        i0 = -Ground::addin(ground, des, index, -i0);
     }
 
     float point2 = Ground::pointbystar(ground, 10, src, method);
@@ -50,7 +50,7 @@ void Buff01702212::exit(Ground* ground)
     Logger::H().printbuffexit(ground, src, des, this);
     if (index >= 0)
     {
-        ground->m_group[des/10].m_item[des%10].i[index] += i0;
+        Ground::addin(ground, des, index, i0, true);
     }
     ground->m_group[des/10].m_item[des%10].k[0] += k0;
     Ground::exexit(ground, src, des, id);

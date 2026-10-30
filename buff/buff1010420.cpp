@@ -10,13 +10,12 @@ void Buff1010420::enter(Ground* ground)
     float point2 = Ground::pointbystar(ground, 15, src, method, -1);
     i0 = point1;
     i3 = point1;
-    ground->m_group[des/10].m_item[des%10].i[0] += i0;
-    ground->m_group[des/10].m_item[des%10].i[3] += i3;
+    Ground::addin(ground, des, 0, point1);
+    Ground::addin(ground, des, 3, point1);
     ground->m_group[des/10].m_item[des%10].j[7] += 100;
     ground->m_group[des/10].m_item[des%10].k[0] += 2;
 
     i2 = Ground::addin(ground, des, 2, -point2);
-    ground->m_group[des/10].m_item[des%10].i[2] += i2;
     Buff020::check020(ground, src, des, true);
     check4110121(ground);
     Ground::exenter(ground, src, des, id);
@@ -25,12 +24,12 @@ void Buff1010420::enter(Ground* ground)
 void Buff1010420::exit(Ground* ground)
 {
     Logger::H().printbuffexit(ground, src, des, this);
-    ground->m_group[des/10].m_item[des%10].i[0] -= i0;
-    ground->m_group[des/10].m_item[des%10].i[3] -= i3;
+    Ground::addin(ground, des, 0, -i0, true);
+    Ground::addin(ground, des, 3, -i3, true);
     ground->m_group[des/10].m_item[des%10].j[7] -= 100;
     ground->m_group[des/10].m_item[des%10].k[0] -= 2;
 
-    ground->m_group[des/10].m_item[des%10].i[2] -= i2;
+    Ground::addin(ground, des, 2, -i2, true);
     Buff020::check020(ground, src, des, false);
     Ground::exexit(ground, src, des, id);
 }

@@ -5,10 +5,10 @@
 void Buff0088121::exit(Ground* ground)
 {
     Logger::H().printbuffexit(ground, src, des, this);
-    for (int x = 0; x < 4; ++x)
+    for (int n = 0; n < 4; ++n)
     {
-        ground->m_group[des/10].m_item[des%10].i[x] -= i[x];
-        i[x] = 0;
+        Ground::addin(ground, des, n, -i[n], true);
+        i[n] = 0;
     }
 }
 
@@ -26,9 +26,9 @@ void Buff0088121::run(Ground* ground)
     }
 
     Item& item1 = ground->m_group[des/10].m_item[des%10];
-    int x = getmaxi(ground);
-    i[x] += 10;
-    item1.i[x] += 10;
+    int n = getmaxi(ground);
+    i[n] += 10;
+    Ground::addin(ground, des, n, 10);
 
     QVector<int> objs = Ground::selectObjN(ground, des, 0x21);
     if (objs.size() > 0)

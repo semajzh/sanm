@@ -27,8 +27,6 @@ void Buff01002202::enter(Ground* ground)
         ii1 = Ground::addin(ground, des, 1, -ii1);
         i0 += ii0;
         i1 += ii1;
-        ground->m_group[des/10].m_item[des%10].i[0] += ii0;
-        ground->m_group[des/10].m_item[des%10].i[1] += ii1;
     }
     Buff020::check020(ground, src, des, true);
     Ground::exenter(ground, src, des, id);
@@ -37,8 +35,8 @@ void Buff01002202::enter(Ground* ground)
 void Buff01002202::exit(Ground* ground)
 {
     Logger::H().printbuffexit(ground, src, des, this);
-    ground->m_group[des/10].m_item[des%10].i[0] -= i0;
-    ground->m_group[des/10].m_item[des%10].i[1] -= i1;
+    Ground::addin(ground, des, 0, -i0, true);
+    Ground::addin(ground, des, 1, -i1, true);
     Buff020::check020(ground, src, des, false);
     Ground::exexit(ground, src, des, id);
 }
@@ -55,8 +53,6 @@ void Buff01002202::update(Ground* ground, QSharedPointer<Buff> )
         ii1 = Ground::addin(ground, des, 1, -ii1);
         i0 += ii0;
         i1 += ii1;
-        ground->m_group[des/10].m_item[des%10].i[0] += ii0;
-        ground->m_group[des/10].m_item[des%10].i[1] += ii1;
     }
     Ground::exupdate(ground, src, des, id);
 }

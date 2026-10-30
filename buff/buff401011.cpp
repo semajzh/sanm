@@ -5,11 +5,11 @@
 void Buff401011::enter(Ground* ground)
 {
     Logger::H().printbuffenter(ground, src, des, this);
-    Ground::addi2(ground, des, 30);
+    Ground::addin(ground, des, 2, 30);
 }
 
 void Buff401011::exit(Ground* ground)
 {
     Logger::H().printbuffexit(ground, src, des, this);
-    Ground::addi2(ground, des, -30);
+    Ground::addin(ground, des, 2, -30, true);
 }

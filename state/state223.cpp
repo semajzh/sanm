@@ -64,15 +64,16 @@ void State223::buff4(Ground* ground)
 
 void State223::buff6(Ground* ground)
 {
-    for (QVector<QSharedPointer<Buff>>& buffs : ground->buff[6])
+    for (int obj : ground->buff[6].keys())
     {
+        const auto buffs = ground->buff[6].value(obj);
         for (int k = buffs.size() - 1; k >= 0; --k)
         {
             QSharedPointer<BuffC> buff = qSharedPointerCast<BuffC>(buffs.at(k));
-            if (--(buff->m_round) == 0)
+            int index = ground->buff[6].value(obj).indexOf(buff);
+            if (index >= 0 && --(buff->m_round) == 0)
             {
-                buff->exit(ground);
-                buffs.remove(k);
+                ground->buff[6][obj].takeAt(index)->exit(ground);
             }
         }
     }
@@ -104,15 +105,16 @@ void State223::buff7(Ground* ground)
 
 void State223::buff8(Ground* ground)
 {
-    for (QVector<QSharedPointer<Buff>>& buffs : ground->buff[8])
+    for (int obj : ground->buff[8].keys())
     {
+        const auto buffs = ground->buff[8].value(obj);
         for (int k = buffs.size() - 1; k >= 0; --k)
         {
             QSharedPointer<BuffC> buff = qSharedPointerCast<BuffC>(buffs.at(k));
-            if (--(buff->m_round) == 0)
+            int index = ground->buff[8].value(obj).indexOf(buff);
+            if (index >= 0 && --(buff->m_round) == 0)
             {
-                buff->exit(ground);
-                buffs.remove(k);
+                ground->buff[8][obj].takeAt(index)->exit(ground);
             }
         }
     }

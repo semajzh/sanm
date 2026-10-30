@@ -13,7 +13,7 @@ void Buff301041::exit(Ground* ground)
 {
     Logger::H().printbuffexit(ground, src, des, this);
     ground->m_group[des/10].m_item[des%10].l[2] -= l2;
-    ground->m_group[des/10].m_item[des%10].i[1] -= i1;
+    Ground::addin(ground, des, 1, -i1, true);
 }
 
 void Buff301041::run(Ground* ground)
@@ -21,7 +21,7 @@ void Buff301041::run(Ground* ground)
     if (ground->m_round == 3)
     {
         i1 = 30;
-        ground->m_group[des/10].m_item[des%10].i[1] += i1;
+        Ground::addin(ground, des, 1, i1);
     }
 }
 

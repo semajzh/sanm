@@ -22,13 +22,14 @@ void State2221::run(Ground* ground, int current)
 
 void State2221::buff1(Ground* ground, int current)
 {
-    for (int k = ground->buff[1][current].size() - 1; k >= 0; --k)
+    const auto buffs = ground->buff[1].value(current);
+    for (int k = buffs.size() - 1; k >= 0; --k)
     {
-        QSharedPointer<BuffC> buff = qSharedPointerCast<BuffC>(ground->buff[1][current].at(k));
-        if (buff.data()->m_round == 0)
+        QSharedPointer<BuffC> buff = qSharedPointerCast<BuffC>(buffs.at(k));
+        int index = ground->buff[1].value(current).indexOf(buff);
+        if (index >= 0 && buff->m_round == 0)
         {
-            buff->exit(ground);
-            ground->buff[1][current].remove(k);
+            ground->buff[1][current].takeAt(index)->exit(ground);
         }
     }
 

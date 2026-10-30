@@ -27,3 +27,13 @@ int Method0020721::run(Ground* ground, Item* item1)
     return 1;
 }
 
+int Method0020721::run(Ground* ground, Item* item1, int src)
+{
+    Logger::H().printmethod(ground, item1, this, true);
+
+    int obj = item1->g[0];
+    QSharedPointer<Buff> buff = QSharedPointer<Buff>(new Buff0020721(src, obj, id));
+    Ground::addBuff(ground, ground->buff[5][obj], buff);
+
+    return 1;
+}

@@ -75,15 +75,15 @@ void Buff41102204::enter(Ground* ground)
     float ii2 = meta / 1000.0f;
     i0 += ii0;
     i2 += ii2;
-    ground->m_group[des/10].m_item[des%10].i[0] += ii0;
-    ground->m_group[des/10].m_item[des%10].i[2] += ii2;
+    Ground::addin(ground, des, 0, ii0);
+    Ground::addin(ground, des, 2, ii2);
 }
 
 void Buff41102204::exit(Ground* ground)
 {
     Logger::H().printbuffexit(ground, src, des, this);
-    ground->m_group[des/10].m_item[des%10].i[0] -= i0;
-    ground->m_group[des/10].m_item[des%10].i[2] -= i2;
+    Ground::addin(ground, des, 0, -i0, true);
+    Ground::addin(ground, des, 2, -i2, true);
 }
 
 void Buff41102204::update(Ground* ground, QSharedPointer<Buff> buff)
@@ -93,21 +93,17 @@ void Buff41102204::update(Ground* ground, QSharedPointer<Buff> buff)
     float ii2 = buff->meta / 1000.0f;
     i0 += ii0;
     i2 += ii2;
-    ground->m_group[des/10].m_item[des%10].i[0] += ii0;
-    ground->m_group[des/10].m_item[des%10].i[2] += ii2;
+    Ground::addin(ground, des, 0, ii0);
+    Ground::addin(ground, des, 2, ii2);
 }
 
 void Buff41102205::enter(Ground* ground)
 {
     Logger::H().printbuffenter(ground, src, des, this);
-    i0 = meta / 1000.0f;
-    i0 = Ground::addin(ground, des, 0, -i0);
-    i2 = meta / 1000.0f;
-    i2 = Ground::addin(ground, des, 0, -i2);
+    i0 = Ground::addin(ground, des, 0, -meta/1000.0f);
     Buff020::check020(ground, src, des, true);
-    ground->m_group[des/10].m_item[des%10].i[0] += i0;
     check4110121(ground);
-    ground->m_group[des/10].m_item[des%10].i[2] += i2;
+    i2 = Ground::addin(ground, des, 2, -meta/1000.0f);
     check4110121(ground);
     Ground::exenter(ground, src, des, id);
 }
@@ -115,8 +111,8 @@ void Buff41102205::enter(Ground* ground)
 void Buff41102205::exit(Ground* ground)
 {
     Logger::H().printbuffexit(ground, src, des, this);
-    ground->m_group[des/10].m_item[des%10].i[0] -= i0;
-    ground->m_group[des/10].m_item[des%10].i[2] -= i2;
+    Ground::addin(ground, des, 0, -i0, true);
+    Ground::addin(ground, des, 2, -i2, true);
     Buff020::check020(ground, src, des, false);
     Ground::exexit(ground, src, des, id);
 }

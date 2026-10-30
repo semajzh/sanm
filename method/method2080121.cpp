@@ -60,12 +60,13 @@ int Method2080121::run(Ground* ground, Item* item1)
             if (ground->m_group[g].m_item[i].g[1] == 0)
             {
                 ground->m_group[g].m_item[i].g[2] = 84;
-                ground->m_group[g].m_item[i].g[3] = 0;
+                ground->m_group[g].m_item[i].g[3] = 84;
                 obj = g * 10 + i;
             }
             else
             {
                 ground->m_group[g].m_item[i].g[2] = 8;
+                ground->m_group[g].m_item[i].g[3] = 8;
             }
         }
         if (obj >= 0)

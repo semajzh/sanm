@@ -103,8 +103,7 @@ void Buff31202212::run(Ground* ground)
     {
         if (buffs.at(i)->id == 31202212)
         {
-            buffs.at(i)->exit(ground);
-            buffs.remove(i);
+            buffs.takeAt(i)->exit(ground);
             break;
         }
     }

@@ -38,7 +38,6 @@ void Buff40101212::enter(Ground* ground)
     float point = point1 * (check401011(ground, src) ? 1.6 : 1);
     i2 = point * (1 - (ground->m_round - 1) * point2/100);
     i2 = Ground::addin(ground, des, 2, -i2);
-    ground->m_group[des/10].m_item[des%10].i[2] += i2;
     Buff020::check020(ground, src, des, true);
     check4110121(ground);
     Ground::exenter(ground, src, des, id);
@@ -47,7 +46,7 @@ void Buff40101212::enter(Ground* ground)
 void Buff40101212::exit(Ground* ground)
 {
     Logger::H().printbuffexit(ground, src, des, this);
-    ground->m_group[des/10].m_item[des%10].i[2] -= i2;
+    Ground::addin(ground, des, 2, -i2, true);
     Buff020::check020(ground, src, des, false);
     Ground::exexit(ground, src, des, id);
 }
@@ -91,13 +90,13 @@ void Buff40101213::enter(Ground* ground)
     float point2 = Ground::pointbystar(ground, 10, src, method, -1);
     float point = point1 * (check401011(ground, src) ? 1.6 : 1);
     i2 = meta * (point * (1 - (ground->m_round - 1) * point2/100));
-    Ground::addi2(ground, des, i2);
+    Ground::addin(ground, des, 2, i2);
 }
 
 void Buff40101213::exit(Ground* ground)
 {
     Logger::H().printbuffexit(ground, src, des, this);
-    Ground::addi2(ground, des, -i2);
+    Ground::addin(ground, des, 2, -i2, true);
 }
 
 bool Buff40101213::check401011(Ground* ground, int obj)

@@ -86,8 +86,8 @@ void Buff0088324::addlayout(Ground* ground)
         break;
 
     case 6: {
-        ground->m_group[des/10].m_item[des%10].i[0] += 30;
-        ground->m_group[des/10].m_item[des%10].i[1] += 30;
+        Ground::addin(ground, des, 0, 30);
+        Ground::addin(ground, des, 1, 30);
     } break;
 
     case 7:{
@@ -125,8 +125,8 @@ void Buff0088324::dellayout(Ground* ground, int r)
         break;
 
     case 6: {
-        ground->m_group[des/10].m_item[des%10].i[0] -= 30;
-        ground->m_group[des/10].m_item[des%10].i[1] -= 30;
+        Ground::addin(ground, des, 0, -30, true);
+        Ground::addin(ground, des, 1, -30, true);
     } break;
 
     case 7:{

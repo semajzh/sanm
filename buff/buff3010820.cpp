@@ -28,14 +28,14 @@ void Buff30108202::enter(Ground* ground)
     {
         float point1 = Ground::pointbystar(ground, 12, src, method);
         i0 += point1;
-        ground->m_group[des/10].m_item[des%10].i[0] += point1;
+        Ground::addin(ground, des, 0, point1);
     }
 }
 
 void Buff30108202::exit(Ground* ground)
 {
     Logger::H().printbuffexit(ground, src, des, this);
-    ground->m_group[des/10].m_item[des%10].i[0] -= i0;
+    Ground::addin(ground, des, 0, -i0, true);
 }
 
 void Buff30108202::update(Ground* ground, QSharedPointer<Buff> buff)
@@ -46,6 +46,6 @@ void Buff30108202::update(Ground* ground, QSharedPointer<Buff> buff)
     {
         float point1 = Ground::pointbystar(ground, 12, src, method);
         i0 += point1;
-        ground->m_group[des/10].m_item[des%10].i[0] += point1;
+        Ground::addin(ground, des, 0, point1);
     }
 }

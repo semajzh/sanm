@@ -22,25 +22,10 @@ State2223::~State2223()
 
 }
 
-bool State2223::run(Ground* ground, int current)
+bool State2223::run(Ground* ground, int obj)
 {
-    bool ret = true;
-    int g = current / 10;
-    int i = current % 10;
-    Item& item1 = ground->m_group[g].m_item[i];
-    for (int k = 0; k < 4; ++k)
-    {
-        if (item1.h[0] <= 0 || item1.methods[k] != 2223)
-        {
-            continue;
-        }
-        if (!Ground::run2223(ground, item1.g[0], -1, false, false))
-        {
-            ret = false;
-            break;
-        }
-    }
-    return ret;
+    Item& item = ground->m_group[obj/10].m_item[obj%10];
+    return item.h[0] > 0 && Ground::run2223(ground, obj, -1, false, false);
 }
 
 #ifdef CCZ

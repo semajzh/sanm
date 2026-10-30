@@ -25,7 +25,7 @@ void Buff4110112::enter(Ground* ground)
     {
         float x = Ground::addbyix(ground, 3, ground->m_group[src/10].m_item[src%10].i[2]);
         maxi = ground->m_group[des/10].m_item[des%10].i[maxin] * x / 100;
-        ground->m_group[des/10].m_item[des%10].i[maxin] -= maxi;
+        maxi = -Ground::addin(ground, des, maxin, -maxi);
         Buff020::check020(ground, src, des, true);
     }
     Ground::exenter(ground, src, des, id);
@@ -34,7 +34,7 @@ void Buff4110112::enter(Ground* ground)
 void Buff4110112::exit(Ground* ground)
 {
     Logger::H().printbuffexit(ground, src, des, this);
-    ground->m_group[des/10].m_item[des%10].i[maxin] += maxi;
+    Ground::addin(ground, des, maxin, maxi, true);
     Buff020::check020(ground, src, des, false);
     Ground::exexit(ground, src, des, id);
 }

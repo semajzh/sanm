@@ -20,7 +20,7 @@ void Buff30109211::run(Ground* ground)
 void Buff30109212::exit(Ground* ground)
 {
     Logger::H().printbuffexit(ground, src, des, this);
-    ground->m_group[des/10].m_item[des%10].i[2] -= i2;
+    Ground::addin(ground, des, 2, -i2, true);
 }
 
 void Buff30109212::run(Ground* ground)
@@ -31,7 +31,7 @@ void Buff30109212::run(Ground* ground)
     }
 
     i2 = Ground::pointbystar(ground, 40, src, method);
-    ground->m_group[des/10].m_item[des%10].i[2] += i2;
+    Ground::addin(ground, des, 2, i2);
     QVector<int> objs = Ground::selectObjN(ground, des, 0x23);
     for (int obj : objs)
     {

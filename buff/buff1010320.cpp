@@ -32,7 +32,7 @@ void Buff10103202::enter(Ground* ground)
         k8 += k;
         ground->m_group[des/10].m_item[des%10].k[8] += k;
         i2 += point1;
-        ground->m_group[des/10].m_item[des%10].i[2] += point1;
+        Ground::addin(ground, des, 2, point1);
     }
 }
 
@@ -40,7 +40,7 @@ void Buff10103202::exit(Ground* ground)
 {
     Logger::H().printbuffexit(ground, src, des, this);
     ground->m_group[des/10].m_item[des%10].k[8] -= k8;
-    ground->m_group[des/10].m_item[des%10].i[2] -= i2;
+    Ground::addin(ground, des, 2, -i2, true);
 }
 
 void Buff10103202::update(Ground* ground, QSharedPointer<Buff> buff)
@@ -55,6 +55,6 @@ void Buff10103202::update(Ground* ground, QSharedPointer<Buff> buff)
         k8 += k;
         ground->m_group[des/10].m_item[des%10].k[8] += k;
         i2 += point1;
-        ground->m_group[des/10].m_item[des%10].i[2] += point1;
+        Ground::addin(ground, des, 2, point1);
     }
 }

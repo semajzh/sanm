@@ -6,35 +6,20 @@ void Buff205011::enter(Ground* ground)
 {
     Logger::H().printbuffenter(ground, src, des, this);
 
-    index = maxi(ground, des);
+    index = Ground::getMaxiIndex(ground, des);
     ix = ground->m_group[des/10].m_item[des%10].i[index];
-    ix = ix * (0.02 + ground->m_group[src/10].m_item[src%10].i[1] / 12287.0f);
-    ground->m_group[des/10].m_item[des%10].i[index] += ix;
+    float point1 = Ground::addbyix(ground, 2, ground->m_group[src/10].m_item[src%10].i[1]);
+    ix *= point1 / 100;
+    Ground::addin(ground, des, index, ix);
 
-    l0 = Ground::addln(ground, des, 0, -2 - ground->m_group[src/10].m_item[src%10].i[0] / 122.87f);
+    l0 = Ground::addbyix(ground, 2, ground->m_group[src/10].m_item[src%10].i[0]);
+    l0 = Ground::addln(ground, des, 0, -l0);
     ground->m_group[des/10].m_item[des%10].l[0] += l0;
 }
 
 void Buff205011::exit(Ground* ground)
 {
     Logger::H().printbuffexit(ground, src, des, this);
-    ground->m_group[des/10].m_item[des%10].i[index] -= ix;
+    Ground::addin(ground, des, index, -ix, true);
     ground->m_group[des/10].m_item[des%10].l[0] -= l0;
-}
-
-int Buff205011::maxi(Ground* ground, int pos)
-{
-    float max = 0;
-    int index = -1;
-    int g = pos/10;
-    int i = pos%10;
-    for (int j = 0; j < 4; ++j)
-    {
-        if (ground->m_group[g].m_item[i].i[j] > max)
-        {
-            max = ground->m_group[g].m_item[i].i[j];
-            index = j;
-        }
-    }
-    return index;
 }

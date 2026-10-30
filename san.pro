@@ -157,6 +157,8 @@ SOURCES += \
         method/method0160220.cpp \
         method/method0170121.cpp \
         method/method0170221.cpp \
+        method/method0180121.cpp \
+        method/method0180222.cpp \
 # insert method cpp
         method/method1010121.cpp \
         method/method1010221.cpp \
@@ -240,6 +242,7 @@ SOURCES += \
         method/method3120221.cpp \
         method/method3150121.cpp \
         method/method3150221.cpp \
+        method/method3180221.cpp \
 # insert item method cpp 3
         method/method4010121.cpp \
         method/method4010222.cpp \
@@ -275,6 +278,7 @@ SOURCES += \
         method/method4110220.cpp \
         method/method4130122.cpp \
         method/method4130220.cpp \
+        method/method4180121.cpp \
 # insert item method cpp 4
         method/method5000120.cpp \
         method/method5000220.cpp \
@@ -780,6 +784,18 @@ SOURCES += \
         buff/buff0110321.cpp \
         buff/buff0120222.cpp \
         buff/buff0120321.cpp \
+        buff/buff0130121.cpp \
+        buff/buff0130222.cpp \
+        buff/buff0140121.cpp \
+        buff/buff0140221.cpp \
+        buff/buff0150120.cpp \
+        buff/buff0150221.cpp \
+        buff/buff0160122.cpp \
+        buff/buff0160220.cpp \
+        buff/buff0170121.cpp \
+        buff/buff0170221.cpp \
+        buff/buff0180121.cpp \
+        buff/buff0180222.cpp \
         buff/buff101011.cpp \
         buff/buff101012.cpp \
         buff/buff1010121.cpp \
@@ -832,6 +848,10 @@ SOURCES += \
         buff/buff1091421.cpp \
         buff/buff110011.cpp \
         buff/buff1100121.cpp \
+        buff/buff114011.cpp \
+        buff/buff1140121.cpp \
+        buff/buff114021.cpp \
+        buff/buff1140224.cpp \
         buff/buff117011.cpp \
         buff/buff117012.cpp \
         buff/buff1170121.cpp \
@@ -936,6 +956,11 @@ SOURCES += \
         buff/buff3120121.cpp \
         buff/buff312021.cpp \
         buff/buff3120221.cpp \
+        buff/buff315011.cpp \
+        buff/buff3150121.cpp \
+        buff/buff315021.cpp \
+        buff/buff3150221.cpp \
+        buff/buff3180221.cpp \
         buff/buff401011.cpp \
         buff/buff4010121.cpp \
         buff/buff401021.cpp \
@@ -1006,24 +1031,7 @@ SOURCES += \
         buff/buff4130122.cpp \
         buff/buff413021.cpp \
         buff/buff4130220.cpp \
-        buff/buff0130121.cpp \
-        buff/buff0130222.cpp \
-        buff/buff1140121.cpp \
-        buff/buff1140224.cpp \
-        buff/buff0140121.cpp \
-        buff/buff0140221.cpp \
-        buff/buff114011.cpp \
-        buff/buff114021.cpp \
-        buff/buff3150121.cpp \
-        buff/buff315011.cpp \
-        buff/buff3150221.cpp \
-        buff/buff315021.cpp \
-        buff/buff0150120.cpp \
-        buff/buff0150221.cpp \
-        buff/buff0160122.cpp \
-        buff/buff0160220.cpp \
-        buff/buff0170121.cpp \
-        buff/buff0170221.cpp \
+        buff/buff4180121.cpp \
 # insert buff cpp 4
         buff/buff500001.cpp \
         buff/buff500002.cpp \
@@ -1204,6 +1212,8 @@ HEADERS += \
     method/method0160220.h \
     method/method0170121.h \
     method/method0170221.h \
+    method/method0180121.h \
+    method/method0180222.h \
 # insert method h
     method/method1010121.h \
     method/method1010221.h \
@@ -1287,6 +1297,7 @@ HEADERS += \
     method/method3120221.h \
     method/method3150121.h \
     method/method3150221.h \
+    method/method3180221.h \
 # insert item method h 3
     method/method4010121.h \
     method/method4010222.h \
@@ -1322,6 +1333,7 @@ HEADERS += \
     method/method4110220.h \
     method/method4130122.h \
     method/method4130220.h \
+    method/method4180121.h \
 # insert item method h 4
     method/method5000120.h \
     method/method5000220.h \
@@ -1828,6 +1840,18 @@ HEADERS += \
     buff/buff0110321.h \
     buff/buff0120222.h \
     buff/buff0120321.h \
+    buff/buff0130121.h \
+    buff/buff0130222.h \
+    buff/buff0140121.h \
+    buff/buff0140221.h \
+    buff/buff0150120.h \
+    buff/buff0150221.h \
+    buff/buff0160122.h \
+    buff/buff0160220.h \
+    buff/buff0170121.h \
+    buff/buff0170221.h \
+    buff/buff0180121.h \
+    buff/buff0180222.h \
     buff/buff101011.h \
     buff/buff101012.h \
     buff/buff1010121.h \
@@ -1880,6 +1904,10 @@ HEADERS += \
     buff/buff1091421.h \
     buff/buff110011.h \
     buff/buff1100121.h \
+    buff/buff114011.h \
+    buff/buff1140121.h \
+    buff/buff114021.h \
+    buff/buff1140224.h \
     buff/buff117011.h \
     buff/buff117012.h \
     buff/buff1170121.h \
@@ -1984,6 +2012,11 @@ HEADERS += \
     buff/buff3120121.h \
     buff/buff312021.h \
     buff/buff3120221.h \
+    buff/buff315011.h \
+    buff/buff3150121.h \
+    buff/buff315021.h \
+    buff/buff3150221.h \
+    buff/buff3180221.h \
     buff/buff401011.h \
     buff/buff4010121.h \
     buff/buff401021.h \
@@ -2054,24 +2087,7 @@ HEADERS += \
     buff/buff4130122.h \
     buff/buff413021.h \
     buff/buff4130220.h \
-    buff/buff0130121.h \
-    buff/buff0130222.h \
-    buff/buff1140121.h \
-    buff/buff1140224.h \
-    buff/buff0140121.h \
-    buff/buff0140221.h \
-    buff/buff114011.h \
-    buff/buff114021.h \
-    buff/buff3150121.h \
-    buff/buff315011.h \
-    buff/buff3150221.h \
-    buff/buff315021.h \
-    buff/buff0150120.h \
-    buff/buff0150221.h \
-    buff/buff0160122.h \
-    buff/buff0160220.h \
-    buff/buff0170121.h \
-    buff/buff0170221.h \
+    buff/buff4180121.h \
 # insert buff h
     buff/buff500001.h \
     buff/buff500002.h \

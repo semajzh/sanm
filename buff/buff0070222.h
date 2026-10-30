@@ -6,7 +6,7 @@ class Buff0070222 : public BuffC
 {
 public:
     Buff0070222() {}
-    Buff0070222(int s, int d, int m, int r) : BuffC(s, d, m, r) { id = 70222; }
+    Buff0070222(int s, int d, int m, int r, int t) : BuffC(s, d, m, r, t) { id = 70222; }
     virtual ~Buff0070222() {}
 
     virtual void enter(Ground* ground);

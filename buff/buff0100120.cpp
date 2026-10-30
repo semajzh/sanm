@@ -53,15 +53,16 @@ void Buff01001202::enter(Ground* ground)
     if (++count <= 15)
     {
         float point1 = Ground::pointbystar(ground, 5, src, method);
-        i0 += Ground::addbyix(ground, point1, ground->m_group[des/10].m_item[des%10].i[0]); //320.33,8.01-5.3
-        ground->m_group[des/10].m_item[des%10].i[0] += 5;
+        float point2 = Ground::addbyix(ground, point1, ground->m_group[des/10].m_item[des%10].i[0]);
+        i0 += point2;
+        Ground::addin(ground, des, 0, point2);
     }
 }
 
 void Buff01001202::exit(Ground* ground)
 {
     Logger::H().printbuffexit(ground, src, des, this);
-    ground->m_group[des/10].m_item[des%10].i[0] -= i0;
+    Ground::addin(ground, des, 0, -i0, true);
 }
 
 void Buff01001202::update(Ground* ground, QSharedPointer<Buff> )
@@ -70,8 +71,9 @@ void Buff01001202::update(Ground* ground, QSharedPointer<Buff> )
     if (++count <= 15)
     {
         float point1 = Ground::pointbystar(ground, 5, src, method);
-        i0 += Ground::addbyix(ground, point1, ground->m_group[des/10].m_item[des%10].i[0]);
-        ground->m_group[des/10].m_item[des%10].i[0] += 5;
+        float point2 = Ground::addbyix(ground, point1, ground->m_group[des/10].m_item[des%10].i[0]);
+        i0 += point2;
+        Ground::addin(ground, des, 0, point2);
     }
 }
 

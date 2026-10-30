@@ -6,13 +6,13 @@
 void Buff0016220::enter(Ground* ground)
 {
     Logger::H().printbuffenter(ground, src, des, this);
-    ground->m_group[des/10].m_item[des%10].i[0] += 23;
+    Ground::addin(ground, des, 0, 23);
 }
 
 void Buff0016220::exit(Ground* ground)
 {
     Logger::H().printbuffexit(ground, src, des, this);
-    ground->m_group[des/10].m_item[des%10].i[0] -= 23;
+    Ground::addin(ground, des, 0, -23, true);
 }
 
 void Buff0016220::run(Ground* ground)

@@ -8,7 +8,7 @@ class State2223
 public:
     State2223();
     virtual ~State2223();
-    bool run(Ground* ground, int current);
+    bool run(Ground* ground, int obj);
 };
 
 #endif // STATE2223_H

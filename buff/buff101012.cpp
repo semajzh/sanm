@@ -26,16 +26,16 @@ void Buff1010122::enter(Ground* ground)
     if (index >= 0)
     {
         i[index] += point;
-        ground->m_group[des/10].m_item[des%10].i[index] += point;
+        Ground::addin(ground, des, index, point);
     }
 }
 
 void Buff1010122::exit(Ground* ground)
 {
     Logger::H().printbuffexit(ground, src, des, this);
-    for (int index = 0; index < 4; ++index)
+    for (int n = 0; n < 4; ++n)
     {
-        ground->m_group[des/10].m_item[des%10].i[index] -= i[index];
+        Ground::addin(ground, des, n, -i[n], true);
     }
 }
 
@@ -47,7 +47,7 @@ void Buff1010122::update(Ground* ground, QSharedPointer<Buff> )
     if (index >= 0)
     {
         i[index] += point;
-        ground->m_group[des/10].m_item[des%10].i[index] += point;
+        Ground::addin(ground, des, index, point);
     }
 }
 

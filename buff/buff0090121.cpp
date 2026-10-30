@@ -56,20 +56,20 @@ void Buff00901213::enter(Ground* ground)
     if (item.i[0] > item.i[1])
     {
         i0 += point;
-        item.i[0] += point;
+        Ground::addin(ground, des, 0, point);
     }
     else
     {
         i1 += point;
-        item.i[1] += point;
+        Ground::addin(ground, des, 1, point);
     }
 }
 
 void Buff00901213::exit(Ground* ground)
 {
     Logger::H().printbuffexit(ground, src, des, this);
-    ground->m_group[des/10].m_item[des%10].i[0] -= i0;
-    ground->m_group[des/10].m_item[des%10].i[1] -= i1;
+    Ground::addin(ground, des, 0, -i0, true);
+    Ground::addin(ground, des, 1, -i1, true);
 }
 
 void Buff00901213::update(Ground* ground, QSharedPointer<Buff> )
@@ -84,11 +84,11 @@ void Buff00901213::update(Ground* ground, QSharedPointer<Buff> )
     if (item.i[0] > item.i[1])
     {
         i0 += point;
-        item.i[0] += point;
+        Ground::addin(ground, des, 0, point);
     }
     else
     {
         i1 += point;
-        item.i[1] += point;
+        Ground::addin(ground, des, 1, point);
     }
 }

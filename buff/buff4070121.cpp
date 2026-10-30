@@ -17,7 +17,7 @@ void Buff4070121::exit(Ground* ground)
     ground->m_group[des/10].m_item[des%10].l[0] -= l0;
     for (int i = 0; i < 3; ++i)
     {
-        Ground::addi2(ground, des/10*10+i, -i2[i]);
+        Ground::addin(ground, des/10*10+i, 2, -i2[i], true);
     }
 }
 
@@ -56,7 +56,8 @@ void Buff4070121::addbl(Ground* ground)
     {
         if (ground->m_group[des/10].m_item[i].h[0] > 0)
         {
-            i2[i] += Ground::addi2(ground, des/10*10+i, point1);
+            i2[i] += point1;
+            Ground::addin(ground, des/10*10+i, 2, point1);
         }
     }
     if (layer == 10)

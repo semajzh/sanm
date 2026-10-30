@@ -6,15 +6,15 @@
 void Buff0020721::enter(Ground* ground)
 {
     Logger::H().printbuffenter(ground, src, des, this);
-    float point1 = Ground::pointbystar(ground, 20, src, method);
+    float point1 = Ground::pointbystar(ground, 20, des, method);
     i2 = ground->m_group[des/10].m_item[des%10].i[2] * point1/100;
-    Ground::addi2(ground, des, i2);
+    Ground::addin(ground, des, 2, i2);
 }
 
 void Buff0020721::exit(Ground* ground)
 {
     Logger::H().printbuffexit(ground, src, des, this);
-    Ground::addi2(ground, des, -i2);
+    Ground::addin(ground, des, 2, -i2, true);
 }
 
 void Buff0020721::run(Ground* ground)
@@ -23,7 +23,7 @@ void Buff0020721::run(Ground* ground)
     {
         return;
     }
-    float point1 = Ground::pointbystar(ground, 60, src, method);
+    float point1 = Ground::pointbystar(ground, 60, des, method);
     if (qrand() % 100 + 1 <= 100 - point1 - ground->m_group[des/10].m_item[des%10].i[2] / 30)
     {
         return;

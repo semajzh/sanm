@@ -9,7 +9,7 @@ void Buff202011::enter(Ground* ground)
     if (index >= 0)
     {
         maxi = ground->m_group[des/10].m_item[des%10].i[index] * 0.05;
-        ground->m_group[des/10].m_item[des%10].i[index] += maxi;
+        Ground::addin(ground, des, index, maxi);
     }
 }
 
@@ -18,7 +18,7 @@ void Buff202011::exit(Ground* ground)
     Logger::H().printbuffexit(ground, src, des, this);
     if (index >= 0)
     {
-        ground->m_group[des/10].m_item[des%10].i[index] -= maxi;
+        Ground::addin(ground, des, index, -maxi, true);
     }
 }
 

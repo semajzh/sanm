@@ -80,9 +80,7 @@ void Buff10901214::enter(Ground* ground)
 {
     Logger::H().printbuffenter(ground, src, des, this);
     float point1 = meta / 1000.0f;
-    float point2 = Ground::addin(ground, des, 1, -point1);
-    i1 += point2;
-    ground->m_group[des/10].m_item[des%10].i[1] += point2;
+    i1 += Ground::addin(ground, des, 1, -point1);
     Buff020::check020(ground, src, des, true);
     check4110121(ground);
     Ground::exenter(ground, src, des, id);
@@ -91,7 +89,7 @@ void Buff10901214::enter(Ground* ground)
 void Buff10901214::exit(Ground* ground)
 {
     Logger::H().printbuffexit(ground, src, des, this);
-    ground->m_group[des/10].m_item[des%10].i[1] -= i1;
+    Ground::addin(ground, des, 1, -i1, true);
     Buff020::check020(ground, src, des, false);
     Ground::exexit(ground, src, des, id);
 }
@@ -101,9 +99,7 @@ void Buff10901214::update(Ground* ground, QSharedPointer<Buff> buff)
     Logger::H().printbuffupdate(ground, src, des, this);
     meta = buff->meta;
     float point1 = meta / 1000.0f;
-    float point2 = Ground::addin(ground, des, 1, -point1);
-    i1 += point2;
-    ground->m_group[des/10].m_item[des%10].i[1] += point2;
+    i1 += Ground::addin(ground, des, 1, -point1);
     check4110121(ground);
     Ground::exupdate(ground, src, des, id);
 }
@@ -126,13 +122,13 @@ void Buff10901215::enter(Ground* ground)
     Logger::H().printbuffenter(ground, src, des, this);
     float point1 = meta / 1000.0f;
     i1 += point1;
-    ground->m_group[des/10].m_item[des%10].i[1] += point1;
+    Ground::addin(ground, des, 1, point1);
 }
 
 void Buff10901215::exit(Ground* ground)
 {
     Logger::H().printbuffexit(ground, src, des, this);
-    ground->m_group[des/10].m_item[des%10].i[1] -= i1;
+    Ground::addin(ground, des, 1, -i1, true);
 }
 
 void Buff10901215::update(Ground* ground, QSharedPointer<Buff> buff)
@@ -141,5 +137,5 @@ void Buff10901215::update(Ground* ground, QSharedPointer<Buff> buff)
     meta = buff->meta;
     float point1 = meta / 1000.0f;
     i1 += point1;
-    ground->m_group[des/10].m_item[des%10].i[1] += point1;
+    Ground::addin(ground, des, 1, point1);
 }

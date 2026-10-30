@@ -71,14 +71,14 @@ void Buff01401213::enter(Ground* ground)
     {
         ++count;
         i2 += point1;
-        Ground::addi2(ground, des, point1);
+        Ground::addin(ground, des, 2, point1);
     }
 }
 
 void Buff01401213::exit(Ground* ground)
 {
     Logger::H().printbuffexit(ground, src, des, this);
-    ground->m_group[des/10].m_item[des%10].i[2] -= i2;
+    Ground::addin(ground, des, 2, -i2, true);
 }
 
 void Buff01401213::update(Ground* ground, QSharedPointer<Buff> buff)
@@ -90,6 +90,6 @@ void Buff01401213::update(Ground* ground, QSharedPointer<Buff> buff)
     {
         ++count;
         i2 += point1;
-        Ground::addi2(ground, des, point1);
+        Ground::addin(ground, des, 2, point1);
     }
 }

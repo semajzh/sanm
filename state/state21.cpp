@@ -74,11 +74,8 @@ void State21::formation(Ground* ground)
             ground->m_group[g].m_item[1].g[1] = 0;
             ground->m_group[g].m_item[2].g[1] = 0;
             ground->m_group[g].m_item[0].g[2] = 33;
-            ground->m_group[g].m_item[0].g[3] = 33;
             ground->m_group[g].m_item[1].g[2] = 34;
-            ground->m_group[g].m_item[1].g[3] = 34;
             ground->m_group[g].m_item[2].g[2] = 33;
-            ground->m_group[g].m_item[2].g[3] = 33;
             ground->m_group[g].m_item[0].l[0] -= 8 * f20801;
             ground->m_group[g].m_item[1].l[0] -= 8 * f20801;
             ground->m_group[g].m_item[2].l[0] -= 8 * f20801;
@@ -89,7 +86,6 @@ void State21::formation(Ground* ground)
             ground->m_group[g].m_item[1].g[1] = 1;
             ground->m_group[g].m_item[2].g[1] = 1;
             ground->m_group[g].m_item[0].g[2] = 60;
-            ground->m_group[g].m_item[0].g[3] = 20;
             ground->m_group[g].m_item[1].g[2] = 20;
             ground->m_group[g].m_item[2].g[2] = 20;
             ground->m_group[g].m_item[0].l[0] -=  6 * f20801;
@@ -103,9 +99,7 @@ void State21::formation(Ground* ground)
             ground->m_group[g].m_item[2].g[1] = 0;
             ground->m_group[g].m_item[0].g[2] = 20;
             ground->m_group[g].m_item[1].g[2] = 40;
-            ground->m_group[g].m_item[1].g[3] = 20;
             ground->m_group[g].m_item[2].g[2] = 40;
-            ground->m_group[g].m_item[2].g[3] = 20;
             ground->m_group[g].m_item[0].k[0] += 15 * f20801;
             ground->m_group[g].m_item[1].i[2] += 20 * f20801;
             ground->m_group[g].m_item[2].i[2] += 20 * f20801;
@@ -116,9 +110,7 @@ void State21::formation(Ground* ground)
             ground->m_group[g].m_item[1].g[1] = 0;
             ground->m_group[g].m_item[2].g[1] = 1;
             ground->m_group[g].m_item[0].g[2] = 40;
-            ground->m_group[g].m_item[0].g[3] = 20;
             ground->m_group[g].m_item[1].g[2] = 40;
-            ground->m_group[g].m_item[1].g[3] = 20;
             ground->m_group[g].m_item[2].g[2] = 20;
             ground->m_group[g].m_item[0].l[0] -=  5 * f20801;
             ground->m_group[g].m_item[1].l[0] -=  5 * f20801;
@@ -131,7 +123,6 @@ void State21::formation(Ground* ground)
             ground->m_group[g].m_item[2].g[1] = 1;
             ground->m_group[g].m_item[0].g[2] = 20;
             ground->m_group[g].m_item[1].g[2] = 60;
-            ground->m_group[g].m_item[1].g[3] = 20;
             ground->m_group[g].m_item[2].g[2] = 20;
             ground->m_group[g].m_item[0].l[0] -=  5 * f20801;
             ground->m_group[g].m_item[1].k[0] += 16 * f20801;
@@ -143,7 +134,6 @@ void State21::formation(Ground* ground)
             ground->m_group[g].m_item[1].g[1] = 1;
             ground->m_group[g].m_item[2].g[1] = 1;
             ground->m_group[g].m_item[0].g[2] = 60;
-            ground->m_group[g].m_item[0].g[3] = 20;
             ground->m_group[g].m_item[1].g[2] = 20;
             ground->m_group[g].m_item[2].g[2] = 20;
             ground->m_group[g].m_item[0].j[9] += 12 * f20801;
@@ -160,7 +150,6 @@ void State21::formation(Ground* ground)
             ground->m_group[g].m_item[0].g[2] = 20;
             ground->m_group[g].m_item[1].g[2] = 20;
             ground->m_group[g].m_item[2].g[2] = 60;
-            ground->m_group[g].m_item[2].g[3] = 20;
             ground->m_group[g].m_item[0].j[7] += 25 * f20801;
             ground->m_group[g].m_item[1].j[7] += 25 * f20801;
             ground->m_group[g].m_item[2].l[0] -=  8 * f20801;
@@ -171,10 +160,8 @@ void State21::formation(Ground* ground)
             ground->m_group[g].m_item[1].g[1] = 1;
             ground->m_group[g].m_item[2].g[1] = 0;
             ground->m_group[g].m_item[0].g[2] = 40;
-            ground->m_group[g].m_item[0].g[3] = 20;
             ground->m_group[g].m_item[1].g[2] = 20;
             ground->m_group[g].m_item[2].g[2] = 40;
-            ground->m_group[g].m_item[2].g[3] = 20;
             ground->m_group[g].m_item[0].k[0] += 14 * f20801;
             ground->m_group[g].m_item[1].l[0] -=  5 * f20801;
             ground->m_group[g].m_item[2].k[0] += 14 * f20801;
@@ -396,8 +383,9 @@ void State21::method(Ground* ground)
         }
         for (int type : {20, 21})
         {
-            for (int m : item.methods)
+            for (int k = 0; k < 3; ++k)
             {
+                int m = item.methods[k];
                 if (m == 88324 && type == 20)
                 {
                     item.j[7] += 10;

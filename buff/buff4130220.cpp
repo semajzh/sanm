@@ -70,10 +70,9 @@ void Buff41302202::enter(Ground* ground)
     }
     float point1 = Ground::pointbystar(ground, 6, src, method);
     float point2 = Ground::addbyix(ground, point1, Ground::getMaxi(ground, src));
-    float point3 = Ground::addin(ground, des, index, -maxi*point2/100);
-    i[index] += point3;
+    float point3 = 0 - maxi*point2/100;
+    i[index] += Ground::addin(ground, des, index, point3);
     Buff020::check020(ground, src, des, true);
-    ground->m_group[des/10].m_item[des%10].i[index] += point3;
     float point4 = Ground::pointbystar(ground, 8, src, method);
     l0 += point4;
     ground->m_group[des/10].m_item[des%10].l[0] += point4;
@@ -86,7 +85,7 @@ void Buff41302202::exit(Ground* ground)
     Logger::H().printbuffexit(ground, src, des, this);
     for (int n = 0; n < 4; ++n)
     {
-        ground->m_group[des/10].m_item[des%10].i[n] -= i[n];
+        Ground::addin(ground, des, n, -i[n], true);
     }
     ground->m_group[des/10].m_item[des%10].l[0] -= l0;
     Buff020::check020(ground, src, des, false);
@@ -109,10 +108,9 @@ void Buff41302202::update(Ground* ground, QSharedPointer<Buff> buff)
     }
     float point1 = Ground::pointbystar(ground, 6, src, method);
     float point2 = Ground::addbyix(ground, point1, Ground::getMaxi(ground, src));
-    float point3 = Ground::addin(ground, des, index, -maxi*point2/100);
-    i[index] += point3;
+    float point3 = 0 - maxi*point2/100;
+    i[index] += Ground::addin(ground, des, index, point3);
     Buff020::check020(ground, src, des, true);
-    ground->m_group[des/10].m_item[des%10].i[index] += point3;
     float point4 = Ground::pointbystar(ground, 8, src, method);
     l0 += point4;
     ground->m_group[des/10].m_item[des%10].l[0] += point4;

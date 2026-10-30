@@ -7,13 +7,13 @@ void Buff1011320::enter(Ground* ground)
 {
     Logger::H().printbuffenter(ground, src, des, this);
     i2 = Ground::pointbystar(ground, 30, src, method);
-    Ground::addi2(ground, des, i2);
+    Ground::addin(ground, des, 2, i2);
 }
 
 void Buff1011320::exit(Ground* ground)
 {
     Logger::H().printbuffexit(ground, src, des, this);
-    ground->m_group[des/10].m_item[des%10].i[2] -= i2;
+    Ground::addin(ground, des, 2, -i2, true);
 }
 
 void Buff1011320::run(Ground* ground, int obj)

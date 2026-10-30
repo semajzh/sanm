@@ -10,6 +10,7 @@ public:
     Method0020721();
     virtual ~Method0020721();
     virtual int run(Ground* ground, Item* item1);
+    virtual int run(Ground* ground, Item* item1, int );
 };
 
 #endif // METHOD0020721_H
