@@ -19,7 +19,7 @@ bool Relation401::run(Ground* ground, int group)
     QVector<int> objs;
     for (Item& item : ground->m_group[group].m_item)
     {
-        if (item.id == 40104 || item.id == 40401 || item.id == 40402)
+        if (item.id == 40104 || item.id == 40401 || item.id == 40402 || item.id == 41801)
         {
             objs.append(item.g[0]);
         }

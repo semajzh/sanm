@@ -129,6 +129,44 @@ bool Group::getGroup(int id, Group& group)
         group.m_item[n].i[6] += 30;
     } break;
 
+    case 18: {
+        group.formation = 2;
+        star = 0;
+
+        n = 0;
+        Item::getItem(40401, group.m_item[n]);
+        group.m_item[n].setStar(star);
+        group.m_item[n].methods[1] = 40121;
+        group.m_item[n].methods[2] = 100220;
+        group.m_item[n].strategys[0] = 404012;
+        group.m_item[n].strategys[1] = 1090;
+        group.m_item[n].strategys[2] = 1340;
+        group.m_item[n].i[5] += 10;
+        group.m_item[n].i[6] += 30 + 10 * (5 + star);
+
+        n = 1;
+        Item::getItem(41801, group.m_item[n]);
+        group.m_item[n].setStar(star);
+        group.m_item[n].methods[1] = 10822;
+        group.m_item[n].methods[2] = 12722;
+        group.m_item[n].strategys[0] = 0;
+        group.m_item[n].strategys[1] = 0;
+        group.m_item[n].strategys[2] = 0;
+        group.m_item[n].i[5] += 10 + 10 * (5 + star);
+        group.m_item[n].i[6] += 30;
+
+        n = 2;
+        Item::getItem(40104, group.m_item[n]);
+        group.m_item[n].setStar(star);
+        group.m_item[n].methods[1] = 150120;
+        group.m_item[n].methods[2] = 17822;
+        group.m_item[n].strategys[0] = 401042;
+        group.m_item[n].strategys[1] = 1150;
+        group.m_item[n].strategys[2] = 1870;
+        group.m_item[n].i[5] += 20 + 10 * (5 + star);
+        group.m_item[n].i[6] += 20;
+    } break;
+
     case 193: {
         group.formation = 6;
         star = 0;
