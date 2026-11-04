@@ -738,7 +738,7 @@ int main(int argc, char *argv[])
     return a.exec();
 #endif
 
-    Dispatcher dpt(1000);
+    Dispatcher dpt(1);
     dpt.start();
     dpt.wait();
 

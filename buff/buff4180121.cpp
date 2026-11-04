@@ -54,14 +54,11 @@ void Buff4180121::run(Ground* ground, int n)
 
 bool Buff4180121::checkMethod(Ground* ground, int m)
 {
-    for (const Item& item : ground->m_group[des/10].m_item)
+    for (int method : ground->m_group[des/10].m_item[des%10].methods)
     {
-        for (int method : item.methods)
+        if (method == m)
         {
-            if (method == m)
-            {
-                return true;
-            }
+            return true;
         }
     }
     return false;
