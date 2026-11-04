@@ -1,4 +1,5 @@
 #include "buff4180121.h"
+#include "buff418011.h"
 #include "ground.h"
 #include "method/method.h"
 #include "log/logger.h"
@@ -17,6 +18,7 @@ void Buff4180121::enter(Ground* ground)
         if (granted == 20721)
         {
             Method::getMethod(granted)->run(ground, &item, src);
+            check418011(ground, des, granted);
         }
     }
 }
@@ -63,3 +65,18 @@ bool Buff4180121::checkMethod(Ground* ground, int m)
     }
     return false;
 }
+
+bool Buff4180121::check418011(Ground* ground, int obj, int method)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[3][obj])
+    {
+        if (pbuff->id == 418011)
+        {
+            QSharedPointer<Buff418011> buff = qSharedPointerCast<Buff418011>(pbuff);
+            buff->run(ground, method);
+            return true;
+        }
+    }
+    return false;
+}
+

@@ -15,6 +15,7 @@ public:
 
 private:
     bool checkMethod(Ground* ground, int m);
+    bool check418011(Ground* ground, int obj, int m);
     int round = 0;
 };
 

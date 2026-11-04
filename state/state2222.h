@@ -23,8 +23,10 @@ private:
     bool check301072(Ground* ground, int obj);
     bool check301111(Ground* ground, int obj);
     bool check301112(Ground* ground, int obj);
+    bool check318021(Ground* ground, int obj, int n);
     bool check401041(Ground* ground, int obj);
     bool check407022(Ground* ground, int obj);
+    bool check418011(Ground* ground, int obj, int method);
 
     bool check1010221(Ground* ground, int obj, int method);
     bool check0013320(Ground* ground, int obj);

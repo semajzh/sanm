@@ -12,6 +12,8 @@
 #include "buff/buff4091321.h"
 #include "buff/buff0104021.h"
 #include "buff/buff4130122.h"
+#include "buff/buff318021.h"
+#include "buff/buff418011.h"
 #include <cmath>
 #include <QSharedPointer>
 #include "log/logger.h"
@@ -67,6 +69,8 @@ void State2222::run(Ground* ground, int obj)
                 check301111(ground, item.g[0]);
                 check301112(ground, item.g[0]);
                 check401041(ground, item.g[0]);
+                check418011(ground, item.g[0], m);
+                check318021(ground, item.g[0], 4);
 
                 check2040120(ground, item.g[0]);
                 check4070221(ground, item.g[0], 1);
@@ -238,6 +242,20 @@ bool State2222::check301112(Ground* ground, int obj)
     return false;
 }
 
+bool State2222::check318021(Ground* ground, int obj, int n)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[3][obj])
+    {
+        if (pbuff->id == 318021)
+        {
+            QSharedPointer<Buff318021> buff = qSharedPointerCast<Buff318021>(pbuff);
+            buff->run(ground, n);
+            return true;
+        }
+    }
+    return false;
+}
+
 bool State2222::check401041(Ground* ground, int obj)
 {
     for (QSharedPointer<Buff> pbuff : ground->buff[3][obj])
@@ -257,6 +275,20 @@ bool State2222::check407022(Ground* ground, int obj)
     {
         if (pbuff->id == 407022)
         {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool State2222::check418011(Ground* ground, int obj, int method)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[3][obj])
+    {
+        if (pbuff->id == 418011)
+        {
+            QSharedPointer<Buff418011> buff = qSharedPointerCast<Buff418011>(pbuff);
+            buff->run(ground, method);
             return true;
         }
     }

@@ -28,6 +28,7 @@
 #include "buff/buff301131.h"
 #include "buff/buff303012.h"
 #include "buff/buff303018.h"
+#include "buff/buff318021.h"
 #include "buff/buff401031.h"
 #include "buff/buff401037.h"
 #include "buff/buff401056.h"
@@ -35,6 +36,7 @@
 #include "buff/buff407021.h"
 #include "buff/buff409011.h"
 #include "buff/buff411021.h"
+#include "buff/buff418011.h"
 #include "buff/buff0010320.h"
 #include "buff/buff0016620.h"
 #include "buff/buff0011721.h"
@@ -189,6 +191,7 @@ static bool check403012(Ground* ground, int obj);
 static bool check407021(Ground* ground, int obj1, int obj2);
 static float check409011(Ground* ground, int obj1, int obj2);
 static float check411021(Ground* ground, int obj1, int obj2);
+static bool check418011(Ground* ground, int obj, int n);
 
 // method
 static bool check0010320(Ground* ground, int obj1, int obj2, float point);
@@ -2239,6 +2242,20 @@ float check303018(Ground* ground, int obj)
     return 0.0f;
 }
 
+bool check318021(Ground* ground, int obj, int n)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[3][obj])
+    {
+        if (pbuff->id == 318021)
+        {
+            QSharedPointer<Buff318021> buff = qSharedPointerCast<Buff318021>(pbuff);
+            buff->run(ground, n);
+            return true;
+        }
+    }
+    return false;
+}
+
 bool check401031(Ground* ground, int obj1, int obj2)
 {
     for (QSharedPointer<Buff> pbuff : ground->buff[3][obj1])
@@ -2371,6 +2388,20 @@ float check411021(Ground* ground, int obj1, int obj2)
         }
     }
     return 0.0f;
+}
+
+bool check418011(Ground* ground, int obj, int method)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[3][obj])
+    {
+        if (pbuff->id == 418011)
+        {
+            QSharedPointer<Buff418011> buff = qSharedPointerCast<Buff418011>(pbuff);
+            buff->run(ground, method);
+            return true;
+        }
+    }
+    return false;
 }
 
 bool check0010320(Ground* ground, int obj1, int obj2, float point)
@@ -4063,6 +4094,8 @@ bool Ground::run2224(Ground* ground, Item* item1, int m)
             check401131(ground, item1->g[0]);
             check401151(ground, item1->g[0]);
             check402021(ground, item1->g[0]);
+            check418011(ground, item1->g[0], m);
+            check318021(ground, item1->g[0], 6);
 
             check4020221(ground, item1->g[0]);
             check1060120(ground, item1->g[0]);

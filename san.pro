@@ -507,6 +507,7 @@ SOURCES += \
         strategy/strategy312021.cpp \
         strategy/strategy315011.cpp \
         strategy/strategy315021.cpp \
+        strategy/strategy318021.cpp \
 # insert strategy cpp 3
         strategy/strategy401011.cpp \
         strategy/strategy401021.cpp \
@@ -552,6 +553,7 @@ SOURCES += \
         strategy/strategy411021.cpp \
         strategy/strategy413011.cpp \
         strategy/strategy413021.cpp \
+        strategy/strategy418011.cpp \
 # insert strategy cpp 4
         strategy/strategy500001.cpp \
         strategy/strategy500002.cpp \
@@ -960,6 +962,7 @@ SOURCES += \
         buff/buff3150121.cpp \
         buff/buff315021.cpp \
         buff/buff3150221.cpp \
+        buff/buff318021.cpp \
         buff/buff3180221.cpp \
         buff/buff401011.cpp \
         buff/buff4010121.cpp \
@@ -1031,6 +1034,7 @@ SOURCES += \
         buff/buff4130122.cpp \
         buff/buff413021.cpp \
         buff/buff4130220.cpp \
+        buff/buff418011.cpp \
         buff/buff4180121.cpp \
 # insert buff cpp 4
         buff/buff500001.cpp \
@@ -1562,6 +1566,7 @@ HEADERS += \
     strategy/strategy312021.h \
     strategy/strategy315011.h \
     strategy/strategy315021.h \
+    strategy/strategy318021.h \
 # insert strategy h 3
     strategy/strategy401011.h \
     strategy/strategy401021.h \
@@ -1607,6 +1612,7 @@ HEADERS += \
     strategy/strategy411021.h \
     strategy/strategy413011.h \
     strategy/strategy413021.h \
+    strategy/strategy418011.h \
 # insert strategy h 4
     strategy/strategy500001.h \
     strategy/strategy500002.h \
@@ -2016,6 +2022,7 @@ HEADERS += \
     buff/buff3150121.h \
     buff/buff315021.h \
     buff/buff3150221.h \
+    buff/buff318021.h \
     buff/buff3180221.h \
     buff/buff401011.h \
     buff/buff4010121.h \
@@ -2087,6 +2094,7 @@ HEADERS += \
     buff/buff4130122.h \
     buff/buff413021.h \
     buff/buff4130220.h \
+    buff/buff418011.h \
     buff/buff4180121.h \
 # insert buff h
     buff/buff500001.h \

@@ -1246,6 +1246,7 @@ bool Item::getItem(int id, Item& item)
         item.i[2] =  97 + 1.83 * 45;
         item.i[3] =  56 + 1.78 * 45;
         item.methods[0] = 3180221;
+        item.strategys[0] = 318021;
     } break;
 
     case 40101: {
@@ -1767,6 +1768,7 @@ bool Item::getItem(int id, Item& item)
         item.i[2] = 101 + 2.08 * 45;
         item.i[3] =  71 + 1.52 * 45;
         item.methods[0] = 4180121;
+        item.strategys[0] = 418011;
     } break;
 
 #ifdef XYX
