@@ -21,6 +21,7 @@ private:
     void strategy(Ground* ground);
     void speed(Ground* ground);
     void method(Ground* ground);
+    bool check418011(Ground* ground, int obj, int method);
 };
 
 #endif // STATE21_H

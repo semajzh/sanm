@@ -136,68 +136,31 @@ bool Group::getGroup(int id, Group& group)
         n = 0;
         Item::getItem(40401, group.m_item[n]);
         group.m_item[n].setStar(star);
-        group.m_item[n].methods[1] = 40121;
-        group.m_item[n].methods[2] = 100220;
-        group.m_item[n].strategys[0] = 404012;
-        group.m_item[n].strategys[1] = 1090;
-        group.m_item[n].strategys[2] = 1340;
-        group.m_item[n].i[5] += 10;
-        group.m_item[n].i[6] += 30 + 10 * (5 + star);
+        group.m_item[n].methods[1] = 40121; //l0-25*2,r4:+360(i1)*3
+        group.m_item[n].methods[2] = 100220; //r123,acted,60%:i0-50(i1)(1)(*3),i1-50(i2)(1)(*3)
+        group.m_item[n].strategys[1] = 1090; //g1=0:l0-5
+        group.m_item[n].strategys[2] = 1340; //r1234:l0-6
+        group.m_item[n].i[5] += 20 + 10 * (5 + star);
+        group.m_item[n].i[6] += 20;
 
         n = 1;
         Item::getItem(41801, group.m_item[n]);
         group.m_item[n].setStar(star);
-        group.m_item[n].methods[1] = 10822;
-        group.m_item[n].methods[2] = 12722;
-        group.m_item[n].strategys[0] = 0;
-        group.m_item[n].strategys[1] = 0;
-        group.m_item[n].strategys[2] = 0;
-        group.m_item[n].i[5] += 10 + 10 * (5 + star);
-        group.m_item[n].i[6] += 30;
+        group.m_item[n].methods[1] = 10822; //45%,-f2:i-25(i1)(*2)(2)
+        group.m_item[n].methods[2] = 12722; //55%,minh0:ex-3,+260(i1)
+        group.m_item[n].strategys[1] = 1130; //j4+3
+        group.m_item[n].strategys[2] = 1140; //r123:j4+5
+        group.m_item[n].i[5] += 20 + 10 * (5 + star);
+        group.m_item[n].i[6] += 20;
 
         n = 2;
         Item::getItem(40104, group.m_item[n]);
         group.m_item[n].setStar(star);
-        group.m_item[n].methods[1] = 150120;
-        group.m_item[n].methods[2] = 17822;
-        group.m_item[n].strategys[0] = 401042;
-        group.m_item[n].strategys[1] = 1150;
-        group.m_item[n].strategys[2] = 1870;
-        group.m_item[n].i[5] += 20 + 10 * (5 + star);
-        group.m_item[n].i[6] += 20;
-    } break;
-
-    case 193: {
-        group.formation = 6;
-        star = 0;
-
-        n = 0;
-        Item::getItem(20801, group.m_item[n]);
-        group.m_item[n].setStar(star);
-        group.m_item[n].methods[1] = 40121;
-        group.m_item[n].methods[2] = 100220;
-        group.m_item[n].strategys[1] = 1470;
-        group.m_item[n].strategys[2] = 1480;
-        group.m_item[n].i[5] += 20 + 10 * (5 + star);
-        group.m_item[n].i[6] += 20;
-
-        n = 1;
-        Item::getItem(20101, group.m_item[n]);
-        group.m_item[n].setStar(star);
-        group.m_item[n].methods[1] = 80222;
-        group.m_item[n].methods[2] = 20222;
-        group.m_item[n].strategys[1] = 1050;
-        group.m_item[n].strategys[2] = 1060;
-        group.m_item[n].i[5] += 20 + 10 * (5 + star);
-        group.m_item[n].i[6] += 20;
-
-        n = 2;
-        Item::getItem(10301, group.m_item[n]);
-        group.m_item[n].setStar(star);
-        group.m_item[n].methods[1] = 20820;
-        group.m_item[n].methods[2] = 80121;
-        group.m_item[n].strategys[1] = 1010;
-        group.m_item[n].strategys[2] = 1350;
+        group.m_item[n].methods[1] = 150120; //22:maxi+10(*5),k0+7(maxi)(*5)
+        group.m_item[n].methods[2] = 17822; //zb35%,-f2:-253ml,buff16(2);buff16:-57.5ml
+        group.m_item[n].methods[2] = 180222; //zb60%:i1+8%(2)(*n);-f2:k0±6%(i1)(2)(*2),-300ml
+        group.m_item[n].strategys[1] = 1150; //j17+20
+        group.m_item[n].strategys[2] = 1870; //zb,60%:k4+10(1)(*2)
         group.m_item[n].i[5] += 20 + 10 * (5 + star);
         group.m_item[n].i[6] += 20;
     } break;
@@ -222,6 +185,7 @@ bool Group::getGroup(int id, Group& group)
         group.m_item[n].methods[2] = 100320; //m0act,30%(i1):k2+5(1);-f1:30ml;max=4/r
         group.m_item[n].methods[2] = 110120; //j13+15(j9);223,-f3:-50(br/ml);j9:p+10~50
         group.m_item[n].methods[2] = 150120; //22:maxi+10(*5),k0+7(maxi)(*5)
+        group.m_item[n].methods[2] = 160220; //r1357,223:-10%tb;f1+1(minh0):+10%fb(1)
 
         group.m_item[n].methods[2] = 11121; //buff11,buff111,j7+30
         group.m_item[n].methods[2] = 11721; //r3,f2,80%:j0\j2=100,j1\j3+40
@@ -250,6 +214,9 @@ bool Group::getGroup(int id, Group& group)
         group.m_item[n].methods[2] = 140121; //f3,b102-2:js(1);js:i2+24,max=3;223,minh0:+60(+20/js)(i1,i2)
         group.m_item[n].methods[2] = 140221; //g1=0,acted,f2:j2+2(15)
         group.m_item[n].methods[2] = 150221; //method0*2:qx(r);qx:l0-3(i1)(*6);qx*6:k2+10(i1)(1);2225,50%(+qx*7),minh0:+160(i1)
+        group.m_item[n].methods[2] = 170121; //r12,f1+1(mini2),acted,50%:p-20%(i1);r3-8,acted:+80%(i1)(*4/r)
+        group.m_item[n].methods[2] = 170221; //r2-8,221,40%,-f2(maxi0,maxi1):yb(223);yb:maxi-20(r+8%)(maxi),k0-10(r+8%)(i2)
+        group.m_item[n].methods[2] = 180121; //r123,f3-acted,50%:dl;dl:l0-5(i1)(*10)(223);223,f3:j7+2*dl(i1)(*10)
 
         group.m_item[n].methods[1] = 10122; //60%,f2:ex-1,+180(i1)
         group.m_item[n].methods[1] = 10222; //65%,maxi0:-220;maxi1:-220
@@ -294,6 +261,8 @@ bool Group::getGroup(int id, Group& group)
         group.m_item[n].methods[2] = 120122; //70%,-f3:buff14(1),buf106+h0*5%(i3)
         group.m_item[n].methods[2] = 120222; //70%,-f3:buff1(1),buf3(1);buff3:i0-20(i0)(1);buff1:i1-20(i1)(1)
         group.m_item[n].methods[2] = 130222; //60%:b102(1),j2/j3+8(i1)+2(*8)(2);-f2:-140ml
+        group.m_item[n].methods[2] = 160122; //60%,f1+1:j9+10(i2)(1);30%(h0-),-f1(g0=1):b16(1)
+        group.m_item[n].methods[2] = 180222; //zb60%:i1+8%(2)(*n);-f2:k0±6%(i1)(2)(*2),-300ml
 
         group.m_item[n].methods[1] = 10924; //40%:j0+20;-f1:-400br(-25/r)
         group.m_item[n].methods[1] = 11024; //45%,-f3:-120br;p+12/r(*5)
@@ -394,6 +363,11 @@ bool Group::getGroup(int id, Group& group)
         group.m_item[n].strategys[2] = 1800; //r1357:j11+8
         group.m_item[n].strategys[2] = 1810; //j12+5
         group.m_item[n].strategys[2] = 1820; //r2468:j12+9
+        group.m_item[n].strategys[2] = 1830; //j16+6
+        group.m_item[n].strategys[2] = 1840; //g0=0:j16+8
+        group.m_item[n].strategys[2] = 1850; //j14+6
+        group.m_item[n].strategys[2] = 1860; //zb,25%:ex-1
+        group.m_item[n].strategys[2] = 1870; //zb,60%:k4+10(1)(*2)
         group.m_item[n].strategys[0] = 9000; //g4=0(*3),2222,75%:g1=1,cd50%
         group.m_item[n].strategys[0] = 9010; //g4=1(*3):l4-15,hlo=3000,maxi1:-3*100
         group.m_item[n].strategys[0] = 9020; //g4=2(*3),!2224,50%:2224,1~2*buff15(1)

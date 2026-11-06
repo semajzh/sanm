@@ -1529,7 +1529,7 @@ bool Item::getItem(int id, Item& item)
         item.i[2] = 88+2.13*45;
         item.i[3] = 63+1.77*45;
         item.methods[0] = 4040121; //ys=10,l0-20(i1,ys),2222,50%(i1):2222,ys-1
-        item.strategys[0] = 404011; //r123:3*l1-5
+//        item.strategys[0] = 404011; //r123:3*l1-5
         item.strategys[0] = 404012; //ys-1,f2:k0+2
     } break;
 

@@ -8,6 +8,7 @@
 #include "buff/buffs602.h"
 #endif
 #include "buff/buff2080121.h"
+#include "buff/buff418011.h"
 #include "log/logger.h"
 #include <QDebug>
 
@@ -374,6 +375,16 @@ void State21::speed(Ground* ground)
 
 void State21::method(Ground* ground)
 {
+    int src[2] = {0};
+    for (int obj : ground->m_sort)
+    {
+        Item& item = ground->m_group[obj/10].m_item[obj%10];
+        if (item.h[0] > 0 && item.methods[0] == 4180121)
+        {
+            Method::getMethod(4180121)->run(ground, &item);
+            src[item.g[0]/10] = item.g[0];
+        }
+    }
     for (int obj : ground->m_sort)
     {
         Item& item = ground->m_group[obj/10].m_item[obj%10];
@@ -383,22 +394,42 @@ void State21::method(Ground* ground)
         }
         for (int type : {20, 21})
         {
-            for (int k = 0; k < 3; ++k)
+            for (int k = 0; k < 4; ++k)
             {
                 int m = item.methods[k];
                 if (m == 88324 && type == 20)
                 {
                     item.j[7] += 10;
                 }
-                if (m % 100 == type)
+                if (m % 100 != type || m == 4180121)
                 {
-                    QSharedPointer<Method> method = Method::getMethod(m);
-                    if (!method.isNull() && method->id > 0)
-                    {
-                        method->run(ground, &item);
-                    }
+                    continue;
+                }
+                QSharedPointer<Method> method = Method::getMethod(m);
+                if (k < 3)
+                {
+                    method->run(ground, &item);
+                }
+                else
+                {
+                    method->run(ground, &item, src[item.g[0]/10]);
+                    check418011(ground, item.g[0], m);
                 }
             }
         }
     }
+}
+
+bool State21::check418011(Ground* ground, int obj, int method)
+{
+    for (QSharedPointer<Buff> pbuff : ground->buff[3][obj])
+    {
+        if (pbuff->id == 418011)
+        {
+            QSharedPointer<Buff418011> buff = qSharedPointerCast<Buff418011>(pbuff);
+            buff->run(ground, method);
+            return true;
+        }
+    }
+    return false;
 }
